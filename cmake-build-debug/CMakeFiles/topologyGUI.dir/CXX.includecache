@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/cedricgormond/Desktop/topologyGUI/ctr.hpp
+iostream
+-
+string
+-
+
+/Users/cedricgormond/Desktop/topologyGUI/get_from_txt.cpp
+get_from_txt.hpp
+/Users/cedricgormond/Desktop/topologyGUI/get_from_txt.hpp
+
+/Users/cedricgormond/Desktop/topologyGUI/get_from_txt.hpp
+stdio.h
+-
+iostream
+-
+fstream
+-
+string
+-
+regex
+-
+ctr.hpp
+/Users/cedricgormond/Desktop/topologyGUI/ctr.hpp
+

@@ -1,0 +1,75 @@
+create_clock -period 5.000 -name clk -waveform {0.000 2.500} [get_ports Clock]
+
+
+create_pblock pblock_1
+add_cells_to_pblock [get_pblocks pblock_1] [get_cells -quiet [list {GEN_Z[0].GEN_Y[0].GEN_X[0].GEN_ROUTER_BOTTOM.GEN_ROUTER_BOTTOM_LEFT.Router}]]
+resize_pblock [get_pblocks pblock_1] -add {SLICE_X6Y15:SLICE_X16Y37}
+
+create_pblock pblock_2
+add_cells_to_pblock [get_pblocks pblock_2] [get_cells -quiet [list {GEN_Z[0].GEN_Y[0].GEN_X[1].GEN_ROUTER_BOTTOM.GEN_ROUTER_BOTTOM_CENTRAL.Router}]]
+resize_pblock [get_pblocks pblock_2] -add {SLICE_X106Y16:SLICE_X116Y36}
+
+create_pblock pblock_3
+add_cells_to_pblock [get_pblocks pblock_3] [get_cells -quiet [list {GEN_Z[0].GEN_Y[0].GEN_X[2].GEN_ROUTER_BOTTOM.GEN_ROUTER_BOTTOM_RIGHT.Router}]]
+resize_pblock [get_pblocks pblock_3] -add {SLICE_X207Y17:SLICE_X215Y35}
+
+create_pblock pblock_4
+add_cells_to_pblock [get_pblocks pblock_4] [get_cells -quiet [list {GEN_Z[0].GEN_Y[1].GEN_X[0].GEN_ROUTER_MIDDLE.GEN_ROUTER_MIDDLE_LEFT.Router}]]
+resize_pblock [get_pblocks pblock_4] -add {SLICE_X7Y118:SLICE_X15Y134}
+
+create_pblock pblock_5
+add_cells_to_pblock [get_pblocks pblock_5] [get_cells -quiet [list {GEN_Z[0].GEN_Y[1].GEN_X[1].GEN_ROUTER_MIDDLE.GEN_ROUTER_MIDDLE_CENTRAL.Router}]]
+resize_pblock [get_pblocks pblock_5] -add {SLICE_X107Y117:SLICE_X115Y135}
+
+create_pblock pblock_6
+add_cells_to_pblock [get_pblocks pblock_6] [get_cells -quiet [list {GEN_Z[0].GEN_Y[1].GEN_X[2].GEN_ROUTER_MIDDLE.GEN_ROUTER_MIDDLE_RIGHT.Router}]]
+resize_pblock [get_pblocks pblock_6] -add {SLICE_X208Y118:SLICE_X214Y134}
+
+create_pblock pblock_7
+add_cells_to_pblock [get_pblocks pblock_7] [get_cells -quiet [list {GEN_Z[0].GEN_Y[2].GEN_X[0].GEN_ROUTER_TOP.GEN_ROUTER_TOP_LEFT.Router}]]
+resize_pblock [get_pblocks pblock_7] -add {SLICE_X8Y217:SLICE_X14Y235}
+
+create_pblock pblock_8
+add_cells_to_pblock [get_pblocks pblock_8] [get_cells -quiet [list {GEN_Z[0].GEN_Y[2].GEN_X[1].GEN_ROUTER_TOP.GEN_ROUTER_TOP_CENTRAL.Router}]]
+resize_pblock [get_pblocks pblock_8] -add {SLICE_X107Y216:SLICE_X115Y236}
+
+create_pblock pblock_9
+add_cells_to_pblock [get_pblocks pblock_9] [get_cells -quiet [list {GEN_Z[0].GEN_Y[2].GEN_X[2].GEN_ROUTER_TOP.GEN_ROUTER_TOP_RIGHT.Router}]]
+resize_pblock [get_pblocks pblock_9] -add {SLICE_X207Y219:SLICE_X215Y233}
+
+create_pblock pblock_10
+add_cells_to_pblock [get_pblocks pblock_10] [get_cells -quiet [list {GEN_Z[1].GEN_Y[0].GEN_X[0].GEN_ROUTER_BOTTOM.GEN_ROUTER_BOTTOM_LEFT.Router}]]
+resize_pblock [get_pblocks pblock_10] -add {SLICE_X8Y317:SLICE_X14Y335}
+
+create_pblock pblock_11
+add_cells_to_pblock [get_pblocks pblock_11] [get_cells -quiet [list {GEN_Z[1].GEN_Y[0].GEN_X[1].GEN_ROUTER_BOTTOM.GEN_ROUTER_BOTTOM_CENTRAL.Router}]]
+resize_pblock [get_pblocks pblock_11] -add {SLICE_X52Y52:SLICE_X58Y66}
+
+create_pblock pblock_12
+add_cells_to_pblock [get_pblocks pblock_12] [get_cells -quiet [list {GEN_Z[1].GEN_Y[0].GEN_X[2].GEN_ROUTER_BOTTOM.GEN_ROUTER_BOTTOM_RIGHT.Router}]]
+resize_pblock [get_pblocks pblock_12] -add {SLICE_X81Y50:SLICE_X91Y66}
+
+create_pblock pblock_13
+add_cells_to_pblock [get_pblocks pblock_13] [get_cells -quiet [list {GEN_Z[1].GEN_Y[1].GEN_X[0].GEN_ROUTER_MIDDLE.GEN_ROUTER_MIDDLE_LEFT.Router}]]
+resize_pblock [get_pblocks pblock_13] -add {SLICE_X27Y113:SLICE_X35Y127}
+
+create_pblock pblock_14
+add_cells_to_pblock [get_pblocks pblock_14] [get_cells -quiet [list {GEN_Z[1].GEN_Y[1].GEN_X[1].GEN_ROUTER_MIDDLE.GEN_ROUTER_MIDDLE_CENTRAL.Router}]]
+resize_pblock [get_pblocks pblock_14] -add {SLICE_X51Y110:SLICE_X57Y126}
+
+create_pblock pblock_15
+add_cells_to_pblock [get_pblocks pblock_15] [get_cells -quiet [list {GEN_Z[1].GEN_Y[1].GEN_X[2].GEN_ROUTER_MIDDLE.GEN_ROUTER_MIDDLE_RIGHT.Router}]]
+resize_pblock [get_pblocks pblock_15] -add {SLICE_X81Y110:SLICE_X91Y126}
+
+create_pblock pblock_16
+add_cells_to_pblock [get_pblocks pblock_16] [get_cells -quiet [list {GEN_Z[1].GEN_Y[2].GEN_X[0].GEN_ROUTER_TOP.GEN_ROUTER_TOP_LEFT.Router}]]
+resize_pblock [get_pblocks pblock_16] -add {SLICE_X27Y191:SLICE_X33Y209}
+
+create_pblock pblock_17
+add_cells_to_pblock [get_pblocks pblock_17] [get_cells -quiet [list {GEN_Z[1].GEN_Y[2].GEN_X[1].GEN_ROUTER_TOP.GEN_ROUTER_TOP_CENTRAL.Router}]]
+resize_pblock [get_pblocks pblock_17] -add {SLICE_X52Y191:SLICE_X58Y209}
+
+create_pblock pblock_18
+add_cells_to_pblock [get_pblocks pblock_18] [get_cells -quiet [list {GEN_Z[1].GEN_Y[2].GEN_X[2].GEN_ROUTER_TOP.GEN_ROUTER_TOP_RIGHT.Router}]]
+resize_pblock [get_pblocks pblock_18] -add {SLICE_X82Y191:SLICE_X90Y209}
+
