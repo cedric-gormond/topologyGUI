@@ -57,177 +57,177 @@ include CMakeFiles/topologyGUI.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/topologyGUI.dir/flags.make
 
-CMakeFiles/topologyGUI.dir/main.cpp.o: CMakeFiles/topologyGUI.dir/flags.make
-CMakeFiles/topologyGUI.dir/main.cpp.o: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/cedricgormond/Desktop/topologyGUI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/topologyGUI.dir/main.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/topologyGUI.dir/main.cpp.o -c /Users/cedricgormond/Desktop/topologyGUI/main.cpp
+CMakeFiles/topologyGUI.dir/src/main.cpp.o: CMakeFiles/topologyGUI.dir/flags.make
+CMakeFiles/topologyGUI.dir/src/main.cpp.o: ../src/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/cedricgormond/Desktop/topologyGUI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/topologyGUI.dir/src/main.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/topologyGUI.dir/src/main.cpp.o -c /Users/cedricgormond/Desktop/topologyGUI/src/main.cpp
 
-CMakeFiles/topologyGUI.dir/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/topologyGUI.dir/main.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/cedricgormond/Desktop/topologyGUI/main.cpp > CMakeFiles/topologyGUI.dir/main.cpp.i
+CMakeFiles/topologyGUI.dir/src/main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/topologyGUI.dir/src/main.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/cedricgormond/Desktop/topologyGUI/src/main.cpp > CMakeFiles/topologyGUI.dir/src/main.cpp.i
 
-CMakeFiles/topologyGUI.dir/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/topologyGUI.dir/main.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/cedricgormond/Desktop/topologyGUI/main.cpp -o CMakeFiles/topologyGUI.dir/main.cpp.s
+CMakeFiles/topologyGUI.dir/src/main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/topologyGUI.dir/src/main.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/cedricgormond/Desktop/topologyGUI/src/main.cpp -o CMakeFiles/topologyGUI.dir/src/main.cpp.s
 
-CMakeFiles/topologyGUI.dir/block.cpp.o: CMakeFiles/topologyGUI.dir/flags.make
-CMakeFiles/topologyGUI.dir/block.cpp.o: ../block.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/cedricgormond/Desktop/topologyGUI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/topologyGUI.dir/block.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/topologyGUI.dir/block.cpp.o -c /Users/cedricgormond/Desktop/topologyGUI/block.cpp
+CMakeFiles/topologyGUI.dir/src/block.cpp.o: CMakeFiles/topologyGUI.dir/flags.make
+CMakeFiles/topologyGUI.dir/src/block.cpp.o: ../src/block.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/cedricgormond/Desktop/topologyGUI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/topologyGUI.dir/src/block.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/topologyGUI.dir/src/block.cpp.o -c /Users/cedricgormond/Desktop/topologyGUI/src/block.cpp
 
-CMakeFiles/topologyGUI.dir/block.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/topologyGUI.dir/block.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/cedricgormond/Desktop/topologyGUI/block.cpp > CMakeFiles/topologyGUI.dir/block.cpp.i
+CMakeFiles/topologyGUI.dir/src/block.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/topologyGUI.dir/src/block.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/cedricgormond/Desktop/topologyGUI/src/block.cpp > CMakeFiles/topologyGUI.dir/src/block.cpp.i
 
-CMakeFiles/topologyGUI.dir/block.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/topologyGUI.dir/block.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/cedricgormond/Desktop/topologyGUI/block.cpp -o CMakeFiles/topologyGUI.dir/block.cpp.s
+CMakeFiles/topologyGUI.dir/src/block.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/topologyGUI.dir/src/block.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/cedricgormond/Desktop/topologyGUI/src/block.cpp -o CMakeFiles/topologyGUI.dir/src/block.cpp.s
 
-CMakeFiles/topologyGUI.dir/blockContainer.cpp.o: CMakeFiles/topologyGUI.dir/flags.make
-CMakeFiles/topologyGUI.dir/blockContainer.cpp.o: ../blockContainer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/cedricgormond/Desktop/topologyGUI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/topologyGUI.dir/blockContainer.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/topologyGUI.dir/blockContainer.cpp.o -c /Users/cedricgormond/Desktop/topologyGUI/blockContainer.cpp
+CMakeFiles/topologyGUI.dir/src/blockContainer.cpp.o: CMakeFiles/topologyGUI.dir/flags.make
+CMakeFiles/topologyGUI.dir/src/blockContainer.cpp.o: ../src/blockContainer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/cedricgormond/Desktop/topologyGUI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/topologyGUI.dir/src/blockContainer.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/topologyGUI.dir/src/blockContainer.cpp.o -c /Users/cedricgormond/Desktop/topologyGUI/src/blockContainer.cpp
 
-CMakeFiles/topologyGUI.dir/blockContainer.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/topologyGUI.dir/blockContainer.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/cedricgormond/Desktop/topologyGUI/blockContainer.cpp > CMakeFiles/topologyGUI.dir/blockContainer.cpp.i
+CMakeFiles/topologyGUI.dir/src/blockContainer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/topologyGUI.dir/src/blockContainer.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/cedricgormond/Desktop/topologyGUI/src/blockContainer.cpp > CMakeFiles/topologyGUI.dir/src/blockContainer.cpp.i
 
-CMakeFiles/topologyGUI.dir/blockContainer.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/topologyGUI.dir/blockContainer.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/cedricgormond/Desktop/topologyGUI/blockContainer.cpp -o CMakeFiles/topologyGUI.dir/blockContainer.cpp.s
+CMakeFiles/topologyGUI.dir/src/blockContainer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/topologyGUI.dir/src/blockContainer.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/cedricgormond/Desktop/topologyGUI/src/blockContainer.cpp -o CMakeFiles/topologyGUI.dir/src/blockContainer.cpp.s
 
-CMakeFiles/topologyGUI.dir/line.cpp.o: CMakeFiles/topologyGUI.dir/flags.make
-CMakeFiles/topologyGUI.dir/line.cpp.o: ../line.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/cedricgormond/Desktop/topologyGUI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/topologyGUI.dir/line.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/topologyGUI.dir/line.cpp.o -c /Users/cedricgormond/Desktop/topologyGUI/line.cpp
+CMakeFiles/topologyGUI.dir/src/line.cpp.o: CMakeFiles/topologyGUI.dir/flags.make
+CMakeFiles/topologyGUI.dir/src/line.cpp.o: ../src/line.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/cedricgormond/Desktop/topologyGUI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/topologyGUI.dir/src/line.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/topologyGUI.dir/src/line.cpp.o -c /Users/cedricgormond/Desktop/topologyGUI/src/line.cpp
 
-CMakeFiles/topologyGUI.dir/line.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/topologyGUI.dir/line.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/cedricgormond/Desktop/topologyGUI/line.cpp > CMakeFiles/topologyGUI.dir/line.cpp.i
+CMakeFiles/topologyGUI.dir/src/line.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/topologyGUI.dir/src/line.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/cedricgormond/Desktop/topologyGUI/src/line.cpp > CMakeFiles/topologyGUI.dir/src/line.cpp.i
 
-CMakeFiles/topologyGUI.dir/line.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/topologyGUI.dir/line.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/cedricgormond/Desktop/topologyGUI/line.cpp -o CMakeFiles/topologyGUI.dir/line.cpp.s
+CMakeFiles/topologyGUI.dir/src/line.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/topologyGUI.dir/src/line.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/cedricgormond/Desktop/topologyGUI/src/line.cpp -o CMakeFiles/topologyGUI.dir/src/line.cpp.s
 
-CMakeFiles/topologyGUI.dir/lineContainer.cpp.o: CMakeFiles/topologyGUI.dir/flags.make
-CMakeFiles/topologyGUI.dir/lineContainer.cpp.o: ../lineContainer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/cedricgormond/Desktop/topologyGUI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/topologyGUI.dir/lineContainer.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/topologyGUI.dir/lineContainer.cpp.o -c /Users/cedricgormond/Desktop/topologyGUI/lineContainer.cpp
+CMakeFiles/topologyGUI.dir/src/lineContainer.cpp.o: CMakeFiles/topologyGUI.dir/flags.make
+CMakeFiles/topologyGUI.dir/src/lineContainer.cpp.o: ../src/lineContainer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/cedricgormond/Desktop/topologyGUI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/topologyGUI.dir/src/lineContainer.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/topologyGUI.dir/src/lineContainer.cpp.o -c /Users/cedricgormond/Desktop/topologyGUI/src/lineContainer.cpp
 
-CMakeFiles/topologyGUI.dir/lineContainer.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/topologyGUI.dir/lineContainer.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/cedricgormond/Desktop/topologyGUI/lineContainer.cpp > CMakeFiles/topologyGUI.dir/lineContainer.cpp.i
+CMakeFiles/topologyGUI.dir/src/lineContainer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/topologyGUI.dir/src/lineContainer.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/cedricgormond/Desktop/topologyGUI/src/lineContainer.cpp > CMakeFiles/topologyGUI.dir/src/lineContainer.cpp.i
 
-CMakeFiles/topologyGUI.dir/lineContainer.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/topologyGUI.dir/lineContainer.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/cedricgormond/Desktop/topologyGUI/lineContainer.cpp -o CMakeFiles/topologyGUI.dir/lineContainer.cpp.s
+CMakeFiles/topologyGUI.dir/src/lineContainer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/topologyGUI.dir/src/lineContainer.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/cedricgormond/Desktop/topologyGUI/src/lineContainer.cpp -o CMakeFiles/topologyGUI.dir/src/lineContainer.cpp.s
 
-CMakeFiles/topologyGUI.dir/file_tools.cpp.o: CMakeFiles/topologyGUI.dir/flags.make
-CMakeFiles/topologyGUI.dir/file_tools.cpp.o: ../file_tools.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/cedricgormond/Desktop/topologyGUI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/topologyGUI.dir/file_tools.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/topologyGUI.dir/file_tools.cpp.o -c /Users/cedricgormond/Desktop/topologyGUI/file_tools.cpp
+CMakeFiles/topologyGUI.dir/src/file_tools.cpp.o: CMakeFiles/topologyGUI.dir/flags.make
+CMakeFiles/topologyGUI.dir/src/file_tools.cpp.o: ../src/file_tools.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/cedricgormond/Desktop/topologyGUI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/topologyGUI.dir/src/file_tools.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/topologyGUI.dir/src/file_tools.cpp.o -c /Users/cedricgormond/Desktop/topologyGUI/src/file_tools.cpp
 
-CMakeFiles/topologyGUI.dir/file_tools.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/topologyGUI.dir/file_tools.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/cedricgormond/Desktop/topologyGUI/file_tools.cpp > CMakeFiles/topologyGUI.dir/file_tools.cpp.i
+CMakeFiles/topologyGUI.dir/src/file_tools.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/topologyGUI.dir/src/file_tools.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/cedricgormond/Desktop/topologyGUI/src/file_tools.cpp > CMakeFiles/topologyGUI.dir/src/file_tools.cpp.i
 
-CMakeFiles/topologyGUI.dir/file_tools.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/topologyGUI.dir/file_tools.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/cedricgormond/Desktop/topologyGUI/file_tools.cpp -o CMakeFiles/topologyGUI.dir/file_tools.cpp.s
+CMakeFiles/topologyGUI.dir/src/file_tools.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/topologyGUI.dir/src/file_tools.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/cedricgormond/Desktop/topologyGUI/src/file_tools.cpp -o CMakeFiles/topologyGUI.dir/src/file_tools.cpp.s
 
-CMakeFiles/topologyGUI.dir/create_output_file.cpp.o: CMakeFiles/topologyGUI.dir/flags.make
-CMakeFiles/topologyGUI.dir/create_output_file.cpp.o: ../create_output_file.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/cedricgormond/Desktop/topologyGUI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/topologyGUI.dir/create_output_file.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/topologyGUI.dir/create_output_file.cpp.o -c /Users/cedricgormond/Desktop/topologyGUI/create_output_file.cpp
+CMakeFiles/topologyGUI.dir/src/create_output_file.cpp.o: CMakeFiles/topologyGUI.dir/flags.make
+CMakeFiles/topologyGUI.dir/src/create_output_file.cpp.o: ../src/create_output_file.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/cedricgormond/Desktop/topologyGUI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/topologyGUI.dir/src/create_output_file.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/topologyGUI.dir/src/create_output_file.cpp.o -c /Users/cedricgormond/Desktop/topologyGUI/src/create_output_file.cpp
 
-CMakeFiles/topologyGUI.dir/create_output_file.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/topologyGUI.dir/create_output_file.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/cedricgormond/Desktop/topologyGUI/create_output_file.cpp > CMakeFiles/topologyGUI.dir/create_output_file.cpp.i
+CMakeFiles/topologyGUI.dir/src/create_output_file.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/topologyGUI.dir/src/create_output_file.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/cedricgormond/Desktop/topologyGUI/src/create_output_file.cpp > CMakeFiles/topologyGUI.dir/src/create_output_file.cpp.i
 
-CMakeFiles/topologyGUI.dir/create_output_file.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/topologyGUI.dir/create_output_file.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/cedricgormond/Desktop/topologyGUI/create_output_file.cpp -o CMakeFiles/topologyGUI.dir/create_output_file.cpp.s
+CMakeFiles/topologyGUI.dir/src/create_output_file.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/topologyGUI.dir/src/create_output_file.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/cedricgormond/Desktop/topologyGUI/src/create_output_file.cpp -o CMakeFiles/topologyGUI.dir/src/create_output_file.cpp.s
 
-CMakeFiles/topologyGUI.dir/ctr.cpp.o: CMakeFiles/topologyGUI.dir/flags.make
-CMakeFiles/topologyGUI.dir/ctr.cpp.o: ../ctr.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/cedricgormond/Desktop/topologyGUI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/topologyGUI.dir/ctr.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/topologyGUI.dir/ctr.cpp.o -c /Users/cedricgormond/Desktop/topologyGUI/ctr.cpp
+CMakeFiles/topologyGUI.dir/src/ctr.cpp.o: CMakeFiles/topologyGUI.dir/flags.make
+CMakeFiles/topologyGUI.dir/src/ctr.cpp.o: ../src/ctr.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/cedricgormond/Desktop/topologyGUI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/topologyGUI.dir/src/ctr.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/topologyGUI.dir/src/ctr.cpp.o -c /Users/cedricgormond/Desktop/topologyGUI/src/ctr.cpp
 
-CMakeFiles/topologyGUI.dir/ctr.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/topologyGUI.dir/ctr.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/cedricgormond/Desktop/topologyGUI/ctr.cpp > CMakeFiles/topologyGUI.dir/ctr.cpp.i
+CMakeFiles/topologyGUI.dir/src/ctr.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/topologyGUI.dir/src/ctr.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/cedricgormond/Desktop/topologyGUI/src/ctr.cpp > CMakeFiles/topologyGUI.dir/src/ctr.cpp.i
 
-CMakeFiles/topologyGUI.dir/ctr.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/topologyGUI.dir/ctr.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/cedricgormond/Desktop/topologyGUI/ctr.cpp -o CMakeFiles/topologyGUI.dir/ctr.cpp.s
+CMakeFiles/topologyGUI.dir/src/ctr.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/topologyGUI.dir/src/ctr.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/cedricgormond/Desktop/topologyGUI/src/ctr.cpp -o CMakeFiles/topologyGUI.dir/src/ctr.cpp.s
 
-CMakeFiles/topologyGUI.dir/get_from_ctr.cpp.o: CMakeFiles/topologyGUI.dir/flags.make
-CMakeFiles/topologyGUI.dir/get_from_ctr.cpp.o: ../get_from_ctr.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/cedricgormond/Desktop/topologyGUI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/topologyGUI.dir/get_from_ctr.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/topologyGUI.dir/get_from_ctr.cpp.o -c /Users/cedricgormond/Desktop/topologyGUI/get_from_ctr.cpp
+CMakeFiles/topologyGUI.dir/src/get_from_ctr.cpp.o: CMakeFiles/topologyGUI.dir/flags.make
+CMakeFiles/topologyGUI.dir/src/get_from_ctr.cpp.o: ../src/get_from_ctr.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/cedricgormond/Desktop/topologyGUI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/topologyGUI.dir/src/get_from_ctr.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/topologyGUI.dir/src/get_from_ctr.cpp.o -c /Users/cedricgormond/Desktop/topologyGUI/src/get_from_ctr.cpp
 
-CMakeFiles/topologyGUI.dir/get_from_ctr.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/topologyGUI.dir/get_from_ctr.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/cedricgormond/Desktop/topologyGUI/get_from_ctr.cpp > CMakeFiles/topologyGUI.dir/get_from_ctr.cpp.i
+CMakeFiles/topologyGUI.dir/src/get_from_ctr.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/topologyGUI.dir/src/get_from_ctr.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/cedricgormond/Desktop/topologyGUI/src/get_from_ctr.cpp > CMakeFiles/topologyGUI.dir/src/get_from_ctr.cpp.i
 
-CMakeFiles/topologyGUI.dir/get_from_ctr.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/topologyGUI.dir/get_from_ctr.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/cedricgormond/Desktop/topologyGUI/get_from_ctr.cpp -o CMakeFiles/topologyGUI.dir/get_from_ctr.cpp.s
+CMakeFiles/topologyGUI.dir/src/get_from_ctr.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/topologyGUI.dir/src/get_from_ctr.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/cedricgormond/Desktop/topologyGUI/src/get_from_ctr.cpp -o CMakeFiles/topologyGUI.dir/src/get_from_ctr.cpp.s
 
-CMakeFiles/topologyGUI.dir/get_from_txt.cpp.o: CMakeFiles/topologyGUI.dir/flags.make
-CMakeFiles/topologyGUI.dir/get_from_txt.cpp.o: ../get_from_txt.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/cedricgormond/Desktop/topologyGUI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/topologyGUI.dir/get_from_txt.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/topologyGUI.dir/get_from_txt.cpp.o -c /Users/cedricgormond/Desktop/topologyGUI/get_from_txt.cpp
+CMakeFiles/topologyGUI.dir/src/get_from_txt.cpp.o: CMakeFiles/topologyGUI.dir/flags.make
+CMakeFiles/topologyGUI.dir/src/get_from_txt.cpp.o: ../src/get_from_txt.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/cedricgormond/Desktop/topologyGUI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/topologyGUI.dir/src/get_from_txt.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/topologyGUI.dir/src/get_from_txt.cpp.o -c /Users/cedricgormond/Desktop/topologyGUI/src/get_from_txt.cpp
 
-CMakeFiles/topologyGUI.dir/get_from_txt.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/topologyGUI.dir/get_from_txt.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/cedricgormond/Desktop/topologyGUI/get_from_txt.cpp > CMakeFiles/topologyGUI.dir/get_from_txt.cpp.i
+CMakeFiles/topologyGUI.dir/src/get_from_txt.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/topologyGUI.dir/src/get_from_txt.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/cedricgormond/Desktop/topologyGUI/src/get_from_txt.cpp > CMakeFiles/topologyGUI.dir/src/get_from_txt.cpp.i
 
-CMakeFiles/topologyGUI.dir/get_from_txt.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/topologyGUI.dir/get_from_txt.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/cedricgormond/Desktop/topologyGUI/get_from_txt.cpp -o CMakeFiles/topologyGUI.dir/get_from_txt.cpp.s
+CMakeFiles/topologyGUI.dir/src/get_from_txt.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/topologyGUI.dir/src/get_from_txt.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/cedricgormond/Desktop/topologyGUI/src/get_from_txt.cpp -o CMakeFiles/topologyGUI.dir/src/get_from_txt.cpp.s
 
-CMakeFiles/topologyGUI.dir/topology.cpp.o: CMakeFiles/topologyGUI.dir/flags.make
-CMakeFiles/topologyGUI.dir/topology.cpp.o: ../topology.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/cedricgormond/Desktop/topologyGUI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/topologyGUI.dir/topology.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/topologyGUI.dir/topology.cpp.o -c /Users/cedricgormond/Desktop/topologyGUI/topology.cpp
+CMakeFiles/topologyGUI.dir/src/topology.cpp.o: CMakeFiles/topologyGUI.dir/flags.make
+CMakeFiles/topologyGUI.dir/src/topology.cpp.o: ../src/topology.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/cedricgormond/Desktop/topologyGUI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/topologyGUI.dir/src/topology.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/topologyGUI.dir/src/topology.cpp.o -c /Users/cedricgormond/Desktop/topologyGUI/src/topology.cpp
 
-CMakeFiles/topologyGUI.dir/topology.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/topologyGUI.dir/topology.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/cedricgormond/Desktop/topologyGUI/topology.cpp > CMakeFiles/topologyGUI.dir/topology.cpp.i
+CMakeFiles/topologyGUI.dir/src/topology.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/topologyGUI.dir/src/topology.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/cedricgormond/Desktop/topologyGUI/src/topology.cpp > CMakeFiles/topologyGUI.dir/src/topology.cpp.i
 
-CMakeFiles/topologyGUI.dir/topology.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/topologyGUI.dir/topology.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/cedricgormond/Desktop/topologyGUI/topology.cpp -o CMakeFiles/topologyGUI.dir/topology.cpp.s
+CMakeFiles/topologyGUI.dir/src/topology.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/topologyGUI.dir/src/topology.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/cedricgormond/Desktop/topologyGUI/src/topology.cpp -o CMakeFiles/topologyGUI.dir/src/topology.cpp.s
 
 # Object files for target topologyGUI
 topologyGUI_OBJECTS = \
-"CMakeFiles/topologyGUI.dir/main.cpp.o" \
-"CMakeFiles/topologyGUI.dir/block.cpp.o" \
-"CMakeFiles/topologyGUI.dir/blockContainer.cpp.o" \
-"CMakeFiles/topologyGUI.dir/line.cpp.o" \
-"CMakeFiles/topologyGUI.dir/lineContainer.cpp.o" \
-"CMakeFiles/topologyGUI.dir/file_tools.cpp.o" \
-"CMakeFiles/topologyGUI.dir/create_output_file.cpp.o" \
-"CMakeFiles/topologyGUI.dir/ctr.cpp.o" \
-"CMakeFiles/topologyGUI.dir/get_from_ctr.cpp.o" \
-"CMakeFiles/topologyGUI.dir/get_from_txt.cpp.o" \
-"CMakeFiles/topologyGUI.dir/topology.cpp.o"
+"CMakeFiles/topologyGUI.dir/src/main.cpp.o" \
+"CMakeFiles/topologyGUI.dir/src/block.cpp.o" \
+"CMakeFiles/topologyGUI.dir/src/blockContainer.cpp.o" \
+"CMakeFiles/topologyGUI.dir/src/line.cpp.o" \
+"CMakeFiles/topologyGUI.dir/src/lineContainer.cpp.o" \
+"CMakeFiles/topologyGUI.dir/src/file_tools.cpp.o" \
+"CMakeFiles/topologyGUI.dir/src/create_output_file.cpp.o" \
+"CMakeFiles/topologyGUI.dir/src/ctr.cpp.o" \
+"CMakeFiles/topologyGUI.dir/src/get_from_ctr.cpp.o" \
+"CMakeFiles/topologyGUI.dir/src/get_from_txt.cpp.o" \
+"CMakeFiles/topologyGUI.dir/src/topology.cpp.o"
 
 # External object files for target topologyGUI
 topologyGUI_EXTERNAL_OBJECTS =
 
-topologyGUI: CMakeFiles/topologyGUI.dir/main.cpp.o
-topologyGUI: CMakeFiles/topologyGUI.dir/block.cpp.o
-topologyGUI: CMakeFiles/topologyGUI.dir/blockContainer.cpp.o
-topologyGUI: CMakeFiles/topologyGUI.dir/line.cpp.o
-topologyGUI: CMakeFiles/topologyGUI.dir/lineContainer.cpp.o
-topologyGUI: CMakeFiles/topologyGUI.dir/file_tools.cpp.o
-topologyGUI: CMakeFiles/topologyGUI.dir/create_output_file.cpp.o
-topologyGUI: CMakeFiles/topologyGUI.dir/ctr.cpp.o
-topologyGUI: CMakeFiles/topologyGUI.dir/get_from_ctr.cpp.o
-topologyGUI: CMakeFiles/topologyGUI.dir/get_from_txt.cpp.o
-topologyGUI: CMakeFiles/topologyGUI.dir/topology.cpp.o
+topologyGUI: CMakeFiles/topologyGUI.dir/src/main.cpp.o
+topologyGUI: CMakeFiles/topologyGUI.dir/src/block.cpp.o
+topologyGUI: CMakeFiles/topologyGUI.dir/src/blockContainer.cpp.o
+topologyGUI: CMakeFiles/topologyGUI.dir/src/line.cpp.o
+topologyGUI: CMakeFiles/topologyGUI.dir/src/lineContainer.cpp.o
+topologyGUI: CMakeFiles/topologyGUI.dir/src/file_tools.cpp.o
+topologyGUI: CMakeFiles/topologyGUI.dir/src/create_output_file.cpp.o
+topologyGUI: CMakeFiles/topologyGUI.dir/src/ctr.cpp.o
+topologyGUI: CMakeFiles/topologyGUI.dir/src/get_from_ctr.cpp.o
+topologyGUI: CMakeFiles/topologyGUI.dir/src/get_from_txt.cpp.o
+topologyGUI: CMakeFiles/topologyGUI.dir/src/topology.cpp.o
 topologyGUI: CMakeFiles/topologyGUI.dir/build.make
 topologyGUI: /usr/local/lib/libsfml-system.dylib
 topologyGUI: /usr/local/lib/libsfml-window.dylib

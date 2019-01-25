@@ -3,7 +3,7 @@ project(topologyGUI)
 
 set(CMAKE_CXX_STANDARD 14)
 
-set(SOURCE_FILES main.cpp block.cpp block.h blockContainer.cpp blockContainer.h line.cpp line.h lineContainer.cpp lineContainer.h file_tools.cpp file_tools.hpp create_output_file.cpp create_output_file.hpp ctr.cpp ctr.hpp get_from_ctr.cpp get_from_ctr.hpp get_from_txt.cpp get_from_txt.hpp topology.cpp topology.hpp)
+set(SOURCE_FILES src/main.cpp src/block.cpp src/block.h src/blockContainer.cpp src/blockContainer.h src/line.cpp src/line.h src/lineContainer.cpp src/lineContainer.h src/file_tools.cpp src/file_tools.hpp src/create_output_file.cpp src/create_output_file.hpp src/ctr.cpp src/ctr.hpp src/get_from_ctr.cpp src/get_from_ctr.hpp src/get_from_txt.cpp src/get_from_txt.hpp src/topology.cpp src/topology.hpp)
 
 add_executable(topologyGUI ${SOURCE_FILES})
 

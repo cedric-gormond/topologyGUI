@@ -82,67 +82,67 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/cedricgormond/Desktop/topologyGUI/block.cpp">
+		<Unit filename="/Users/cedricgormond/Desktop/topologyGUI/src/block.cpp">
 			<Option target="topologyGUI"/>
 		</Unit>
-		<Unit filename="/Users/cedricgormond/Desktop/topologyGUI/block.h">
+		<Unit filename="/Users/cedricgormond/Desktop/topologyGUI/src/block.h">
 			<Option target="topologyGUI"/>
 		</Unit>
-		<Unit filename="/Users/cedricgormond/Desktop/topologyGUI/blockContainer.cpp">
+		<Unit filename="/Users/cedricgormond/Desktop/topologyGUI/src/blockContainer.cpp">
 			<Option target="topologyGUI"/>
 		</Unit>
-		<Unit filename="/Users/cedricgormond/Desktop/topologyGUI/blockContainer.h">
+		<Unit filename="/Users/cedricgormond/Desktop/topologyGUI/src/blockContainer.h">
 			<Option target="topologyGUI"/>
 		</Unit>
-		<Unit filename="/Users/cedricgormond/Desktop/topologyGUI/create_output_file.cpp">
+		<Unit filename="/Users/cedricgormond/Desktop/topologyGUI/src/create_output_file.cpp">
 			<Option target="topologyGUI"/>
 		</Unit>
-		<Unit filename="/Users/cedricgormond/Desktop/topologyGUI/create_output_file.hpp">
+		<Unit filename="/Users/cedricgormond/Desktop/topologyGUI/src/create_output_file.hpp">
 			<Option target="topologyGUI"/>
 		</Unit>
-		<Unit filename="/Users/cedricgormond/Desktop/topologyGUI/ctr.cpp">
+		<Unit filename="/Users/cedricgormond/Desktop/topologyGUI/src/ctr.cpp">
 			<Option target="topologyGUI"/>
 		</Unit>
-		<Unit filename="/Users/cedricgormond/Desktop/topologyGUI/ctr.hpp">
+		<Unit filename="/Users/cedricgormond/Desktop/topologyGUI/src/ctr.hpp">
 			<Option target="topologyGUI"/>
 		</Unit>
-		<Unit filename="/Users/cedricgormond/Desktop/topologyGUI/file_tools.cpp">
+		<Unit filename="/Users/cedricgormond/Desktop/topologyGUI/src/file_tools.cpp">
 			<Option target="topologyGUI"/>
 		</Unit>
-		<Unit filename="/Users/cedricgormond/Desktop/topologyGUI/file_tools.hpp">
+		<Unit filename="/Users/cedricgormond/Desktop/topologyGUI/src/file_tools.hpp">
 			<Option target="topologyGUI"/>
 		</Unit>
-		<Unit filename="/Users/cedricgormond/Desktop/topologyGUI/get_from_ctr.cpp">
+		<Unit filename="/Users/cedricgormond/Desktop/topologyGUI/src/get_from_ctr.cpp">
 			<Option target="topologyGUI"/>
 		</Unit>
-		<Unit filename="/Users/cedricgormond/Desktop/topologyGUI/get_from_ctr.hpp">
+		<Unit filename="/Users/cedricgormond/Desktop/topologyGUI/src/get_from_ctr.hpp">
 			<Option target="topologyGUI"/>
 		</Unit>
-		<Unit filename="/Users/cedricgormond/Desktop/topologyGUI/get_from_txt.cpp">
+		<Unit filename="/Users/cedricgormond/Desktop/topologyGUI/src/get_from_txt.cpp">
 			<Option target="topologyGUI"/>
 		</Unit>
-		<Unit filename="/Users/cedricgormond/Desktop/topologyGUI/get_from_txt.hpp">
+		<Unit filename="/Users/cedricgormond/Desktop/topologyGUI/src/get_from_txt.hpp">
 			<Option target="topologyGUI"/>
 		</Unit>
-		<Unit filename="/Users/cedricgormond/Desktop/topologyGUI/line.cpp">
+		<Unit filename="/Users/cedricgormond/Desktop/topologyGUI/src/line.cpp">
 			<Option target="topologyGUI"/>
 		</Unit>
-		<Unit filename="/Users/cedricgormond/Desktop/topologyGUI/line.h">
+		<Unit filename="/Users/cedricgormond/Desktop/topologyGUI/src/line.h">
 			<Option target="topologyGUI"/>
 		</Unit>
-		<Unit filename="/Users/cedricgormond/Desktop/topologyGUI/lineContainer.cpp">
+		<Unit filename="/Users/cedricgormond/Desktop/topologyGUI/src/lineContainer.cpp">
 			<Option target="topologyGUI"/>
 		</Unit>
-		<Unit filename="/Users/cedricgormond/Desktop/topologyGUI/lineContainer.h">
+		<Unit filename="/Users/cedricgormond/Desktop/topologyGUI/src/lineContainer.h">
 			<Option target="topologyGUI"/>
 		</Unit>
-		<Unit filename="/Users/cedricgormond/Desktop/topologyGUI/main.cpp">
+		<Unit filename="/Users/cedricgormond/Desktop/topologyGUI/src/main.cpp">
 			<Option target="topologyGUI"/>
 		</Unit>
-		<Unit filename="/Users/cedricgormond/Desktop/topologyGUI/topology.cpp">
+		<Unit filename="/Users/cedricgormond/Desktop/topologyGUI/src/topology.cpp">
 			<Option target="topologyGUI"/>
 		</Unit>
-		<Unit filename="/Users/cedricgormond/Desktop/topologyGUI/topology.hpp">
+		<Unit filename="/Users/cedricgormond/Desktop/topologyGUI/src/topology.hpp">
 			<Option target="topologyGUI"/>
 		</Unit>
 		<Unit filename="/Users/cedricgormond/Desktop/topologyGUI/CMakeLists.txt">
