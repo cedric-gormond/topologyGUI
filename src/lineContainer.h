@@ -6,11 +6,12 @@
 #define TOPOLOGYGUI_LINECONTAINER_H
 
 #include "line.h"
+#include "ctr.hpp"
 
 class ContainerOfLines : public sf::Drawable {
 public:
     ContainerOfLines();
-    ContainerOfLines(int useless, const sf::Vector2f pos);
+    ContainerOfLines(int size, const sf::Vector2f pos, constraint *ctr, int distance);
     ~ContainerOfLines();
 
     std::vector<Line> &getContainer();

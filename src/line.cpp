@@ -6,26 +6,26 @@
 
 Line::Line() :
         position(sf::Vector2f()),
-        width(20.0f),
-        height(20.0f),
+        width(10.0f),
+        height(2.0f),
         colour(sf::Color())
 {
 }
 
-Line::Line(float startX, float startY) :
-        width(20.0f),
-        height(20.0f)
+Line::Line(float Xc, float Yc, int Width, int Height, int distanceW, int distanceH) :
+        width(distanceW),
+        height(distanceH)
 {
-    position.x = startX;
-    position.y = startY;
+    position.x = Xc;
+    position.y = Yc;
 
     colour = sf::Color::Red;
 
     block.setSize(sf::Vector2f(width, height));
     block.setFillColor(colour);
     block.setPosition(position);
-    block.setOutlineThickness(2);
-    block.setOutlineColor(sf::Color(255,165,0));
+    //block.setOutlineThickness(2);
+    //block.setOutlineColor(sf::Color(255,165,0));
 }
 
 Line::~Line() {

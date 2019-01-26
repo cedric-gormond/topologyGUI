@@ -112,6 +112,12 @@
 		<Unit filename="/Users/cedricgormond/Desktop/topologyGUI/src/file_tools.hpp">
 			<Option target="topologyGUI"/>
 		</Unit>
+		<Unit filename="/Users/cedricgormond/Desktop/topologyGUI/src/gen_tools.cpp">
+			<Option target="topologyGUI"/>
+		</Unit>
+		<Unit filename="/Users/cedricgormond/Desktop/topologyGUI/src/gen_tools.h">
+			<Option target="topologyGUI"/>
+		</Unit>
 		<Unit filename="/Users/cedricgormond/Desktop/topologyGUI/src/get_from_ctr.cpp">
 			<Option target="topologyGUI"/>
 		</Unit>

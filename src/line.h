@@ -10,7 +10,7 @@
 class Line : public sf::Drawable {
 public:
     Line();
-    Line(float startX, float startY);
+    Line(float Xc, float Yc, int Width, int Height, int distanceW, int distanceH);
     virtual ~Line();
 
 private:

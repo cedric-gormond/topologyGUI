@@ -2,11 +2,12 @@
 #define BLOCK_H_INCLUDED
 
 #include <SFML/Graphics.hpp>
+#include "ctr.hpp"
 
 class Block : public sf::Drawable {
 public:
     Block();
-    Block(float startX, float startY);
+    Block(float startX, float startY, int W,int H);
     virtual ~Block();
 
 private:

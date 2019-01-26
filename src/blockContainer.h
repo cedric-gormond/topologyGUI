@@ -2,11 +2,12 @@
 #define BLOCKCONTAINER_H_INCLUDED
 
 #include "block.h"
+#include "ctr.hpp"
 
 class ContainerOfBlocks : public sf::Drawable {
 public:
-    ContainerOfBlocks();
-    ContainerOfBlocks(int useless, const sf::Vector2f pos);
+    ContainerOfBlocks(); //constructor
+    ContainerOfBlocks(int size, const sf::Vector2f pos, constraint *ctr);
     ~ContainerOfBlocks();
 
     std::vector<Block> &getContainer();

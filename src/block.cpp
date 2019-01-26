@@ -3,6 +3,8 @@
 //
 
 #include "block.h"
+#include "ctr.hpp"
+
 
 Block::Block() :
         position(sf::Vector2f()),
@@ -12,12 +14,14 @@ Block::Block() :
 {
 }
 
-Block::Block(float startX, float startY) :
-        width(40.0f),
-        height(20.0f)
+Block::Block(float X0, float Y0, int Width, int Height) :
+        //width(40.0f),
+        // height(20.0f)
+        width(Width),
+        height(Height)
 {
-    position.x = startX;
-    position.y = startY;
+    position.x = X0;
+    position.y = Y0;
 
     colour = sf::Color::Transparent;
 
