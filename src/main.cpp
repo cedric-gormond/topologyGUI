@@ -1,4 +1,13 @@
+#include "imgui.h"
+#include "imgui-SFML.h"
+
 #include <SFML/Graphics.hpp>
+
+#include <SFML/Graphics/RenderWindow.hpp>
+#include <SFML/System/Clock.hpp>
+#include <SFML/Window/Event.hpp>
+#include <SFML/Graphics/CircleShape.hpp>
+
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -70,40 +79,64 @@ int main() {
     //Resize constraint
     constraint *CONTRAINT_RESIZE = resize_2D_from_bloc1(CONTRAINT, 100, nb_pblocs);
 
-    cout << " _____RESIZE____" << endl;
-    displayBlocs_from_ctr(CONTRAINT_RESIZE, nb_pblocs);
-
-    sf::RenderWindow window(sf::VideoMode(600, 600), "SFML works!");
+    // ------ GUI --------
+    sf::RenderWindow window(sf::VideoMode(600, 600), "topologyGUI");
     window.setFramerateLimit(30);
-    window.setVerticalSyncEnabled(false);
+    //window.setVerticalSyncEnabled(false);
+
+    //ImGui init
+    ImGui::SFML::Init(window);
 
     // create container with 5 blocks in it, starting at pos 10/10
     // this container will be drawn using ContainerOfBlocks' void drawContainer(sf::RenderWindow &window)
     ContainerOfBlocks testBlocks(nb_pblocs, sf::Vector2f(100.0f, 100.0f),CONTRAINT_RESIZE);
 
-    // create another container, starting at pos 10/50
-    // this one will be drawn using sf::Drawable's function to draw
-    //ContainerOfBlocks testBlocks2(5, sf::Vector2f(10.0f, 50.0f));
-
     // create  line container, starting at pos 10/50
     // this one will be drawn using sf::Drawable's function to draw
     ContainerOfLines testlines(nb_pblocs, sf::Vector2f(150.0f, 100.0f), CONTRAINT_RESIZE,100);
+
     int distance;
+
+    sf::Color bgColor;
+
+    float color[3] = { 0.f, 0.f, 0.f };
+    sf::Clock deltaClock;
+
     while (window.isOpen()) {
         sf::Event evt;
         while (window.pollEvent(evt)) {
+            ImGui::SFML::ProcessEvent(evt);
             if (evt.type == sf::Event::Closed) {
                 window.close();
             }
         }
 
-        window.clear();
+        ImGui::SFML::Update(window, deltaClock.restart());
+
+        ImGui::Begin("Sample window"); // begin window
+
+        // Background color edit
+        if (ImGui::ColorEdit3("Background color", color)) {
+            // this code gets called if color value changes, so
+            // the background color is upgraded automatically!
+            bgColor.r = static_cast<sf::Uint8>(color[0] * 255.f);
+            bgColor.g = static_cast<sf::Uint8>(color[1] * 255.f);
+            bgColor.b = static_cast<sf::Uint8>(color[2] * 255.f);
+        }
+
+        ImGui::End(); // end window
+        window.clear(bgColor); // fill background with color
+        ImGui::SFML::Render(window);
+        //window.clear();
+
         window.draw(testlines);
         testBlocks.drawContainer(window);
-        //window.draw(testBlocks2);
-
         window.display();
     }
 
+    ImGui::SFML::Shutdown();
+
+    delete []CONTRAINT;
+    delete []CONTRAINT_RESIZE;
     return 0;
 }

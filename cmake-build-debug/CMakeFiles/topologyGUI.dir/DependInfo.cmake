@@ -4,6 +4,11 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/Users/cedricgormond/Desktop/topologyGUI/imgui-sfml/imgui-SFML.cpp" "/Users/cedricgormond/Desktop/topologyGUI/cmake-build-debug/CMakeFiles/topologyGUI.dir/imgui-sfml/imgui-SFML.cpp.o"
+  "/Users/cedricgormond/Desktop/topologyGUI/imgui/imgui.cpp" "/Users/cedricgormond/Desktop/topologyGUI/cmake-build-debug/CMakeFiles/topologyGUI.dir/imgui/imgui.cpp.o"
+  "/Users/cedricgormond/Desktop/topologyGUI/imgui/imgui_demo.cpp" "/Users/cedricgormond/Desktop/topologyGUI/cmake-build-debug/CMakeFiles/topologyGUI.dir/imgui/imgui_demo.cpp.o"
+  "/Users/cedricgormond/Desktop/topologyGUI/imgui/imgui_draw.cpp" "/Users/cedricgormond/Desktop/topologyGUI/cmake-build-debug/CMakeFiles/topologyGUI.dir/imgui/imgui_draw.cpp.o"
+  "/Users/cedricgormond/Desktop/topologyGUI/imgui/imgui_widgets.cpp" "/Users/cedricgormond/Desktop/topologyGUI/cmake-build-debug/CMakeFiles/topologyGUI.dir/imgui/imgui_widgets.cpp.o"
   "/Users/cedricgormond/Desktop/topologyGUI/src/block.cpp" "/Users/cedricgormond/Desktop/topologyGUI/cmake-build-debug/CMakeFiles/topologyGUI.dir/src/block.cpp.o"
   "/Users/cedricgormond/Desktop/topologyGUI/src/blockContainer.cpp" "/Users/cedricgormond/Desktop/topologyGUI/cmake-build-debug/CMakeFiles/topologyGUI.dir/src/blockContainer.cpp.o"
   "/Users/cedricgormond/Desktop/topologyGUI/src/create_output_file.cpp" "/Users/cedricgormond/Desktop/topologyGUI/cmake-build-debug/CMakeFiles/topologyGUI.dir/src/create_output_file.cpp.o"
@@ -21,6 +26,8 @@ set(CMAKE_CXX_COMPILER_ID "AppleClang")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
+  "../imgui"
+  "../imgui-sfml"
   "/usr/local/include"
   )
 

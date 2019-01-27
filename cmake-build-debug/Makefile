@@ -123,6 +123,141 @@ topologyGUI/fast:
 	$(MAKE) -f CMakeFiles/topologyGUI.dir/build.make CMakeFiles/topologyGUI.dir/build
 .PHONY : topologyGUI/fast
 
+imgui-sfml/imgui-SFML.o: imgui-sfml/imgui-SFML.cpp.o
+
+.PHONY : imgui-sfml/imgui-SFML.o
+
+# target to build an object file
+imgui-sfml/imgui-SFML.cpp.o:
+	$(MAKE) -f CMakeFiles/topologyGUI.dir/build.make CMakeFiles/topologyGUI.dir/imgui-sfml/imgui-SFML.cpp.o
+.PHONY : imgui-sfml/imgui-SFML.cpp.o
+
+imgui-sfml/imgui-SFML.i: imgui-sfml/imgui-SFML.cpp.i
+
+.PHONY : imgui-sfml/imgui-SFML.i
+
+# target to preprocess a source file
+imgui-sfml/imgui-SFML.cpp.i:
+	$(MAKE) -f CMakeFiles/topologyGUI.dir/build.make CMakeFiles/topologyGUI.dir/imgui-sfml/imgui-SFML.cpp.i
+.PHONY : imgui-sfml/imgui-SFML.cpp.i
+
+imgui-sfml/imgui-SFML.s: imgui-sfml/imgui-SFML.cpp.s
+
+.PHONY : imgui-sfml/imgui-SFML.s
+
+# target to generate assembly for a file
+imgui-sfml/imgui-SFML.cpp.s:
+	$(MAKE) -f CMakeFiles/topologyGUI.dir/build.make CMakeFiles/topologyGUI.dir/imgui-sfml/imgui-SFML.cpp.s
+.PHONY : imgui-sfml/imgui-SFML.cpp.s
+
+imgui/imgui.o: imgui/imgui.cpp.o
+
+.PHONY : imgui/imgui.o
+
+# target to build an object file
+imgui/imgui.cpp.o:
+	$(MAKE) -f CMakeFiles/topologyGUI.dir/build.make CMakeFiles/topologyGUI.dir/imgui/imgui.cpp.o
+.PHONY : imgui/imgui.cpp.o
+
+imgui/imgui.i: imgui/imgui.cpp.i
+
+.PHONY : imgui/imgui.i
+
+# target to preprocess a source file
+imgui/imgui.cpp.i:
+	$(MAKE) -f CMakeFiles/topologyGUI.dir/build.make CMakeFiles/topologyGUI.dir/imgui/imgui.cpp.i
+.PHONY : imgui/imgui.cpp.i
+
+imgui/imgui.s: imgui/imgui.cpp.s
+
+.PHONY : imgui/imgui.s
+
+# target to generate assembly for a file
+imgui/imgui.cpp.s:
+	$(MAKE) -f CMakeFiles/topologyGUI.dir/build.make CMakeFiles/topologyGUI.dir/imgui/imgui.cpp.s
+.PHONY : imgui/imgui.cpp.s
+
+imgui/imgui_demo.o: imgui/imgui_demo.cpp.o
+
+.PHONY : imgui/imgui_demo.o
+
+# target to build an object file
+imgui/imgui_demo.cpp.o:
+	$(MAKE) -f CMakeFiles/topologyGUI.dir/build.make CMakeFiles/topologyGUI.dir/imgui/imgui_demo.cpp.o
+.PHONY : imgui/imgui_demo.cpp.o
+
+imgui/imgui_demo.i: imgui/imgui_demo.cpp.i
+
+.PHONY : imgui/imgui_demo.i
+
+# target to preprocess a source file
+imgui/imgui_demo.cpp.i:
+	$(MAKE) -f CMakeFiles/topologyGUI.dir/build.make CMakeFiles/topologyGUI.dir/imgui/imgui_demo.cpp.i
+.PHONY : imgui/imgui_demo.cpp.i
+
+imgui/imgui_demo.s: imgui/imgui_demo.cpp.s
+
+.PHONY : imgui/imgui_demo.s
+
+# target to generate assembly for a file
+imgui/imgui_demo.cpp.s:
+	$(MAKE) -f CMakeFiles/topologyGUI.dir/build.make CMakeFiles/topologyGUI.dir/imgui/imgui_demo.cpp.s
+.PHONY : imgui/imgui_demo.cpp.s
+
+imgui/imgui_draw.o: imgui/imgui_draw.cpp.o
+
+.PHONY : imgui/imgui_draw.o
+
+# target to build an object file
+imgui/imgui_draw.cpp.o:
+	$(MAKE) -f CMakeFiles/topologyGUI.dir/build.make CMakeFiles/topologyGUI.dir/imgui/imgui_draw.cpp.o
+.PHONY : imgui/imgui_draw.cpp.o
+
+imgui/imgui_draw.i: imgui/imgui_draw.cpp.i
+
+.PHONY : imgui/imgui_draw.i
+
+# target to preprocess a source file
+imgui/imgui_draw.cpp.i:
+	$(MAKE) -f CMakeFiles/topologyGUI.dir/build.make CMakeFiles/topologyGUI.dir/imgui/imgui_draw.cpp.i
+.PHONY : imgui/imgui_draw.cpp.i
+
+imgui/imgui_draw.s: imgui/imgui_draw.cpp.s
+
+.PHONY : imgui/imgui_draw.s
+
+# target to generate assembly for a file
+imgui/imgui_draw.cpp.s:
+	$(MAKE) -f CMakeFiles/topologyGUI.dir/build.make CMakeFiles/topologyGUI.dir/imgui/imgui_draw.cpp.s
+.PHONY : imgui/imgui_draw.cpp.s
+
+imgui/imgui_widgets.o: imgui/imgui_widgets.cpp.o
+
+.PHONY : imgui/imgui_widgets.o
+
+# target to build an object file
+imgui/imgui_widgets.cpp.o:
+	$(MAKE) -f CMakeFiles/topologyGUI.dir/build.make CMakeFiles/topologyGUI.dir/imgui/imgui_widgets.cpp.o
+.PHONY : imgui/imgui_widgets.cpp.o
+
+imgui/imgui_widgets.i: imgui/imgui_widgets.cpp.i
+
+.PHONY : imgui/imgui_widgets.i
+
+# target to preprocess a source file
+imgui/imgui_widgets.cpp.i:
+	$(MAKE) -f CMakeFiles/topologyGUI.dir/build.make CMakeFiles/topologyGUI.dir/imgui/imgui_widgets.cpp.i
+.PHONY : imgui/imgui_widgets.cpp.i
+
+imgui/imgui_widgets.s: imgui/imgui_widgets.cpp.s
+
+.PHONY : imgui/imgui_widgets.s
+
+# target to generate assembly for a file
+imgui/imgui_widgets.cpp.s:
+	$(MAKE) -f CMakeFiles/topologyGUI.dir/build.make CMakeFiles/topologyGUI.dir/imgui/imgui_widgets.cpp.s
+.PHONY : imgui/imgui_widgets.cpp.s
+
 src/block.o: src/block.cpp.o
 
 .PHONY : src/block.o
@@ -456,6 +591,21 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... topologyGUI"
+	@echo "... imgui-sfml/imgui-SFML.o"
+	@echo "... imgui-sfml/imgui-SFML.i"
+	@echo "... imgui-sfml/imgui-SFML.s"
+	@echo "... imgui/imgui.o"
+	@echo "... imgui/imgui.i"
+	@echo "... imgui/imgui.s"
+	@echo "... imgui/imgui_demo.o"
+	@echo "... imgui/imgui_demo.i"
+	@echo "... imgui/imgui_demo.s"
+	@echo "... imgui/imgui_draw.o"
+	@echo "... imgui/imgui_draw.i"
+	@echo "... imgui/imgui_draw.s"
+	@echo "... imgui/imgui_widgets.o"
+	@echo "... imgui/imgui_widgets.i"
+	@echo "... imgui/imgui_widgets.s"
 	@echo "... src/block.o"
 	@echo "... src/block.i"
 	@echo "... src/block.s"

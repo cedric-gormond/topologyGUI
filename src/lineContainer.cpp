@@ -14,19 +14,33 @@ ContainerOfLines::ContainerOfLines(int size, const sf::Vector2f pos, constraint 
     int max_X = max_genX(ctr, size);
     int max_Y = max_genY(ctr, size);
 
-    for (int j = 0; j < max_X; ++j) {
-        for (int i = 0; i < max_Y; ++i) {
-            blockContainer.push_back(Line(ctr[j].CenterX - 1, ctr[j].CenterY - 1, ctr[j].width, ctr[j].heigth, distance, 2)); //-1 pour etre au centre
-        }
-        blockContainer.push_back(Line(ctr[j].CenterX - 1, ctr[j].CenterY - 1, ctr[j].width,ctr[j].heigth, 2, distance)); //-1 pour etre au centre
+    for (int k = 0; k < (size - max_X - 1); ++k) {
+        //blockContainer.push_back(Line(ctr[k].CenterX - 1, ctr[k].CenterY - 1, ctr[k].width, ctr[k].heigth, distance, 2)); //-1 p
+        blockContainer.push_back(Line(ctr[k].CenterX - 1, ctr[k].CenterY - 1, ctr[k].width, ctr[k].heigth, 2, distance)); //-1 p            pbloc++;
     }
 
-    //float x = pos.x;
-    //float y = pos.y;
-    //for (std::size_t i = 0; i < static_cast<std::size_t>(size); ++i) {
-    //    blockContainer.push_back(Line(x, y, distance));
-    //    x += 50.0f;
-    //}
+    for (int k = 0; k < (size - max_Y - 1); ++k) {
+        blockContainer.push_back(Line(ctr[k].CenterX - 1, ctr[k].CenterY - 1, ctr[k].width, ctr[k].heigth, distance, 2)); //-1 p
+        //blockContainer.push_back(Line(ctr[k].CenterX - 1, ctr[k].CenterY - 1, ctr[k].width, ctr[k].heigth, 2, distance)); //-1 p            pbloc++;
+    }
+
+    /*
+    int i, j, pbloc;
+
+    i = 0;
+    pbloc = 0;
+    while (i<=max_Y) {
+        j=0;
+        while (j<=max_X) {
+            //blockContainer.push_back(Line(ctr[pbloc].CenterX - 1, ctr[pbloc].CenterY - 1, ctr[pbloc].width, ctr[pbloc].heigth, distance, 2)); //-1 p
+            //blockContainer.push_back(Line(ctr[pbloc].CenterX - 1, ctr[pbloc].CenterY - 1, ctr[pbloc].width, ctr[pbloc].heigth, 2, distance)); //-1 p            pbloc++;
+            pbloc++;
+            j++;
+        }
+        //blockContainer.push_back(Line(ctr[pbloc].CenterX - 1, ctr[pbloc].CenterY - 1, ctr[pbloc].width, ctr[pbloc].heigth, 2, distance)); //-1 p
+        i++;
+    }
+     */
 }
 
 ContainerOfLines::~ContainerOfLines() {

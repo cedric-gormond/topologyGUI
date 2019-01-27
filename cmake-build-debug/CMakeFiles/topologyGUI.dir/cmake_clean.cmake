@@ -11,6 +11,11 @@ file(REMOVE_RECURSE
   "CMakeFiles/topologyGUI.dir/src/get_from_txt.cpp.o"
   "CMakeFiles/topologyGUI.dir/src/topology.cpp.o"
   "CMakeFiles/topologyGUI.dir/src/gen_tools.cpp.o"
+  "CMakeFiles/topologyGUI.dir/imgui/imgui.cpp.o"
+  "CMakeFiles/topologyGUI.dir/imgui/imgui_demo.cpp.o"
+  "CMakeFiles/topologyGUI.dir/imgui/imgui_draw.cpp.o"
+  "CMakeFiles/topologyGUI.dir/imgui/imgui_widgets.cpp.o"
+  "CMakeFiles/topologyGUI.dir/imgui-sfml/imgui-SFML.cpp.o"
   "topologyGUI.pdb"
   "topologyGUI"
 )

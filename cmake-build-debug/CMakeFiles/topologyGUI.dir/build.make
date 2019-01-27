@@ -213,6 +213,71 @@ CMakeFiles/topologyGUI.dir/src/gen_tools.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/topologyGUI.dir/src/gen_tools.cpp.s"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/cedricgormond/Desktop/topologyGUI/src/gen_tools.cpp -o CMakeFiles/topologyGUI.dir/src/gen_tools.cpp.s
 
+CMakeFiles/topologyGUI.dir/imgui/imgui.cpp.o: CMakeFiles/topologyGUI.dir/flags.make
+CMakeFiles/topologyGUI.dir/imgui/imgui.cpp.o: ../imgui/imgui.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/cedricgormond/Desktop/topologyGUI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/topologyGUI.dir/imgui/imgui.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/topologyGUI.dir/imgui/imgui.cpp.o -c /Users/cedricgormond/Desktop/topologyGUI/imgui/imgui.cpp
+
+CMakeFiles/topologyGUI.dir/imgui/imgui.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/topologyGUI.dir/imgui/imgui.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/cedricgormond/Desktop/topologyGUI/imgui/imgui.cpp > CMakeFiles/topologyGUI.dir/imgui/imgui.cpp.i
+
+CMakeFiles/topologyGUI.dir/imgui/imgui.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/topologyGUI.dir/imgui/imgui.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/cedricgormond/Desktop/topologyGUI/imgui/imgui.cpp -o CMakeFiles/topologyGUI.dir/imgui/imgui.cpp.s
+
+CMakeFiles/topologyGUI.dir/imgui/imgui_demo.cpp.o: CMakeFiles/topologyGUI.dir/flags.make
+CMakeFiles/topologyGUI.dir/imgui/imgui_demo.cpp.o: ../imgui/imgui_demo.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/cedricgormond/Desktop/topologyGUI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/topologyGUI.dir/imgui/imgui_demo.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/topologyGUI.dir/imgui/imgui_demo.cpp.o -c /Users/cedricgormond/Desktop/topologyGUI/imgui/imgui_demo.cpp
+
+CMakeFiles/topologyGUI.dir/imgui/imgui_demo.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/topologyGUI.dir/imgui/imgui_demo.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/cedricgormond/Desktop/topologyGUI/imgui/imgui_demo.cpp > CMakeFiles/topologyGUI.dir/imgui/imgui_demo.cpp.i
+
+CMakeFiles/topologyGUI.dir/imgui/imgui_demo.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/topologyGUI.dir/imgui/imgui_demo.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/cedricgormond/Desktop/topologyGUI/imgui/imgui_demo.cpp -o CMakeFiles/topologyGUI.dir/imgui/imgui_demo.cpp.s
+
+CMakeFiles/topologyGUI.dir/imgui/imgui_draw.cpp.o: CMakeFiles/topologyGUI.dir/flags.make
+CMakeFiles/topologyGUI.dir/imgui/imgui_draw.cpp.o: ../imgui/imgui_draw.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/cedricgormond/Desktop/topologyGUI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/topologyGUI.dir/imgui/imgui_draw.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/topologyGUI.dir/imgui/imgui_draw.cpp.o -c /Users/cedricgormond/Desktop/topologyGUI/imgui/imgui_draw.cpp
+
+CMakeFiles/topologyGUI.dir/imgui/imgui_draw.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/topologyGUI.dir/imgui/imgui_draw.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/cedricgormond/Desktop/topologyGUI/imgui/imgui_draw.cpp > CMakeFiles/topologyGUI.dir/imgui/imgui_draw.cpp.i
+
+CMakeFiles/topologyGUI.dir/imgui/imgui_draw.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/topologyGUI.dir/imgui/imgui_draw.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/cedricgormond/Desktop/topologyGUI/imgui/imgui_draw.cpp -o CMakeFiles/topologyGUI.dir/imgui/imgui_draw.cpp.s
+
+CMakeFiles/topologyGUI.dir/imgui/imgui_widgets.cpp.o: CMakeFiles/topologyGUI.dir/flags.make
+CMakeFiles/topologyGUI.dir/imgui/imgui_widgets.cpp.o: ../imgui/imgui_widgets.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/cedricgormond/Desktop/topologyGUI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/topologyGUI.dir/imgui/imgui_widgets.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/topologyGUI.dir/imgui/imgui_widgets.cpp.o -c /Users/cedricgormond/Desktop/topologyGUI/imgui/imgui_widgets.cpp
+
+CMakeFiles/topologyGUI.dir/imgui/imgui_widgets.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/topologyGUI.dir/imgui/imgui_widgets.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/cedricgormond/Desktop/topologyGUI/imgui/imgui_widgets.cpp > CMakeFiles/topologyGUI.dir/imgui/imgui_widgets.cpp.i
+
+CMakeFiles/topologyGUI.dir/imgui/imgui_widgets.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/topologyGUI.dir/imgui/imgui_widgets.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/cedricgormond/Desktop/topologyGUI/imgui/imgui_widgets.cpp -o CMakeFiles/topologyGUI.dir/imgui/imgui_widgets.cpp.s
+
+CMakeFiles/topologyGUI.dir/imgui-sfml/imgui-SFML.cpp.o: CMakeFiles/topologyGUI.dir/flags.make
+CMakeFiles/topologyGUI.dir/imgui-sfml/imgui-SFML.cpp.o: ../imgui-sfml/imgui-SFML.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/cedricgormond/Desktop/topologyGUI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/topologyGUI.dir/imgui-sfml/imgui-SFML.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/topologyGUI.dir/imgui-sfml/imgui-SFML.cpp.o -c /Users/cedricgormond/Desktop/topologyGUI/imgui-sfml/imgui-SFML.cpp
+
+CMakeFiles/topologyGUI.dir/imgui-sfml/imgui-SFML.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/topologyGUI.dir/imgui-sfml/imgui-SFML.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/cedricgormond/Desktop/topologyGUI/imgui-sfml/imgui-SFML.cpp > CMakeFiles/topologyGUI.dir/imgui-sfml/imgui-SFML.cpp.i
+
+CMakeFiles/topologyGUI.dir/imgui-sfml/imgui-SFML.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/topologyGUI.dir/imgui-sfml/imgui-SFML.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/cedricgormond/Desktop/topologyGUI/imgui-sfml/imgui-SFML.cpp -o CMakeFiles/topologyGUI.dir/imgui-sfml/imgui-SFML.cpp.s
+
 # Object files for target topologyGUI
 topologyGUI_OBJECTS = \
 "CMakeFiles/topologyGUI.dir/src/main.cpp.o" \
@@ -226,7 +291,12 @@ topologyGUI_OBJECTS = \
 "CMakeFiles/topologyGUI.dir/src/get_from_ctr.cpp.o" \
 "CMakeFiles/topologyGUI.dir/src/get_from_txt.cpp.o" \
 "CMakeFiles/topologyGUI.dir/src/topology.cpp.o" \
-"CMakeFiles/topologyGUI.dir/src/gen_tools.cpp.o"
+"CMakeFiles/topologyGUI.dir/src/gen_tools.cpp.o" \
+"CMakeFiles/topologyGUI.dir/imgui/imgui.cpp.o" \
+"CMakeFiles/topologyGUI.dir/imgui/imgui_demo.cpp.o" \
+"CMakeFiles/topologyGUI.dir/imgui/imgui_draw.cpp.o" \
+"CMakeFiles/topologyGUI.dir/imgui/imgui_widgets.cpp.o" \
+"CMakeFiles/topologyGUI.dir/imgui-sfml/imgui-SFML.cpp.o"
 
 # External object files for target topologyGUI
 topologyGUI_EXTERNAL_OBJECTS =
@@ -243,6 +313,11 @@ topologyGUI: CMakeFiles/topologyGUI.dir/src/get_from_ctr.cpp.o
 topologyGUI: CMakeFiles/topologyGUI.dir/src/get_from_txt.cpp.o
 topologyGUI: CMakeFiles/topologyGUI.dir/src/topology.cpp.o
 topologyGUI: CMakeFiles/topologyGUI.dir/src/gen_tools.cpp.o
+topologyGUI: CMakeFiles/topologyGUI.dir/imgui/imgui.cpp.o
+topologyGUI: CMakeFiles/topologyGUI.dir/imgui/imgui_demo.cpp.o
+topologyGUI: CMakeFiles/topologyGUI.dir/imgui/imgui_draw.cpp.o
+topologyGUI: CMakeFiles/topologyGUI.dir/imgui/imgui_widgets.cpp.o
+topologyGUI: CMakeFiles/topologyGUI.dir/imgui-sfml/imgui-SFML.cpp.o
 topologyGUI: CMakeFiles/topologyGUI.dir/build.make
 topologyGUI: /usr/local/lib/libsfml-system.dylib
 topologyGUI: /usr/local/lib/libsfml-window.dylib
@@ -250,7 +325,7 @@ topologyGUI: /usr/local/lib/libsfml-graphics.dylib
 topologyGUI: /usr/local/lib/libsfml-network.dylib
 topologyGUI: /usr/local/lib/libsfml-audio.dylib
 topologyGUI: CMakeFiles/topologyGUI.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/cedricgormond/Desktop/topologyGUI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Linking CXX executable topologyGUI"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/cedricgormond/Desktop/topologyGUI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Linking CXX executable topologyGUI"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/topologyGUI.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

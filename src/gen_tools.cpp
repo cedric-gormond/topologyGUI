@@ -12,7 +12,7 @@ int max_genX(constraint *ctr, int size) {
             MAX = I;
         }
     }
-    return MAX;
+    return stoi(ctr[MAX].GenX);
 }
 
 int max_genY(constraint *ctr, int size) {
@@ -22,5 +22,5 @@ int max_genY(constraint *ctr, int size) {
             MAX = I;
         }
     }
-    return MAX;
+    return stoi(ctr[MAX].GenY);
 }

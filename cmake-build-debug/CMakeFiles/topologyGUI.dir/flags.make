@@ -6,5 +6,5 @@ CXX_FLAGS = -g   -std=gnu++14
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/usr/local/include 
+CXX_INCLUDES = -I/Users/cedricgormond/Desktop/topologyGUI/imgui -I/Users/cedricgormond/Desktop/topologyGUI/imgui-sfml -I/usr/local/include 
 
