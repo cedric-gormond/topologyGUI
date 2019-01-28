@@ -47,28 +47,12 @@ constraint* resize_2D_from_bloc1(constraint *ctr ,int distance, int size)
     
     //OR ! *ctr_resize = ctr;
     std::copy(ctr, ctr + size, ctr_resize); // copy the data from ctr into ctr_resize
-    
+
     int max_X, max_Y;
-    
-    // We need to know how many genX we have
-    int MAX=0;
-    for (int I=0; I<size; I++){
-        if(stoi(ctr[I].GenX)>stoi(ctr[MAX].GenX)){
-            MAX=I;
-        }
-    }
-    
-    max_X = stoi(ctr[MAX].GenX);
-    
-    // We need to know how many genY we have
-    max_Y = stoi(ctr[0].GenY);
-    for (int i = 1; i < size - 1; i++) {
-        if (stoi(ctr[i+1].GenY) > max_Y) {
-            max_Y = stoi(ctr[i].GenY); //stoi : string to int
-        }
-    }
-    
-    //max_X = 2;
+
+    // We need to know how many genX and genY we have
+    max_X = max_genX(ctr, size);
+    max_Y = max_genY(ctr, size);
     
     // recalculate every center
     // assumes that pbloc is bottom_left
@@ -108,5 +92,59 @@ constraint* resize_2D_from_bloc1(constraint *ctr ,int distance, int size)
         ctr_resize[i].Y_up = std::to_string(Y1_temp);
     }
     
+    return ctr_resize;
+}
+constraint* set_hexa(constraint *ctr, int radius, int size)
+{
+    constraint *ctr_resize = new constraint[size];
+    //initConstraint(ctr_resize);
+
+    //OR ! *ctr_resize = ctr;
+    std::copy(ctr, ctr + size, ctr_resize); // copy the data from ctr into ctr_resize
+
+    int max_X, max_Y;
+
+    // We need to know how many genX and genY we have
+    max_X = max_genX(ctr, size);
+    max_Y = max_genY(ctr, size);
+
+    // we move the first block in the middle
+    ctr_resize[0].CenterX = 100;
+    ctr_resize[0].CenterY = 100;
+
+    //number of extremities around the center (assumes that pbloc is the center)
+    int nb_blocs = size - 1;
+
+    //angle
+    int angle = round((360/nb_blocs));
+
+    //calculate positions
+    int pbloc = 1;
+    for (int i=0; i<nb_blocs; i++) {
+        ctr_resize[pbloc].CenterX =  round(radius*cos(angle*i*(3.14159/180)) + ctr_resize[0].CenterX); // the origine is (100,100)
+        ctr_resize[pbloc].CenterY =  round(radius*sin(angle*i*(3.14159/180)) + ctr_resize[0].CenterY);
+        pbloc++;
+    }
+
+    // recalculate every X0Y0 and X1Y1
+    int X0_temp, Y0_temp;
+    int X1_temp, Y1_temp;
+
+    for (int i=0; i<size; i++) {
+        // X0 Y0
+        X0_temp = ctr_resize[i].CenterX - (ctr_resize[i].width/2);
+        X1_temp = ctr_resize[i].CenterX + (ctr_resize[i].width/2);
+
+        ctr_resize[i].X_down = std::to_string(X0_temp);
+        ctr_resize[i].X_up = std::to_string(X1_temp);
+
+        // X1 Y1
+        Y0_temp = ctr_resize[i].CenterY - (ctr_resize[i].heigth/2);
+        Y1_temp = ctr_resize[i].CenterY + (ctr_resize[i].heigth/2);
+
+        ctr_resize[i].Y_down = std::to_string(Y0_temp);
+        ctr_resize[i].Y_up = std::to_string(Y1_temp);
+    }
+
     return ctr_resize;
 }

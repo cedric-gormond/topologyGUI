@@ -16,12 +16,19 @@
 // STRUCT
 typedef struct {
     std::string name;
-    std::string X_up,Y_up,X_down,Y_down;
-    std::string GenX = "-1";
-    std::string GenY = "-1";
-    std::string GenZ = "-1";
+    std::string X_up    = "0";
+    std::string Y_up    = "0";
+    std::string X_down  = "0";
+    std::string Y_down  = "0";
+
+    std::string GenX    = "-1";
+    std::string GenY    = "-1";
+    std::string GenZ    = "-1";
     
-    int CenterX, CenterY, width, heigth;
+    int CenterX = 0;
+    int CenterY = 0;
+    int width   = 0;
+    int heigth  = 0;
 }constraint;
 
 /*

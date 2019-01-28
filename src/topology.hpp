@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include <math.h>
 #include "ctr.hpp"
+#include "gen_tools.h"
 
 /*
  * center_of_bloc :
@@ -27,5 +28,10 @@ int distance_between_blocs(constraint *ctr, int bloc1, int bloc2,int size);
  * set_distance_from_bloc1 : 
  */
 constraint* resize_2D_from_bloc1(constraint *ctr ,int distance, int size);
+
+/*
+ * set_hexa:
+ */
+constraint* set_hexa(constraint *ctr ,int radius, int size);
 
 #endif /* topology_hpp */

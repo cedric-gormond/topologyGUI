@@ -50,7 +50,7 @@ int main() {
         cout << " * Cannot find  :" <<endl;
         SplitFilename(file_path);
 
-        cout << endl << " * The constraint file must be named : fichier_contrainte_3D.txt \n \n";
+        cout << endl << " * The constraint file must be named : fichier_contrainte_2D.txt \n \n";
         cout << " * Exit" <<endl<<endl;
 
         exit (EXIT_FAILURE);
@@ -90,16 +90,15 @@ int main() {
     constraint *CONTRAINT_RESIZE = resize_2D_from_bloc1(CONTRAINT, 100, nb_pblocs);
 
     // Display resized blocs in console
-    displayBlocs_from_ctr(CONTRAINT_RESIZE, nb_pblocs);
+    //displayBlocs_from_ctr(CONTRAINT_RESIZE, nb_pblocs);
 
     // ------ OUTPUT FILE ------
     string output_path = input_filename + "_generated.txt";
     ofstream file_output;
 
-    // ------ GUI --------
-    sf::RenderWindow window(sf::VideoMode(1200, 1200), "topologyGUI");
+    // ------ SFML --------
+    sf::RenderWindow window(sf::VideoMode(1200, 1200), "topologyGUI", sf::Style::Close);
     window.setFramerateLimit(30);
-    //window.setVerticalSyncEnabled(false);
 
     //ImGui init
     ImGui::SFML::Init(window);
@@ -115,9 +114,15 @@ int main() {
     //
     static bool show_app_log = true;
     static ExampleAppLog my_log;
+    static bool* p_open = new bool;
+    *p_open = true;
 
     //Font
-    //io.Fonts->AddFontFromFileTTF(".../misc/fonts/Roboto-Medium.ttf", 16.0f);
+    //io.Fonts->AddFontDefault();
+    ImFont* font = io.Fonts->AddFontFromFileTTF("misc/fonts/Roboto-Medium.ttf", 16.0f);
+    IM_ASSERT(font != NULL);
+    //ImFont* font = io.Fonts->AddFontFromFileTTF("misc/fonts/Roboto-Medium.ttf", 16.0f);
+
 
     // create container with 5 blocks in it, starting at pos 10/10
     // this container will be drawn using ContainerOfBlocks' void drawContainer(sf::RenderWindow &window)
@@ -126,8 +131,9 @@ int main() {
     // create  line container, starting
     //ContainerOfLines testlines(nb_pblocs, sf::Vector2f(150.0f, 100.0f), CONTRAINT_RESIZE,100);
 
-    //distance
+    //user's variables
     int distance = 100;
+    int radius = 50;
 
     //ImGUI Clock
     sf::Clock deltaClock;
@@ -148,34 +154,43 @@ int main() {
                 window.close();
             }
         }
-
         ImGui::SFML::Update(window, deltaClock.restart());
 
-        ImGui::Begin("Settings"); // begin window
+        //Bin IMGUI
+        ImGui::Begin("Settings",p_open,ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse);
 
+        ImGui::Spacing();
+        if (ImGui::CollapsingHeader("Help"))
+        {
 
+        }
+
+        ImGui::Text("Current file : %s", &file_path[0]);
 
         //Choose your topology
-        ImGui::Text("Choose your topology :");
         static int choice_topology = 0;
-        ImGui::RadioButton("2D Mesh", &choice_topology, 0); ImGui::SameLine();
-        ImGui::RadioButton("2D Hexa", &choice_topology, 1); ImGui::SameLine();
-        ImGui::RadioButton("3D Mesh", &choice_topology, 2);
+        ImGui::Spacing();
+        if (ImGui::CollapsingHeader("Topology"))
+        {
+            ImGui::Text("Choose your topology :");
 
-        // switch topology
-        switch(choice_topology) {
-            case 0 :
-                //Distance
-                ImGui::Text("Distance (slices) : ");
-                ImGui::InputInt("",&distance);
-                break;       // and exits the switch
-            case 1 :
-                //Distance
-                ImGui::Text("Radius (slices) : ");
-                ImGui::InputInt("",&distance);
+            ImGui::RadioButton("2D Mesh", &choice_topology, 1); ImGui::SameLine();
+            ImGui::RadioButton("2D Hexa", &choice_topology, 2); ImGui::SameLine();
+            ImGui::RadioButton("3D Mesh", &choice_topology, 3);
 
-                break;
+            switch(choice_topology) {
+                case 1 :
+                    ImGui::Text("Distance (slices) : ");
+                    ImGui::InputInt("",&distance);
+                    break;
+                case 2 :
+                    //Radius
+                    ImGui::Text("Radius (slices) : ");
+                    ImGui::InputInt("",&radius);
+                    break;
+            }
         }
+
         ImGui::Separator();
 
         // Resize dimensions
@@ -189,15 +204,61 @@ int main() {
 
         ImGui::Separator();
         if (ImGui::Button("Generate constraint file"))     {
+            // switch topology
+            switch(choice_topology) {
+                case 1 :
+                    ImGui::Text("Distance (slices) : ");
+                    ImGui::InputInt("",&distance);
+
+                    CONTRAINT_RESIZE = resize_2D_from_bloc1(CONTRAINT,distance, nb_pblocs);
+
+                    //Writing
+                    file_output.open(output_path);
+                    create_ctr_file(file_output, file_path, CONTRAINT_RESIZE, nb_pblocs);
+                    file_output.close();
+
+                    //log
+                    my_log.AddLog("%s [info] Generate constraint file (2D MESH)\n", &current_time[0]);
+                    my_log.AddLog( "%s [info] Success \n",&current_time[0]);
+                    my_log.AddLog( "%s [info] Output file : %s \n", &current_time[0],&output_path[0]);
+                    break;
+                case 2 :
+                    //Radius
+                    ImGui::Text("Radius (slices) : ");
+                    ImGui::InputInt("",&radius);
+
+                    CONTRAINT_RESIZE = set_hexa(CONTRAINT,radius, nb_pblocs);
+
+                    //Writing
+                    file_output.open(output_path);
+                    create_ctr_file(file_output, file_path, CONTRAINT_RESIZE, nb_pblocs);
+                    file_output.close();
+
+                    //log
+                    my_log.AddLog("%s [info] Generate constraint file (2D HEXA)\n", &current_time[0]);
+                    my_log.AddLog( "%s [info] Success \n",&current_time[0]);
+                    my_log.AddLog( "%s [info] Output file : %s \n", &current_time[0],&output_path[0]);
+                    break;
+
+                default:
+                    my_log.AddLog("%s [error] Please choose a topology\n", &current_time[0]);
+                    break;
+            }
+
+            /*
             if (file_output) {
+
+                file_output.open(output_path);
                 create_ctr_file(file_output, file_path, CONTRAINT_RESIZE, nb_pblocs);
                 file_output.close();
+
                 my_log.AddLog("%s [info] Generate constraint file \n", &current_time[0]);
                 my_log.AddLog( "%s [info] Success \n",&current_time[0]);
                 my_log.AddLog( "%s [info] Output file : %s \n", &current_time[0],&output_path[0]);
             } else {
                 my_log.AddLog( "%s [error] Cannot write \n", &current_time[0]);
             }
+             */
         }
 
         if (ImGui::Button("Generate constraint file (simplified)"))     {
@@ -208,10 +269,13 @@ int main() {
         ImGui::Separator();
         ImGui::Text("Log :");
         my_log.DrawInCurrentWindow("Log");
+
         ImGui::End(); // end window
 
         window.clear();
+
         ImGui::SFML::Render(window);
+
 
         //window.draw(testBlocks);
         //window.draw(testlines);

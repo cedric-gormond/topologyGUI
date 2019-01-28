@@ -42,17 +42,33 @@ stdint.h
 imgui_user.h
 ../imgui/imgui_user.h
 
+/Users/cedricgormond/Desktop/topologyGUI/src/block.cpp
+block.h
+/Users/cedricgormond/Desktop/topologyGUI/src/block.h
+ctr.hpp
+/Users/cedricgormond/Desktop/topologyGUI/src/ctr.hpp
+
 /Users/cedricgormond/Desktop/topologyGUI/src/block.h
 SFML/Graphics.hpp
 -
 ctr.hpp
 /Users/cedricgormond/Desktop/topologyGUI/src/ctr.hpp
 
+/Users/cedricgormond/Desktop/topologyGUI/src/blockContainer.cpp
+blockContainer.h
+/Users/cedricgormond/Desktop/topologyGUI/src/blockContainer.h
+
 /Users/cedricgormond/Desktop/topologyGUI/src/blockContainer.h
 block.h
 /Users/cedricgormond/Desktop/topologyGUI/src/block.h
 ctr.hpp
 /Users/cedricgormond/Desktop/topologyGUI/src/ctr.hpp
+
+/Users/cedricgormond/Desktop/topologyGUI/src/create_output_file.cpp
+create_output_file.hpp
+/Users/cedricgormond/Desktop/topologyGUI/src/create_output_file.hpp
+get_from_txt.hpp
+/Users/cedricgormond/Desktop/topologyGUI/src/get_from_txt.hpp
 
 /Users/cedricgormond/Desktop/topologyGUI/src/create_output_file.hpp
 stdio.h
@@ -65,6 +81,10 @@ string
 -
 regex
 -
+ctr.hpp
+/Users/cedricgormond/Desktop/topologyGUI/src/ctr.hpp
+
+/Users/cedricgormond/Desktop/topologyGUI/src/ctr.cpp
 ctr.hpp
 /Users/cedricgormond/Desktop/topologyGUI/src/ctr.hpp
 
@@ -82,7 +102,47 @@ iostream
 fstream
 -
 
+/Users/cedricgormond/Desktop/topologyGUI/src/gen_tools.cpp
+gen_tools.h
+/Users/cedricgormond/Desktop/topologyGUI/src/gen_tools.h
+
+/Users/cedricgormond/Desktop/topologyGUI/src/gen_tools.h
+ctr.hpp
+/Users/cedricgormond/Desktop/topologyGUI/src/ctr.hpp
+
+/Users/cedricgormond/Desktop/topologyGUI/src/get_from_ctr.cpp
+get_from_ctr.hpp
 /Users/cedricgormond/Desktop/topologyGUI/src/get_from_ctr.hpp
+stdio.h
+-
+iostream
+-
+fstream
+-
+string
+-
+regex
+-
+
+/Users/cedricgormond/Desktop/topologyGUI/src/get_from_ctr.hpp
+stdio.h
+-
+iostream
+-
+fstream
+-
+string
+-
+regex
+-
+ctr.hpp
+/Users/cedricgormond/Desktop/topologyGUI/src/ctr.hpp
+
+/Users/cedricgormond/Desktop/topologyGUI/src/get_from_txt.cpp
+get_from_txt.hpp
+/Users/cedricgormond/Desktop/topologyGUI/src/get_from_txt.hpp
+
+/Users/cedricgormond/Desktop/topologyGUI/src/get_from_txt.hpp
 stdio.h
 -
 iostream
@@ -105,6 +165,14 @@ string
 /Users/cedricgormond/Desktop/topologyGUI/src/line.h
 SFML/Graphics.hpp
 -
+
+/Users/cedricgormond/Desktop/topologyGUI/src/lineContainer.cpp
+lineContainer.h
+/Users/cedricgormond/Desktop/topologyGUI/src/lineContainer.h
+ctr.hpp
+/Users/cedricgormond/Desktop/topologyGUI/src/ctr.hpp
+gen_tools.h
+/Users/cedricgormond/Desktop/topologyGUI/src/gen_tools.h
 
 /Users/cedricgormond/Desktop/topologyGUI/src/lineContainer.h
 line.h
@@ -170,6 +238,10 @@ log.h
 get_time.h
 /Users/cedricgormond/Desktop/topologyGUI/src/get_time.h
 
+/Users/cedricgormond/Desktop/topologyGUI/src/topology.cpp
+topology.hpp
+/Users/cedricgormond/Desktop/topologyGUI/src/topology.hpp
+
 /Users/cedricgormond/Desktop/topologyGUI/src/topology.hpp
 stdio.h
 -
@@ -177,6 +249,8 @@ math.h
 -
 ctr.hpp
 /Users/cedricgormond/Desktop/topologyGUI/src/ctr.hpp
+gen_tools.h
+/Users/cedricgormond/Desktop/topologyGUI/src/gen_tools.h
 
 /usr/local/include/SFML/Config.hpp
 TargetConditionals.h
