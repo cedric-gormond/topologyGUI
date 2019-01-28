@@ -16,8 +16,9 @@ file(REMOVE_RECURSE
   "CMakeFiles/topologyGUI.dir/imgui/imgui_draw.cpp.o"
   "CMakeFiles/topologyGUI.dir/imgui/imgui_widgets.cpp.o"
   "CMakeFiles/topologyGUI.dir/imgui-sfml/imgui-SFML.cpp.o"
-  "topologyGUI.pdb"
-  "topologyGUI"
+  "CMakeFiles/topologyGUI.dir/src/get_time.cpp.o"
+  "../topologyGUI.pdb"
+  "../topologyGUI"
 )
 
 # Per-language clean rules from dependency scanning.

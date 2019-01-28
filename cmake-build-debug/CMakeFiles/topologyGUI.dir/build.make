@@ -278,6 +278,19 @@ CMakeFiles/topologyGUI.dir/imgui-sfml/imgui-SFML.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/topologyGUI.dir/imgui-sfml/imgui-SFML.cpp.s"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/cedricgormond/Desktop/topologyGUI/imgui-sfml/imgui-SFML.cpp -o CMakeFiles/topologyGUI.dir/imgui-sfml/imgui-SFML.cpp.s
 
+CMakeFiles/topologyGUI.dir/src/get_time.cpp.o: CMakeFiles/topologyGUI.dir/flags.make
+CMakeFiles/topologyGUI.dir/src/get_time.cpp.o: ../src/get_time.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/cedricgormond/Desktop/topologyGUI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/topologyGUI.dir/src/get_time.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/topologyGUI.dir/src/get_time.cpp.o -c /Users/cedricgormond/Desktop/topologyGUI/src/get_time.cpp
+
+CMakeFiles/topologyGUI.dir/src/get_time.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/topologyGUI.dir/src/get_time.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/cedricgormond/Desktop/topologyGUI/src/get_time.cpp > CMakeFiles/topologyGUI.dir/src/get_time.cpp.i
+
+CMakeFiles/topologyGUI.dir/src/get_time.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/topologyGUI.dir/src/get_time.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/cedricgormond/Desktop/topologyGUI/src/get_time.cpp -o CMakeFiles/topologyGUI.dir/src/get_time.cpp.s
+
 # Object files for target topologyGUI
 topologyGUI_OBJECTS = \
 "CMakeFiles/topologyGUI.dir/src/main.cpp.o" \
@@ -296,40 +309,42 @@ topologyGUI_OBJECTS = \
 "CMakeFiles/topologyGUI.dir/imgui/imgui_demo.cpp.o" \
 "CMakeFiles/topologyGUI.dir/imgui/imgui_draw.cpp.o" \
 "CMakeFiles/topologyGUI.dir/imgui/imgui_widgets.cpp.o" \
-"CMakeFiles/topologyGUI.dir/imgui-sfml/imgui-SFML.cpp.o"
+"CMakeFiles/topologyGUI.dir/imgui-sfml/imgui-SFML.cpp.o" \
+"CMakeFiles/topologyGUI.dir/src/get_time.cpp.o"
 
 # External object files for target topologyGUI
 topologyGUI_EXTERNAL_OBJECTS =
 
-topologyGUI: CMakeFiles/topologyGUI.dir/src/main.cpp.o
-topologyGUI: CMakeFiles/topologyGUI.dir/src/block.cpp.o
-topologyGUI: CMakeFiles/topologyGUI.dir/src/blockContainer.cpp.o
-topologyGUI: CMakeFiles/topologyGUI.dir/src/line.cpp.o
-topologyGUI: CMakeFiles/topologyGUI.dir/src/lineContainer.cpp.o
-topologyGUI: CMakeFiles/topologyGUI.dir/src/file_tools.cpp.o
-topologyGUI: CMakeFiles/topologyGUI.dir/src/create_output_file.cpp.o
-topologyGUI: CMakeFiles/topologyGUI.dir/src/ctr.cpp.o
-topologyGUI: CMakeFiles/topologyGUI.dir/src/get_from_ctr.cpp.o
-topologyGUI: CMakeFiles/topologyGUI.dir/src/get_from_txt.cpp.o
-topologyGUI: CMakeFiles/topologyGUI.dir/src/topology.cpp.o
-topologyGUI: CMakeFiles/topologyGUI.dir/src/gen_tools.cpp.o
-topologyGUI: CMakeFiles/topologyGUI.dir/imgui/imgui.cpp.o
-topologyGUI: CMakeFiles/topologyGUI.dir/imgui/imgui_demo.cpp.o
-topologyGUI: CMakeFiles/topologyGUI.dir/imgui/imgui_draw.cpp.o
-topologyGUI: CMakeFiles/topologyGUI.dir/imgui/imgui_widgets.cpp.o
-topologyGUI: CMakeFiles/topologyGUI.dir/imgui-sfml/imgui-SFML.cpp.o
-topologyGUI: CMakeFiles/topologyGUI.dir/build.make
-topologyGUI: /usr/local/lib/libsfml-system.dylib
-topologyGUI: /usr/local/lib/libsfml-window.dylib
-topologyGUI: /usr/local/lib/libsfml-graphics.dylib
-topologyGUI: /usr/local/lib/libsfml-network.dylib
-topologyGUI: /usr/local/lib/libsfml-audio.dylib
-topologyGUI: CMakeFiles/topologyGUI.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/cedricgormond/Desktop/topologyGUI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Linking CXX executable topologyGUI"
+../topologyGUI: CMakeFiles/topologyGUI.dir/src/main.cpp.o
+../topologyGUI: CMakeFiles/topologyGUI.dir/src/block.cpp.o
+../topologyGUI: CMakeFiles/topologyGUI.dir/src/blockContainer.cpp.o
+../topologyGUI: CMakeFiles/topologyGUI.dir/src/line.cpp.o
+../topologyGUI: CMakeFiles/topologyGUI.dir/src/lineContainer.cpp.o
+../topologyGUI: CMakeFiles/topologyGUI.dir/src/file_tools.cpp.o
+../topologyGUI: CMakeFiles/topologyGUI.dir/src/create_output_file.cpp.o
+../topologyGUI: CMakeFiles/topologyGUI.dir/src/ctr.cpp.o
+../topologyGUI: CMakeFiles/topologyGUI.dir/src/get_from_ctr.cpp.o
+../topologyGUI: CMakeFiles/topologyGUI.dir/src/get_from_txt.cpp.o
+../topologyGUI: CMakeFiles/topologyGUI.dir/src/topology.cpp.o
+../topologyGUI: CMakeFiles/topologyGUI.dir/src/gen_tools.cpp.o
+../topologyGUI: CMakeFiles/topologyGUI.dir/imgui/imgui.cpp.o
+../topologyGUI: CMakeFiles/topologyGUI.dir/imgui/imgui_demo.cpp.o
+../topologyGUI: CMakeFiles/topologyGUI.dir/imgui/imgui_draw.cpp.o
+../topologyGUI: CMakeFiles/topologyGUI.dir/imgui/imgui_widgets.cpp.o
+../topologyGUI: CMakeFiles/topologyGUI.dir/imgui-sfml/imgui-SFML.cpp.o
+../topologyGUI: CMakeFiles/topologyGUI.dir/src/get_time.cpp.o
+../topologyGUI: CMakeFiles/topologyGUI.dir/build.make
+../topologyGUI: /usr/local/lib/libsfml-system.dylib
+../topologyGUI: /usr/local/lib/libsfml-window.dylib
+../topologyGUI: /usr/local/lib/libsfml-graphics.dylib
+../topologyGUI: /usr/local/lib/libsfml-network.dylib
+../topologyGUI: /usr/local/lib/libsfml-audio.dylib
+../topologyGUI: CMakeFiles/topologyGUI.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/cedricgormond/Desktop/topologyGUI/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Linking CXX executable ../topologyGUI"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/topologyGUI.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-CMakeFiles/topologyGUI.dir/build: topologyGUI
+CMakeFiles/topologyGUI.dir/build: ../topologyGUI
 
 .PHONY : CMakeFiles/topologyGUI.dir/build
 

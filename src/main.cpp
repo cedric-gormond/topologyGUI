@@ -11,6 +11,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <ctime>
 
 #include "block.h"
 #include "blockContainer.h"
@@ -20,13 +21,22 @@
 #include "file_tools.hpp"
 #include "topology.hpp"
 #include "create_output_file.hpp"
+#include "log.h"
+#include "get_time.h"
+
+
+
+
 
 using namespace std;
+
+//Global
+string current_time;
 
 int main() {
     // ---- FILE INPUT ---
     //Please past the path's file
-    string file_path = "/Users/cedricgormond/Desktop/cf_xcode/topology/topology/fichier_contrainte_2D.txt"; //FULL PATH
+    string file_path = "/Users/cedricgormond/Desktop/topologyGUI/fichier_contrainte_2D.txt"; //FULL PATH
 
     ifstream file(file_path.c_str(), ios::in);
     string input_filename = getFilename(file_path); // get the input file name WITHOUT extension
@@ -79,58 +89,133 @@ int main() {
     //Resize constraint
     constraint *CONTRAINT_RESIZE = resize_2D_from_bloc1(CONTRAINT, 100, nb_pblocs);
 
+    // Display resized blocs in console
+    displayBlocs_from_ctr(CONTRAINT_RESIZE, nb_pblocs);
+
+    // ------ OUTPUT FILE ------
+    string output_path = input_filename + "_generated.txt";
+    ofstream file_output;
+
     // ------ GUI --------
-    sf::RenderWindow window(sf::VideoMode(600, 600), "topologyGUI");
+    sf::RenderWindow window(sf::VideoMode(1200, 1200), "topologyGUI");
     window.setFramerateLimit(30);
     //window.setVerticalSyncEnabled(false);
 
     //ImGui init
     ImGui::SFML::Init(window);
 
+    // Setup Dear ImGui context
+    IMGUI_CHECKVERSION();
+    ImGui::CreateContext();
+    ImGuiIO& io = ImGui::GetIO(); (void)io;
+
+    //Theme
+    ImGui::StyleColorsLight();
+
+    //
+    static bool show_app_log = true;
+    static ExampleAppLog my_log;
+
+    //Font
+    //io.Fonts->AddFontFromFileTTF(".../misc/fonts/Roboto-Medium.ttf", 16.0f);
+
     // create container with 5 blocks in it, starting at pos 10/10
     // this container will be drawn using ContainerOfBlocks' void drawContainer(sf::RenderWindow &window)
-    ContainerOfBlocks testBlocks(nb_pblocs, sf::Vector2f(100.0f, 100.0f),CONTRAINT_RESIZE);
+    //ContainerOfBlocks testBlocks(nb_pblocs, sf::Vector2f(100.0f, 100.0f),CONTRAINT_RESIZE);
 
-    // create  line container, starting at pos 10/50
-    // this one will be drawn using sf::Drawable's function to draw
-    ContainerOfLines testlines(nb_pblocs, sf::Vector2f(150.0f, 100.0f), CONTRAINT_RESIZE,100);
+    // create  line container, starting
+    //ContainerOfLines testlines(nb_pblocs, sf::Vector2f(150.0f, 100.0f), CONTRAINT_RESIZE,100);
 
-    int distance;
+    //distance
+    int distance = 100;
 
-    sf::Color bgColor;
-
-    float color[3] = { 0.f, 0.f, 0.f };
+    //ImGUI Clock
     sf::Clock deltaClock;
 
+    // Infinite loop
     while (window.isOpen()) {
+        current_time = currentDateTime(); //get time
         sf::Event evt;
         while (window.pollEvent(evt)) {
             ImGui::SFML::ProcessEvent(evt);
             if (evt.type == sf::Event::Closed) {
+                // Resize
+
+                //CONTRAINT_RESIZE = resize_2D_from_bloc1(CONTRAINT, distance, nb_pblocs);
+                //ContainerOfBlocks testBlocks(nb_pblocs, sf::Vector2f(100.0f, 100.0f),CONTRAINT_RESIZE);
+                //ContainerOfLines testlines(nb_pblocs, sf::Vector2f(150.0f, 100.0f), CONTRAINT_RESIZE,distance);
+
                 window.close();
             }
         }
 
         ImGui::SFML::Update(window, deltaClock.restart());
 
-        ImGui::Begin("Sample window"); // begin window
+        ImGui::Begin("Settings"); // begin window
 
-        // Background color edit
-        if (ImGui::ColorEdit3("Background color", color)) {
-            // this code gets called if color value changes, so
-            // the background color is upgraded automatically!
-            bgColor.r = static_cast<sf::Uint8>(color[0] * 255.f);
-            bgColor.g = static_cast<sf::Uint8>(color[1] * 255.f);
-            bgColor.b = static_cast<sf::Uint8>(color[2] * 255.f);
+
+
+        //Choose your topology
+        ImGui::Text("Choose your topology :");
+        static int choice_topology = 0;
+        ImGui::RadioButton("2D Mesh", &choice_topology, 0); ImGui::SameLine();
+        ImGui::RadioButton("2D Hexa", &choice_topology, 1); ImGui::SameLine();
+        ImGui::RadioButton("3D Mesh", &choice_topology, 2);
+
+        // switch topology
+        switch(choice_topology) {
+            case 0 :
+                //Distance
+                ImGui::Text("Distance (slices) : ");
+                ImGui::InputInt("",&distance);
+                break;       // and exits the switch
+            case 1 :
+                //Distance
+                ImGui::Text("Radius (slices) : ");
+                ImGui::InputInt("",&distance);
+
+                break;
+        }
+        ImGui::Separator();
+
+        // Resize dimensions
+        //Height
+        ImGui::Text("Height of every pblocks (slices) : ");
+        //ImGui::InputInt("",&distance);
+
+        //Width
+        ImGui::Text("Width of of every pblocks (slices) : ");
+        //ImGui::InputInt("",&distance);
+
+        ImGui::Separator();
+        if (ImGui::Button("Generate constraint file"))     {
+            if (file_output) {
+                create_ctr_file(file_output, file_path, CONTRAINT_RESIZE, nb_pblocs);
+                file_output.close();
+                my_log.AddLog("%s [info] Generate constraint file \n", &current_time[0]);
+                my_log.AddLog( "%s [info] Success \n",&current_time[0]);
+                my_log.AddLog( "%s [info] Output file : %s \n", &current_time[0],&output_path[0]);
+            } else {
+                my_log.AddLog( "%s [error] Cannot write \n", &current_time[0]);
+            }
         }
 
-        ImGui::End(); // end window
-        window.clear(bgColor); // fill background with color
-        ImGui::SFML::Render(window);
-        //window.clear();
+        if (ImGui::Button("Generate constraint file (simplified)"))     {
+            my_log.AddLog("%s [info] Generate simplified constraint file \n", &current_time[0]);
+        }
 
-        window.draw(testlines);
-        testBlocks.drawContainer(window);
+        //LOG DISPLAU IN CURRENT WINDOW
+        ImGui::Separator();
+        ImGui::Text("Log :");
+        my_log.DrawInCurrentWindow("Log");
+        ImGui::End(); // end window
+
+        window.clear();
+        ImGui::SFML::Render(window);
+
+        //window.draw(testBlocks);
+        //window.draw(testlines);
+        //testBlocks.drawContainer(window);
         window.display();
     }
 

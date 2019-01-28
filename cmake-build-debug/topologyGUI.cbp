@@ -38,8 +38,8 @@
 				</MakeCommands>
 			</Target>
 			<Target title="topologyGUI">
-				<Option output="/Users/cedricgormond/Desktop/topologyGUI/cmake-build-debug/topologyGUI" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/Users/cedricgormond/Desktop/topologyGUI/cmake-build-debug"/>
+				<Option output="/Users/cedricgormond/Desktop/topologyGUI/topologyGUI" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/cedricgormond/Desktop/topologyGUI"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -62,8 +62,8 @@
 				</MakeCommands>
 			</Target>
 			<Target title="topologyGUI/fast">
-				<Option output="/Users/cedricgormond/Desktop/topologyGUI/cmake-build-debug/topologyGUI" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/Users/cedricgormond/Desktop/topologyGUI/cmake-build-debug"/>
+				<Option output="/Users/cedricgormond/Desktop/topologyGUI/topologyGUI" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/cedricgormond/Desktop/topologyGUI"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -173,6 +173,12 @@
 		<Unit filename="/Users/cedricgormond/Desktop/topologyGUI/src/get_from_txt.hpp">
 			<Option target="topologyGUI"/>
 		</Unit>
+		<Unit filename="/Users/cedricgormond/Desktop/topologyGUI/src/get_time.cpp">
+			<Option target="topologyGUI"/>
+		</Unit>
+		<Unit filename="/Users/cedricgormond/Desktop/topologyGUI/src/get_time.h">
+			<Option target="topologyGUI"/>
+		</Unit>
 		<Unit filename="/Users/cedricgormond/Desktop/topologyGUI/src/line.cpp">
 			<Option target="topologyGUI"/>
 		</Unit>
@@ -183,6 +189,9 @@
 			<Option target="topologyGUI"/>
 		</Unit>
 		<Unit filename="/Users/cedricgormond/Desktop/topologyGUI/src/lineContainer.h">
+			<Option target="topologyGUI"/>
+		</Unit>
+		<Unit filename="/Users/cedricgormond/Desktop/topologyGUI/src/log.h">
 			<Option target="topologyGUI"/>
 		</Unit>
 		<Unit filename="/Users/cedricgormond/Desktop/topologyGUI/src/main.cpp">

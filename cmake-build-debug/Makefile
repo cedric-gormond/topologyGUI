@@ -474,6 +474,33 @@ src/get_from_txt.cpp.s:
 	$(MAKE) -f CMakeFiles/topologyGUI.dir/build.make CMakeFiles/topologyGUI.dir/src/get_from_txt.cpp.s
 .PHONY : src/get_from_txt.cpp.s
 
+src/get_time.o: src/get_time.cpp.o
+
+.PHONY : src/get_time.o
+
+# target to build an object file
+src/get_time.cpp.o:
+	$(MAKE) -f CMakeFiles/topologyGUI.dir/build.make CMakeFiles/topologyGUI.dir/src/get_time.cpp.o
+.PHONY : src/get_time.cpp.o
+
+src/get_time.i: src/get_time.cpp.i
+
+.PHONY : src/get_time.i
+
+# target to preprocess a source file
+src/get_time.cpp.i:
+	$(MAKE) -f CMakeFiles/topologyGUI.dir/build.make CMakeFiles/topologyGUI.dir/src/get_time.cpp.i
+.PHONY : src/get_time.cpp.i
+
+src/get_time.s: src/get_time.cpp.s
+
+.PHONY : src/get_time.s
+
+# target to generate assembly for a file
+src/get_time.cpp.s:
+	$(MAKE) -f CMakeFiles/topologyGUI.dir/build.make CMakeFiles/topologyGUI.dir/src/get_time.cpp.s
+.PHONY : src/get_time.cpp.s
+
 src/line.o: src/line.cpp.o
 
 .PHONY : src/line.o
@@ -630,6 +657,9 @@ help:
 	@echo "... src/get_from_txt.o"
 	@echo "... src/get_from_txt.i"
 	@echo "... src/get_from_txt.s"
+	@echo "... src/get_time.o"
+	@echo "... src/get_time.i"
+	@echo "... src/get_time.s"
 	@echo "... src/line.o"
 	@echo "... src/line.i"
 	@echo "... src/line.s"

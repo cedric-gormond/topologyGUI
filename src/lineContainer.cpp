@@ -15,13 +15,13 @@ ContainerOfLines::ContainerOfLines(int size, const sf::Vector2f pos, constraint 
     int max_Y = max_genY(ctr, size);
 
     for (int k = 0; k < (size - max_X - 1); ++k) {
-        //blockContainer.push_back(Line(ctr[k].CenterX - 1, ctr[k].CenterY - 1, ctr[k].width, ctr[k].heigth, distance, 2)); //-1 p
+        blockContainer.push_back(Line(ctr[k].CenterX - 1, ctr[k].CenterY - 1, ctr[k].width, ctr[k].heigth, distance, 2)); //-1 p
         blockContainer.push_back(Line(ctr[k].CenterX - 1, ctr[k].CenterY - 1, ctr[k].width, ctr[k].heigth, 2, distance)); //-1 p            pbloc++;
     }
 
     for (int k = 0; k < (size - max_Y - 1); ++k) {
         blockContainer.push_back(Line(ctr[k].CenterX - 1, ctr[k].CenterY - 1, ctr[k].width, ctr[k].heigth, distance, 2)); //-1 p
-        //blockContainer.push_back(Line(ctr[k].CenterX - 1, ctr[k].CenterY - 1, ctr[k].width, ctr[k].heigth, 2, distance)); //-1 p            pbloc++;
+        blockContainer.push_back(Line(ctr[k].CenterX - 1, ctr[k].CenterY - 1, ctr[k].width, ctr[k].heigth, 2, distance)); //-1 p            pbloc++;
     }
 
     /*

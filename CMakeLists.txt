@@ -3,6 +3,8 @@ project(topologyGUI)
 
 set(CMAKE_CXX_STANDARD 14)
 
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
+
 set(SOURCE_FILES
         src/main.cpp
         src/block.cpp
@@ -40,7 +42,7 @@ set(SOURCE_FILES
         imgui-sfml/imconfig-SFML.h
         imgui-sfml/imgui-SFML.cpp
         imgui-sfml/imgui-SFML.h
-        )
+        src/log.h src/get_time.cpp src/get_time.h)
 
 add_executable(topologyGUI ${SOURCE_FILES})
 
