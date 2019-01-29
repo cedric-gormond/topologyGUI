@@ -116,13 +116,13 @@ constraint* set_hexa(constraint *ctr, int radius, int size)
     int nb_blocs = size - 1;
 
     //angle
-    int angle = round((360/nb_blocs));
+    int angle = (int)(360/nb_blocs);
 
     //calculate positions
     int pbloc = 1;
     for (int i=0; i<nb_blocs; i++) {
-        ctr_resize[pbloc].CenterX =  round(radius*cos(angle*i*(3.14159/180)) + ctr_resize[0].CenterX); // the origine is (100,100)
-        ctr_resize[pbloc].CenterY =  round(radius*sin(angle*i*(3.14159/180)) + ctr_resize[0].CenterY);
+        ctr_resize[pbloc].CenterX =  (int)(radius*cos(angle*i*(3.14159/180)) + ctr_resize[0].CenterX); // the origine is (100,100)
+        ctr_resize[pbloc].CenterY =  (int)(radius*sin(angle*i*(3.14159/180)) + ctr_resize[0].CenterY);
         pbloc++;
     }
 

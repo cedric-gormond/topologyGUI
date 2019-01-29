@@ -3,7 +3,7 @@ create_clock -period 5.000 -name clk -waveform {0.000 2.500} [get_ports Clock]
 
 create_pblock pblock_1
 add_cells_to_pblock [get_pblocks pblock_1] [get_cells -quiet [list {GEN_Y[0].GEN_X[0].GEN_ROUTER_BOTTOM.GEN_ROUTER_BOTTOM_LEFT.Router}]]
-resize_pblock [get_pblocks pblock_1] -add {SLICE_X10Y10:SLICE_X20Y20}
+resize_pblock [get_pblocks pblock_1] -add {SLICE_X6Y15:SLICE_X16Y38}
 resize_pblock [get_pblocks pblock_1] -add {DSP48E2_X1Y6:DSP48E2_X2Y13}
 resize_pblock [get_pblocks pblock_1] -add {RAMB18_X1Y6:RAMB18_X1Y13}
 resize_pblock [get_pblocks pblock_1] -add {RAMB36_X1Y3:RAMB36_X1Y6}
@@ -53,3 +53,4 @@ resize_pblock [get_pblocks pblock_9] -add {SLICE_X62Y158:SLICE_X70Y173}
 resize_pblock [get_pblocks pblock_9] -add {DSP48E2_X12Y64:DSP48E2_X12Y67}
 resize_pblock [get_pblocks pblock_9] -add {RAMB18_X8Y64:RAMB18_X8Y67}
 resize_pblock [get_pblocks pblock_9] -add {RAMB36_X8Y32:RAMB36_X8Y33}
+

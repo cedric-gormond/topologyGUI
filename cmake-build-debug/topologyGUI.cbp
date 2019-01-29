@@ -137,6 +137,9 @@
 		<Unit filename="/Users/cedricgormond/Desktop/topologyGUI/src/blockContainer.h">
 			<Option target="topologyGUI"/>
 		</Unit>
+		<Unit filename="/Users/cedricgormond/Desktop/topologyGUI/src/console.h">
+			<Option target="topologyGUI"/>
+		</Unit>
 		<Unit filename="/Users/cedricgormond/Desktop/topologyGUI/src/create_output_file.cpp">
 			<Option target="topologyGUI"/>
 		</Unit>

@@ -42,7 +42,7 @@ set(SOURCE_FILES
         imgui-sfml/imconfig-SFML.h
         imgui-sfml/imgui-SFML.cpp
         imgui-sfml/imgui-SFML.h
-        src/log.h src/get_time.cpp src/get_time.h)
+        src/log.h src/get_time.cpp src/get_time.h src/console.h)
 
 add_executable(topologyGUI ${SOURCE_FILES})
 

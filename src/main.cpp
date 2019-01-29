@@ -2,7 +2,6 @@
 #include "imgui-SFML.h"
 
 #include <SFML/Graphics.hpp>
-
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/System/Clock.hpp>
 #include <SFML/Window/Event.hpp>
@@ -21,11 +20,9 @@
 #include "file_tools.hpp"
 #include "topology.hpp"
 #include "create_output_file.hpp"
-#include "log.h"
+
 #include "get_time.h"
-
-
-
+#include "log.h"
 
 
 using namespace std;
@@ -87,13 +84,14 @@ int main() {
     displayBlocs_from_ctr(CONTRAINT, nb_pblocs);
 
     //Resize constraint
+    //constraint *CONTRAINT_RESIZE = set_hexa(CONTRAINT, 50, nb_pblocs);
     constraint *CONTRAINT_RESIZE = resize_2D_from_bloc1(CONTRAINT, 100, nb_pblocs);
 
     // Display resized blocs in console
     //displayBlocs_from_ctr(CONTRAINT_RESIZE, nb_pblocs);
 
     // ------ OUTPUT FILE ------
-    string output_path = input_filename + "_generated.txt";
+    string output_path = input_filename;
     ofstream file_output;
 
     // ------ SFML --------
@@ -111,9 +109,10 @@ int main() {
     //Theme
     ImGui::StyleColorsLight();
 
-    //
+    // ImGUI - variables
     static bool show_app_log = true;
     static ExampleAppLog my_log;
+    //static ExampleAppConsole console;
     static bool* p_open = new bool;
     *p_open = true;
 
@@ -126,14 +125,16 @@ int main() {
 
     // create container with 5 blocks in it, starting at pos 10/10
     // this container will be drawn using ContainerOfBlocks' void drawContainer(sf::RenderWindow &window)
-    //ContainerOfBlocks testBlocks(nb_pblocs, sf::Vector2f(100.0f, 100.0f),CONTRAINT_RESIZE);
+    ContainerOfBlocks testBlocks(nb_pblocs, sf::Vector2f(100.0f, 100.0f),CONTRAINT_RESIZE);
 
     // create  line container, starting
     //ContainerOfLines testlines(nb_pblocs, sf::Vector2f(150.0f, 100.0f), CONTRAINT_RESIZE,100);
 
     //user's variables
-    int distance = 100;
-    int radius = 50;
+    int distance    =   100;
+    int radius      =   50;
+    int width_temp  =   0;
+    int heigth_temp =   0;
 
     //ImGUI Clock
     sf::Clock deltaClock;
@@ -148,7 +149,7 @@ int main() {
                 // Resize
 
                 //CONTRAINT_RESIZE = resize_2D_from_bloc1(CONTRAINT, distance, nb_pblocs);
-                //ContainerOfBlocks testBlocks(nb_pblocs, sf::Vector2f(100.0f, 100.0f),CONTRAINT_RESIZE);
+                //ContainerOfBlocks testBlocks(nb_pblocs, sf::Vector2f(100.0f, 100.0f),CONTRAINT);
                 //ContainerOfLines testlines(nb_pblocs, sf::Vector2f(150.0f, 100.0f), CONTRAINT_RESIZE,distance);
 
                 window.close();
@@ -156,19 +157,61 @@ int main() {
         }
         ImGui::SFML::Update(window, deltaClock.restart());
 
-        //Bin IMGUI
+        /*
+         * ---------------------------------------------------------------
+         *                      ImGUI - User Interface
+         * ---------------------------------------------------------------
+         */
+
         ImGui::Begin("Settings",p_open,ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse);
-
-        ImGui::Spacing();
-        if (ImGui::CollapsingHeader("Help"))
-        {
-
-        }
-
         ImGui::Text("Current file : %s", &file_path[0]);
 
-        //Choose your topology
-        static int choice_topology = 0;
+
+        /*
+         *  Help section
+         */
+        ImGui::Spacing();
+        if (ImGui::CollapsingHeader("Help")) {
+            ImGui::BulletText("TopologyGUI doesn't recognize .xdc files ");
+            //ImGui::TreePop();
+        }
+        ImGui::Separator();
+
+
+        /*
+         *  Open file
+         */
+        if (ImGui::CollapsingHeader("Open file"))
+        {
+            ImGui::BulletText("WIP (à faire un collapsed ou en menu");
+        }
+
+        /*
+         *  Generate simplified constraint file without any modification
+         */
+        ImGui::Text("Generate simplified constraint file without any modification");
+        if (ImGui::Button("Generate simplified constraint file "))     {
+            std::string output_path_temp = output_path + "_original_simplified.txt";
+
+            //Writing
+            file_output.open(output_path_temp);
+            create_txt_file(file_output, file_path, CONTRAINT, nb_pblocs);
+            file_output.close();
+
+            //log
+            my_log.AddLog("%s [info] [default] Generate simplified constraint file \n", &current_time[0]);
+            my_log.AddLog("%s [info] [default] Success \n",&current_time[0]);
+            my_log.AddLog("%s [info] [default] Output file : %s \n", &current_time[0],&output_path_temp[0]);
+        }
+        ImGui::SameLine();
+        ShowHelpMarker("Generate a simplified constraint file which is NOT compatible with Xilinx Vivado\n");
+        ImGui::Separator();
+        ImGui::Spacing();
+
+        /*
+         *  Topology
+         */
+        static int choice_topology = 0; //Choose your topology
         ImGui::Spacing();
         if (ImGui::CollapsingHeader("Topology"))
         {
@@ -180,98 +223,152 @@ int main() {
 
             switch(choice_topology) {
                 case 1 :
-                    ImGui::Text("Distance (slices) : ");
+                    ImGui::Text("Distance (in slices) between each block : ");
                     ImGui::InputInt("",&distance);
                     break;
                 case 2 :
                     //Radius
-                    ImGui::Text("Radius (slices) : ");
+                    ImGui::Text("Radius (in slices) between the center (block1) and each other block : ");
                     ImGui::InputInt("",&radius);
                     break;
             }
         }
-
         ImGui::Separator();
+        ImGui::Spacing();
 
+        /*
+         *  Dimensions
+         */
         // Resize dimensions
-        //Height
-        ImGui::Text("Height of every pblocks (slices) : ");
-        //ImGui::InputInt("",&distance);
+        static int choice_resize = 0;
+        if (ImGui::CollapsingHeader("Dimensions"))
+        {
+            ImGui::RadioButton("Use default size", &choice_resize, 1);ImGui::SameLine();
+            //ImGui::Text("(%d , %d )",CONTRAINT_RESIZE[0].heigth,CONTRAINT_RESIZE[0].width);
 
-        //Width
-        ImGui::Text("Width of of every pblocks (slices) : ");
-        //ImGui::InputInt("",&distance);
+            ImGui::RadioButton("Resize every pblock", &choice_resize, 2);
 
+            switch (choice_resize) {
+                case 1 :
+                    //ImGui::RadioButton("Use default size", &choice_resize, 1);
+                    //ImGui::SameLine();
+                    ImGui::Text("(%d , %d)",CONTRAINT_RESIZE[0].heigth,CONTRAINT_RESIZE[0].width);
+                    break;
+
+                case 2:
+                    //Height
+                    //std::string temp1, temp2;
+                    ImGui::Text("Height of every pblocks (slices) : ");
+                    ImGui::InputInt("##",&width_temp);
+                    //heigth_temp = stoi(temp1);
+
+                    //Width
+                    ImGui::Text("Width of of every pblocks (slices) : ");
+                    ImGui::InputInt("##",&heigth_temp);
+                    break;
+            }
+        }
         ImGui::Separator();
+        ImGui::Spacing();
+
+        /*
+         *  Generate constraint file
+         */
         if (ImGui::Button("Generate constraint file"))     {
+            std::string output_path_temp;
             // switch topology
             switch(choice_topology) {
                 case 1 :
-                    ImGui::Text("Distance (slices) : ");
-                    ImGui::InputInt("",&distance);
-
                     CONTRAINT_RESIZE = resize_2D_from_bloc1(CONTRAINT,distance, nb_pblocs);
 
                     //Writing
-                    file_output.open(output_path);
+                    output_path_temp = output_path + "2D_generated.txt";
+                    file_output.open(output_path_temp);
                     create_ctr_file(file_output, file_path, CONTRAINT_RESIZE, nb_pblocs);
                     file_output.close();
 
                     //log
-                    my_log.AddLog("%s [info] Generate constraint file (2D MESH)\n", &current_time[0]);
-                    my_log.AddLog( "%s [info] Success \n",&current_time[0]);
-                    my_log.AddLog( "%s [info] Output file : %s \n", &current_time[0],&output_path[0]);
+                    my_log.AddLog("%s [info] [mesh2D] Generate constraint file \n", &current_time[0]);
+                    my_log.AddLog("%s [info] [mesh2D] Success \n",&current_time[0]);
+                    my_log.AddLog("%s [info] [mesh2D] Output file : %s \n", &current_time[0],&output_path_temp[0]);
                     break;
                 case 2 :
-                    //Radius
-                    ImGui::Text("Radius (slices) : ");
-                    ImGui::InputInt("",&radius);
-
                     CONTRAINT_RESIZE = set_hexa(CONTRAINT,radius, nb_pblocs);
 
                     //Writing
+                    output_path_temp = output_path + "HEXA_generated.txt";
                     file_output.open(output_path);
                     create_ctr_file(file_output, file_path, CONTRAINT_RESIZE, nb_pblocs);
                     file_output.close();
 
                     //log
-                    my_log.AddLog("%s [info] Generate constraint file (2D HEXA)\n", &current_time[0]);
-                    my_log.AddLog( "%s [info] Success \n",&current_time[0]);
-                    my_log.AddLog( "%s [info] Output file : %s \n", &current_time[0],&output_path[0]);
+                    my_log.AddLog("%s [info] [hexa] Generate constraint file \n", &current_time[0]);
+                    my_log.AddLog("%s [info] [hexa] Success \n",&current_time[0]);
+                    my_log.AddLog("%s [info] [hexa] Output file : %s \n", &current_time[0],&output_path_temp[0]);
                     break;
 
                 default:
                     my_log.AddLog("%s [error] Please choose a topology\n", &current_time[0]);
                     break;
             }
-
-            /*
-            if (file_output) {
-
-                file_output.open(output_path);
-                create_ctr_file(file_output, file_path, CONTRAINT_RESIZE, nb_pblocs);
-                file_output.close();
-
-                my_log.AddLog("%s [info] Generate constraint file \n", &current_time[0]);
-                my_log.AddLog( "%s [info] Success \n",&current_time[0]);
-                my_log.AddLog( "%s [info] Output file : %s \n", &current_time[0],&output_path[0]);
-            } else {
-                my_log.AddLog( "%s [error] Cannot write \n", &current_time[0]);
-            }
-             */
         }
 
+        /*
+         *  Generate constraint file (simplified)
+         */
         if (ImGui::Button("Generate constraint file (simplified)"))     {
-            my_log.AddLog("%s [info] Generate simplified constraint file \n", &current_time[0]);
-        }
+            std::string output_path_temp;
+            switch(choice_topology) {
 
-        //LOG DISPLAU IN CURRENT WINDOW
+                case 1:
+                    CONTRAINT_RESIZE = resize_2D_from_bloc1(CONTRAINT,distance, nb_pblocs);
+
+                    //Writing
+                    file_output.open(output_path_temp);
+                    create_txt_file(file_output, file_path, CONTRAINT_RESIZE, nb_pblocs);
+                    file_output.close();
+
+                    //log
+                    my_log.AddLog("%s [info] [mesh2D] Generate simplified constraint file \n", &current_time[0]);
+                    my_log.AddLog("%s [info] [mesh2D] Success \n",&current_time[0]);
+                    my_log.AddLog("%s [info] [mesh2D] Output file : %s \n", &current_time[0],&output_path_temp[0]);
+                    break;
+
+                case 2:
+                    CONTRAINT_RESIZE = set_hexa(CONTRAINT,radius, nb_pblocs);
+
+                    //Writing
+                    file_output.open(output_path_temp);
+                    create_txt_file(file_output, file_path, CONTRAINT_RESIZE, nb_pblocs);
+                    file_output.close();
+
+                    //log
+                    my_log.AddLog("%s [info] [HEXA] Generate simplified constraint file \n", &current_time[0]);
+                    my_log.AddLog("%s [info] [HEXA] Success \n",&current_time[0]);
+                    my_log.AddLog("%s [info] [HEXA] Output file : %s \n", &current_time[0],&output_path_temp[0]);
+                    break;
+
+                default:
+                    my_log.AddLog("%s [error] Please choose a topology\n", &current_time[0]);
+                    break;
+            }
+        }
+        ImGui::SameLine();
+        ShowHelpMarker("Generate a simplified constraint file which is NOT compatible with Xilinx Vivado\n");
+        ImGui::Spacing();
         ImGui::Separator();
-        ImGui::Text("Log :");
+
+        /*
+         *  LOG
+         */
+        ImGui::Text("Log :"); ImGui::SameLine();
         my_log.DrawInCurrentWindow("Log");
 
         ImGui::End(); // end window
 
+        /*
+         *  RENDER
+         */
         window.clear();
 
         ImGui::SFML::Render(window);
