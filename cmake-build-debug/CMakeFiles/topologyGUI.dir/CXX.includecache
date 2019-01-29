@@ -54,10 +54,6 @@ block.h
 ctr.hpp
 /Users/cedricgormond/Desktop/topologyGUI/src/ctr.hpp
 
-/Users/cedricgormond/Desktop/topologyGUI/src/console.h
-imgui.h
-/Users/cedricgormond/Desktop/topologyGUI/src/imgui.h
-
 /Users/cedricgormond/Desktop/topologyGUI/src/create_output_file.hpp
 stdio.h
 -
@@ -177,8 +173,6 @@ get_time.h
 /Users/cedricgormond/Desktop/topologyGUI/src/get_time.h
 log.h
 /Users/cedricgormond/Desktop/topologyGUI/src/log.h
-console.h
-/Users/cedricgormond/Desktop/topologyGUI/src/console.h
 
 /Users/cedricgormond/Desktop/topologyGUI/src/topology.hpp
 stdio.h

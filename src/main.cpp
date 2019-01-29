@@ -31,9 +31,10 @@ using namespace std;
 string current_time;
 
 int main() {
+
     // ---- FILE INPUT ---
     //Please past the path's file
-    string file_path = "/Users/cedricgormond/Desktop/topologyGUI/fichier_contrainte_2D.txt"; //FULL PATH
+    string file_path = "fichier_contrainte_2D.txt"; //FULL PATH
 
     ifstream file(file_path.c_str(), ios::in);
     string input_filename = getFilename(file_path); // get the input file name WITHOUT extension
@@ -87,18 +88,26 @@ int main() {
     //constraint *CONTRAINT_RESIZE = set_hexa(CONTRAINT, 50, nb_pblocs);
     constraint *CONTRAINT_RESIZE = resize_2D_from_bloc1(CONTRAINT, 100, nb_pblocs);
 
-    // Display resized blocs in console
-    //displayBlocs_from_ctr(CONTRAINT_RESIZE, nb_pblocs);
-
     // ------ OUTPUT FILE ------
     string output_path = input_filename;
     ofstream file_output;
 
-    // ------ SFML --------
-    sf::RenderWindow window(sf::VideoMode(1200, 1200), "topologyGUI", sf::Style::Close);
+    /*
+     * ---------------------------------------------------------------
+     *                             SFML
+     * ---------------------------------------------------------------
+     */
+
+    /*
+     *  Init SFML
+     */
+    //Window settings
+    sf::RenderWindow window(sf::VideoMode(700, 700), "topologyGUI", sf::Style::Close);
     window.setFramerateLimit(30);
 
-    //ImGui init
+    /*
+     *  Init ImGUI
+     */
     ImGui::SFML::Init(window);
 
     // Setup Dear ImGui context
@@ -110,35 +119,43 @@ int main() {
     ImGui::StyleColorsLight();
 
     // ImGUI - variables
-    static bool show_app_log = true;
     static ExampleAppLog my_log;
-    //static ExampleAppConsole console;
+    static bool show_app_log    = true;
     static bool* p_open = new bool;
     *p_open = true;
 
     //Font
     //io.Fonts->AddFontDefault();
-    ImFont* font = io.Fonts->AddFontFromFileTTF("misc/fonts/Roboto-Medium.ttf", 16.0f);
+    ImFont* font = io.Fonts->AddFontFromFileTTF("misc/fonts/Roboto-Medium.ttf", 16.0, nullptr);
     IM_ASSERT(font != NULL);
     //ImFont* font = io.Fonts->AddFontFromFileTTF("misc/fonts/Roboto-Medium.ttf", 16.0f);
 
+    //ImGUI Clock
+    sf::Clock deltaClock;
 
-    // create container with 5 blocks in it, starting at pos 10/10
+    /*
+     *  SFML Object
+     */
+    // create container with nb_pblocs blocks in it, starting at pos 100/100
     // this container will be drawn using ContainerOfBlocks' void drawContainer(sf::RenderWindow &window)
-    ContainerOfBlocks testBlocks(nb_pblocs, sf::Vector2f(100.0f, 100.0f),CONTRAINT_RESIZE);
+    //ContainerOfBlocks Blocks(nb_pblocs, sf::Vector2f(100.0f, 100.0f),CONTRAINT_RESIZE);
 
-    // create  line container, starting
-    //ContainerOfLines testlines(nb_pblocs, sf::Vector2f(150.0f, 100.0f), CONTRAINT_RESIZE,100);
+    // create  line container, starting at pos 100/100
+    // this container will be drawn using ContainerOfLines' void drawContainer(sf::RenderWindow &window)
+    //ContainerOfLines lines(nb_pblocs, sf::Vector2f(150.0f, 100.0f), CONTRAINT_RESIZE,100);
 
-    //user's variables
+    /*
+     *  User's variables
+     */
+    //
     int distance    =   100;
     int radius      =   50;
     int width_temp  =   0;
     int heigth_temp =   0;
 
-    //ImGUI Clock
-    sf::Clock deltaClock;
-
+    /*
+     *  MAIN LOOP
+     */
     // Infinite loop
     while (window.isOpen()) {
         current_time = currentDateTime(); //get time
@@ -146,12 +163,9 @@ int main() {
         while (window.pollEvent(evt)) {
             ImGui::SFML::ProcessEvent(evt);
             if (evt.type == sf::Event::Closed) {
-                // Resize
-
                 //CONTRAINT_RESIZE = resize_2D_from_bloc1(CONTRAINT, distance, nb_pblocs);
-                //ContainerOfBlocks testBlocks(nb_pblocs, sf::Vector2f(100.0f, 100.0f),CONTRAINT);
-                //ContainerOfLines testlines(nb_pblocs, sf::Vector2f(150.0f, 100.0f), CONTRAINT_RESIZE,distance);
-
+                //ContainerOfBlocks Blocks(nb_pblocs, sf::Vector2f(100.0f, 100.0f),CONTRAINT);
+                //ContainerOfLines lines(nb_pblocs, sf::Vector2f(150.0f, 100.0f), CONTRAINT_RESIZE,distance);
                 window.close();
             }
         }
@@ -163,9 +177,11 @@ int main() {
          * ---------------------------------------------------------------
          */
 
+        /*
+         *  Begin main window
+         */
         ImGui::Begin("Settings",p_open,ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse);
         ImGui::Text("Current file : %s", &file_path[0]);
-
 
         /*
          *  Help section
@@ -173,7 +189,6 @@ int main() {
         ImGui::Spacing();
         if (ImGui::CollapsingHeader("Help")) {
             ImGui::BulletText("TopologyGUI doesn't recognize .xdc files ");
-            //ImGui::TreePop();
         }
         ImGui::Separator();
 
@@ -374,8 +389,8 @@ int main() {
         ImGui::SFML::Render(window);
 
 
-        //window.draw(testBlocks);
-        //window.draw(testlines);
+        //window.draw(Blocks);
+        //window.draw(lines);
         //testBlocks.drawContainer(window);
         window.display();
     }
