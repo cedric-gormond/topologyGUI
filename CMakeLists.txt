@@ -42,7 +42,9 @@ set(SOURCE_FILES
         imgui-sfml/imconfig-SFML.h
         imgui-sfml/imgui-SFML.cpp
         imgui-sfml/imgui-SFML.h
-        src/log.h src/get_time.cpp src/get_time.h src/console.h)
+        src/log.h src/get_time.cpp src/get_time.h)
+
+#set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -static-libstdc++") #a voir
 
 add_executable(topologyGUI ${SOURCE_FILES})
 
@@ -60,6 +62,8 @@ if (SFML_FOUND)
     include_directories(${SFML_INCLUDE_DIR})
     target_link_libraries(topologyGUI ${SFML_LIBRARIES})
 endif()
+
+
 
 #imgui
 # ImGui does not provide native support for CMakeLists, workaround for now to have

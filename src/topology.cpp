@@ -21,6 +21,13 @@ void dimensions_of_bloc(constraint *ctr ,int size){
     }
 }
 
+void resize_dimensions(constraint *ctr ,int size, int vec2i[2]){
+    for (int i=0; i<size; i++) {
+        ctr[i].width    = vec2i[0];
+        ctr[i].heigth   = vec2i[1];
+    }
+}
+
 int distance_between_blocs(constraint *ctr, int bloc1, int bloc2,int size)
 {
     int distance = 0;

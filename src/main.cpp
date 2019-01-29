@@ -32,7 +32,7 @@ string current_time;
 int main() {
 
     // ---- FILE INPUT ---
-    //Please past the path's file
+    //Please past the path's file ;"/Users/cedricgormond/Desktop/topologyGUI/fichier_contrainte_2D.txt"
     string file_path = "fichier_contrainte_2D.txt"; //FULL PATH
 
     ifstream file(file_path.c_str(), ios::in);
@@ -86,9 +86,7 @@ int main() {
     //Resize constraint
     constraint *CONTRAINT_RESIZE = new constraint[nb_pblocs];
     initConstraint(CONTRAINT_RESIZE);
-
-    //constraint *CONTRAINT_RESIZE = set_hexa(CONTRAINT, 50, nb_pblocs);
-    //constraint *CONTRAINT_RESIZE = set_2D_from_bloc1(CONTRAINT, 100, nb_pblocs);
+    CONTRAINT_RESIZE = CONTRAINT; //copy
 
     // ------ OUTPUT FILE ------
     string output_path = input_filename;
@@ -128,8 +126,8 @@ int main() {
 
     //Font
     //io.Fonts->AddFontDefault();
-    ImFont* font = io.Fonts->AddFontFromFileTTF("misc/fonts/Roboto-Medium.ttf", 16.0, nullptr);
-    IM_ASSERT(font != NULL);
+    //ImFont* font = io.Fonts->AddFontFromFileTTF("misc/fonts/Roboto-Medium.ttf", 16.0, nullptr);
+    //IM_ASSERT(font != NULL);
     //ImFont* font = io.Fonts->AddFontFromFileTTF("misc/fonts/Roboto-Medium.ttf", 16.0f);
 
     //ImGUI Clock
@@ -140,11 +138,11 @@ int main() {
      */
     // create container with nb_pblocs blocks in it, starting at pos 100/100
     // this container will be drawn using ContainerOfBlocks' void drawContainer(sf::RenderWindow &window)
-    //ContainerOfBlocks Blocks(nb_pblocs, sf::Vector2f(100, 100),CONTRAINT_RESIZE);
+    // ContainerOfBlocks Blocks(nb_pblocs, sf::Vector2f(100, 100),CONTRAINT_RESIZE);
 
     // create  line container, starting at pos 100/100
     // this container will be drawn using ContainerOfLines' void drawContainer(sf::RenderWindow &window)
-    //ContainerOfLines lines(nb_pblocs, sf::Vector2f(150.0f, 100.0f), CONTRAINT_RESIZE,100);
+    // ContainerOfLines lines(nb_pblocs, sf::Vector2f(150.0f, 100.0f), CONTRAINT_RESIZE,100);
 
     /*
      *  User's variables
@@ -152,8 +150,6 @@ int main() {
     //
     int distance    =   100;
     int radius      =   50;
-    int width_temp  =   0;
-    int heigth_temp =   0;
 
     /*
     * ---------------------------------------------------------------
@@ -167,8 +163,6 @@ int main() {
         while (window.pollEvent(evt)) {
             ImGui::SFML::ProcessEvent(evt);
 
-            //CONTRAINT_RESIZE = set_2D_from_bloc1(CONTRAINT, distance, nb_pblocs);
-            //ContainerOfBlocks Blocks(nb_pblocs, sf::Vector2f(100.0f, 100.0f), CONTRAINT_RESIZE);
             //ContainerOfLines lines(nb_pblocs, sf::Vector2f(150.0f, 100.0f), CONTRAINT_RESIZE,distance);
 
             if (evt.type == sf::Event::Closed) {
@@ -276,28 +270,26 @@ int main() {
          */
         // Resize dimensions
         static int choice_resize = 0;
+        static int vec2i[2] = { 10, 10 };
+        static int default2i[2] = { CONTRAINT[0].width, CONTRAINT[0].heigth};
+
         if (ImGui::CollapsingHeader("Dimensions"))
         {
             ImGui::RadioButton("Use default size", &choice_resize, 1);ImGui::SameLine();
-            //ImGui::Text("(%d , %d )",CONTRAINT_RESIZE[0].heigth,CONTRAINT_RESIZE[0].width);
 
             ImGui::RadioButton("Resize every pblock", &choice_resize, 2);
 
             switch (choice_resize) {
                 case 1 :
-                    ImGui::Text("(%d , %d)",CONTRAINT_RESIZE[0].heigth,CONTRAINT_RESIZE[0].width);
+                    ImGui::Text("(%d , %d)", default2i[0],default2i[1] );
                     break;
 
                 case 2:
-                    //Height
-                    //std::string temp1, temp2;
-                    ImGui::Text("Height of every pblocks (slices) : ");
-                    ImGui::InputInt("##",&width_temp);
-                    //heigth_temp = stoi(temp1);
-
                     //Width
-                    ImGui::Text("Width of of every pblocks (slices) : ");
-                    ImGui::InputInt("##",&heigth_temp);
+                    ImGui::Text("Width :                         "); //nasty spacing
+                    ImGui::SameLine();
+                    ImGui::Text("Heigth : ");
+                    ImGui::InputInt2("##", vec2i);
                     break;
             }
         }
@@ -312,7 +304,15 @@ int main() {
             // switch topology
             switch(choice_topology) {
                 case 1 :
-                    CONTRAINT_RESIZE = set_2D_from_bloc1(CONTRAINT,distance, nb_pblocs);
+                    //check resize dimensions
+                    if(choice_resize == 2){
+                        resize_dimensions(CONTRAINT_RESIZE, nb_pblocs, vec2i);
+                        my_log.AddLog("%s [info] [mesh2D] Resize every blocs to (%d,%d) \n", &current_time[0], vec2i[0], vec2i[1]);
+                    } else {
+                        resize_dimensions(CONTRAINT_RESIZE, nb_pblocs, default2i);
+                    }
+
+                    CONTRAINT_RESIZE = set_2D_from_bloc1(CONTRAINT_RESIZE,distance, nb_pblocs);
 
                     //Writing
                     output_path_temp = output_path + "_generated.txt";
@@ -326,7 +326,15 @@ int main() {
                     my_log.AddLog("%s [info] [mesh2D] Output file : %s \n", &current_time[0],&output_path_temp[0]);
                     break;
                 case 2 :
-                    CONTRAINT_RESIZE = set_hexa(CONTRAINT,radius, nb_pblocs);
+                    //check resize dimensions
+                    if(choice_resize == 2){
+                        resize_dimensions(CONTRAINT_RESIZE, nb_pblocs, vec2i);
+                        my_log.AddLog("%s [info] [hexa] Resize every blocs to (%d,%d) \n", &current_time[0], vec2i[0], vec2i[1]);
+                    }else {
+                        resize_dimensions(CONTRAINT_RESIZE, nb_pblocs, default2i);
+                    }
+
+                    CONTRAINT_RESIZE = set_hexa(CONTRAINT_RESIZE,radius, nb_pblocs);
 
                     //Writing
                     output_path_temp = output_path + "_hexa_generated.txt";
@@ -354,7 +362,15 @@ int main() {
             switch(choice_topology) {
 
                 case 1:
-                    CONTRAINT_RESIZE = set_2D_from_bloc1(CONTRAINT,distance, nb_pblocs);
+                    //check resize dimensions
+                    if(choice_resize == 2){
+                        resize_dimensions(CONTRAINT_RESIZE, nb_pblocs, vec2i);
+                        my_log.AddLog("%s [info] [mesh2D] Resize every blocs to (%d,%d) \n", &current_time[0], vec2i[0], vec2i[1]);
+                    }else {
+                        resize_dimensions(CONTRAINT_RESIZE, nb_pblocs, default2i);
+                    }
+
+                    CONTRAINT_RESIZE = set_2D_from_bloc1(CONTRAINT_RESIZE,distance, nb_pblocs);
 
                     //Writing
                     file_output.open(output_path_temp);
@@ -368,7 +384,15 @@ int main() {
                     break;
 
                 case 2:
-                    CONTRAINT_RESIZE = set_hexa(CONTRAINT,radius, nb_pblocs);
+                    //check resize dimensions
+                    if(choice_resize == 2){
+                        resize_dimensions(CONTRAINT_RESIZE, nb_pblocs, vec2i);
+                        my_log.AddLog("%s [info] [hexa] Resize every blocs to (%d,%d) \n", &current_time[0], vec2i[0], vec2i[1]);
+                    }else {
+                        resize_dimensions(CONTRAINT_RESIZE, nb_pblocs, default2i);
+                    }
+
+                    CONTRAINT_RESIZE = set_hexa(CONTRAINT_RESIZE,radius, nb_pblocs);
 
                     //Writing
                     file_output.open(output_path_temp);
@@ -406,10 +430,9 @@ int main() {
 
         ImGui::SFML::Render(window);
 
-
         //window.draw(Blocks);
         //window.draw(lines);
-        //testBlocks.drawContainer(window);
+        //Blocks.drawContainer(window);
         window.display();
     }
 
