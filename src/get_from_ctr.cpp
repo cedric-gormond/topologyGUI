@@ -54,9 +54,6 @@ void getBlocs_from_ctr(std::ifstream& file, constraint *ctr)
             
             if (std::regex_search(line, matches, rgx))
             {
-                
-                //std::cout << "Match found (router found)\n";
-                
                 // matches[0] is the complete match
                 ctr[i].name     = matches[1].str(); //Group 1 : Get the name of the block (pblock_i)
                 ctr[i].X_down   = matches[2].str(); //Group 2 : Get X0

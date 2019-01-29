@@ -60,8 +60,8 @@ constraint* set_2D_from_bloc1(constraint *ctr ,int distance, int size)
     constraint *ctr_resize = new constraint[size];
     //initConstraint(ctr_resize);
 
-    //OR ! *ctr_resize = ctr;
-    std::copy(ctr, ctr + size, ctr_resize); // copy the data from ctr into ctr_resize
+    ctr_resize = ctr;// copy the data from ctr into ctr_resize
+
 
     std::vector<int> gen_max(3);
     gen_max = max_gen(ctr, size);

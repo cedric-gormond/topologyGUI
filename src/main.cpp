@@ -84,8 +84,11 @@ int main() {
     displayBlocs_from_ctr(CONTRAINT, nb_pblocs);
 
     //Resize constraint
+    constraint *CONTRAINT_RESIZE = new constraint[nb_pblocs];
+    initConstraint(CONTRAINT_RESIZE);
+
     //constraint *CONTRAINT_RESIZE = set_hexa(CONTRAINT, 50, nb_pblocs);
-    constraint *CONTRAINT_RESIZE = set_2D_from_bloc1(CONTRAINT, 100, nb_pblocs);
+    //constraint *CONTRAINT_RESIZE = set_2D_from_bloc1(CONTRAINT, 100, nb_pblocs);
 
     // ------ OUTPUT FILE ------
     string output_path = input_filename;
@@ -137,7 +140,7 @@ int main() {
      */
     // create container with nb_pblocs blocks in it, starting at pos 100/100
     // this container will be drawn using ContainerOfBlocks' void drawContainer(sf::RenderWindow &window)
-    //ContainerOfBlocks Blocks(nb_pblocs, sf::Vector2f(100.0f, 100.0f),CONTRAINT_RESIZE);
+    //ContainerOfBlocks Blocks(nb_pblocs, sf::Vector2f(100, 100),CONTRAINT_RESIZE);
 
     // create  line container, starting at pos 100/100
     // this container will be drawn using ContainerOfLines' void drawContainer(sf::RenderWindow &window)
@@ -153,18 +156,22 @@ int main() {
     int heigth_temp =   0;
 
     /*
-     *  MAIN LOOP
-     */
+    * ---------------------------------------------------------------
+    *                      MAIN LOOP
+    * ---------------------------------------------------------------
+    */
     // Infinite loop
     while (window.isOpen()) {
         current_time = currentDateTime(); //get time
         sf::Event evt;
         while (window.pollEvent(evt)) {
             ImGui::SFML::ProcessEvent(evt);
+
+            //CONTRAINT_RESIZE = set_2D_from_bloc1(CONTRAINT, distance, nb_pblocs);
+            //ContainerOfBlocks Blocks(nb_pblocs, sf::Vector2f(100.0f, 100.0f), CONTRAINT_RESIZE);
+            //ContainerOfLines lines(nb_pblocs, sf::Vector2f(150.0f, 100.0f), CONTRAINT_RESIZE,distance);
+
             if (evt.type == sf::Event::Closed) {
-                //CONTRAINT_RESIZE = resize_2D_from_bloc1(CONTRAINT, distance, nb_pblocs);
-                //ContainerOfBlocks Blocks(nb_pblocs, sf::Vector2f(100.0f, 100.0f),CONTRAINT);
-                //ContainerOfLines lines(nb_pblocs, sf::Vector2f(150.0f, 100.0f), CONTRAINT_RESIZE,distance);
                 window.close();
             }
         }
@@ -197,7 +204,21 @@ int main() {
          */
         if (ImGui::CollapsingHeader("Open file"))
         {
-            ImGui::BulletText("WIP (à faire un collapsed ou en menu");
+            ImGui::BulletText("WIP (à faire un collapsed ou en menu)");
+
+            /*
+            if (file) {
+                my_log.AddLog("%s [info] File found : \n", &current_time[0]);
+                my_log.AddLog("%s",&file_path[0]);
+            }
+            else {
+                my_log.AddLog("%s [error] Cannot find  :",&current_time[0]);
+                my_log.AddLog("%s",&file_path[0]);
+
+                my_log.AddLog("%s [suggest] The constraint file must be named : fichier_contrainte_2D.txt \n",&current_time[0]);
+                my_log.AddLog("%s [info] Exit : \n", &current_time[0]);
+            }
+             */
         }
 
         /*
@@ -394,7 +415,7 @@ int main() {
 
     ImGui::SFML::Shutdown();
 
-    delete []CONTRAINT;
-    delete []CONTRAINT_RESIZE;
+    //delete []CONTRAINT;
+    //delete []CONTRAINT_RESIZE;
     return 0;
 }

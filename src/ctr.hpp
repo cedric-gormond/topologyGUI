@@ -15,7 +15,7 @@
 
 // STRUCT
 typedef struct {
-    std::string name;
+    std::string name    = " ";
     std::string X_up    = "0";
     std::string Y_up    = "0";
     std::string X_down  = "0";
@@ -27,6 +27,7 @@ typedef struct {
     
     int CenterX = 0;
     int CenterY = 0;
+
     int width   = 0;
     int heigth  = 0;
 }constraint;

@@ -10,9 +10,19 @@
 
 // METHODS
 void initConstraint(constraint *ctr){
-    ctr->name = " ";
+    ctr->name   = " ";
     ctr->X_down = "0";
     ctr->Y_down = "0";
-    ctr->X_up = "0";
-    ctr->Y_up = "0";
+    ctr->X_up   = "0";
+    ctr->Y_up   = "0";
+
+    ctr->GenY   = "-1";
+    ctr->GenY   = "-1";
+    ctr->GenZ   = "-1";
+
+    ctr->CenterX    = 0;
+    ctr->CenterY    = 0;
+
+    ctr->width      = 0;
+    ctr->heigth     = 0;
 }
