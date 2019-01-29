@@ -24,7 +24,6 @@
 #include "get_time.h"
 #include "log.h"
 
-
 using namespace std;
 
 //Global
@@ -86,7 +85,7 @@ int main() {
 
     //Resize constraint
     //constraint *CONTRAINT_RESIZE = set_hexa(CONTRAINT, 50, nb_pblocs);
-    constraint *CONTRAINT_RESIZE = resize_2D_from_bloc1(CONTRAINT, 100, nb_pblocs);
+    constraint *CONTRAINT_RESIZE = set_2D_from_bloc1(CONTRAINT, 100, nb_pblocs);
 
     // ------ OUTPUT FILE ------
     string output_path = input_filename;
@@ -265,8 +264,6 @@ int main() {
 
             switch (choice_resize) {
                 case 1 :
-                    //ImGui::RadioButton("Use default size", &choice_resize, 1);
-                    //ImGui::SameLine();
                     ImGui::Text("(%d , %d)",CONTRAINT_RESIZE[0].heigth,CONTRAINT_RESIZE[0].width);
                     break;
 
@@ -294,10 +291,10 @@ int main() {
             // switch topology
             switch(choice_topology) {
                 case 1 :
-                    CONTRAINT_RESIZE = resize_2D_from_bloc1(CONTRAINT,distance, nb_pblocs);
+                    CONTRAINT_RESIZE = set_2D_from_bloc1(CONTRAINT,distance, nb_pblocs);
 
                     //Writing
-                    output_path_temp = output_path + "2D_generated.txt";
+                    output_path_temp = output_path + "_generated.txt";
                     file_output.open(output_path_temp);
                     create_ctr_file(file_output, file_path, CONTRAINT_RESIZE, nb_pblocs);
                     file_output.close();
@@ -311,8 +308,8 @@ int main() {
                     CONTRAINT_RESIZE = set_hexa(CONTRAINT,radius, nb_pblocs);
 
                     //Writing
-                    output_path_temp = output_path + "HEXA_generated.txt";
-                    file_output.open(output_path);
+                    output_path_temp = output_path + "_hexa_generated.txt";
+                    file_output.open(output_path_temp);
                     create_ctr_file(file_output, file_path, CONTRAINT_RESIZE, nb_pblocs);
                     file_output.close();
 
@@ -336,7 +333,7 @@ int main() {
             switch(choice_topology) {
 
                 case 1:
-                    CONTRAINT_RESIZE = resize_2D_from_bloc1(CONTRAINT,distance, nb_pblocs);
+                    CONTRAINT_RESIZE = set_2D_from_bloc1(CONTRAINT,distance, nb_pblocs);
 
                     //Writing
                     file_output.open(output_path_temp);

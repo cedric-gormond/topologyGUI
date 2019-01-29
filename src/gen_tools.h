@@ -5,9 +5,13 @@
 #ifndef TOPOLOGYGUI_GEN_TOOLS_H
 #define TOPOLOGYGUI_GEN_TOOLS_H
 
+#include <stdio.h>
+#include <vector>
 #include "ctr.hpp"
 
-int max_genX(constraint *ctr, int size);
-int max_genY(constraint *ctr, int size);
+/*
+ * max_gen using vector
+ */
+std::vector<int> max_gen(constraint *ctr, int size);
 
 #endif //TOPOLOGYGUI_GEN_TOOLS_H

@@ -58,11 +58,11 @@ void getBlocs_from_ctr(std::ifstream& file, constraint *ctr)
                 //std::cout << "Match found (router found)\n";
                 
                 // matches[0] is the complete match
-                ctr[i].name = matches[1].str(); //Group 1 : Get the name of the block (pblock_i)
-                ctr[i].X_down = matches[2].str(); //Group 2 : Get X0
-                ctr[i].Y_down = matches[3].str(); //Group 3 : Get Y0
-                ctr[i].X_up = matches[4].str(); //Group 4 : Get X1
-                ctr[i].Y_up = matches[5].str(); //Group 5 : Get Y1
+                ctr[i].name     = matches[1].str(); //Group 1 : Get the name of the block (pblock_i)
+                ctr[i].X_down   = matches[2].str(); //Group 2 : Get X0
+                ctr[i].Y_down   = matches[3].str(); //Group 3 : Get Y0
+                ctr[i].X_up     = matches[4].str(); //Group 4 : Get X1
+                ctr[i].Y_up     = matches[5].str(); //Group 5 : Get Y1
             }
             else{
                 std::cout << "pblocks not found\n";

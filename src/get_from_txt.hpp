@@ -14,21 +14,23 @@
 #include <fstream>
 #include <string>
 #include <regex>
+#include <vector>
 
 #include "ctr.hpp"
+#include "gen_tools.h"
 
 /*
- * getNumberBlocs : Get the number of pblocs (routers)
+ * getNumberBlocs_from_text : Get the number of pblocs (routers)
  */
 int getNumberBlocs_from_text(std::ifstream& file);
 
 /*
- * getBlocs : Get all the values by using regular expressions
+ * getBlocs_from_text : Get all the values by using regular expressions
  */
 void getBlocs_from_text(std::ifstream& file, constraint *ctr);
 
 /*
- * getGen : Get all the gen by using regular expressions
+ * getGen_from_text : Get all the gen by using regular expressions
  */
 void getGen_from_text(std::ifstream& file, constraint *ctr);
 
@@ -36,6 +38,7 @@ void getGen_from_text(std::ifstream& file, constraint *ctr);
  * getGen : returns the correct gen to write in the output file
  */
 std::string setGen(constraint *ctr, int index,int size);
+
 
 
 

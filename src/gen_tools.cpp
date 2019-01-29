@@ -4,23 +4,33 @@
 
 #include "gen_tools.h"
 
+std::vector<int> max_gen(constraint *ctr, int size){
 
-int max_genX(constraint *ctr, int size) {
+    std::vector<int> vect;
+
     int MAX = 0;
     for (int I = 0; I < size; I++) {
         if (stoi(ctr[I].GenX) > stoi(ctr[MAX].GenX)) {
             MAX = I;
         }
     }
-    return stoi(ctr[MAX].GenX);
-}
+    vect.push_back(stoi(ctr[MAX].GenX));
 
-int max_genY(constraint *ctr, int size) {
-    int MAX = 0;
+    MAX = 0;
     for (int I = 0; I < size; I++) {
         if (stoi(ctr[I].GenY) > stoi(ctr[MAX].GenY)) {
             MAX = I;
         }
     }
-    return stoi(ctr[MAX].GenY);
+    vect.push_back(stoi(ctr[MAX].GenY));
+
+    MAX = 0;
+    for (int I = 0; I < size; I++) {
+        if (stoi(ctr[I].GenZ) > stoi(ctr[MAX].GenZ)) {
+            MAX = I;
+        }
+    }
+    vect.push_back(stoi(ctr[MAX].GenZ));
+
+    return vect;
 }

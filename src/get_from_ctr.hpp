@@ -14,7 +14,9 @@
 #include <fstream>
 #include <string>
 #include <regex>
+
 #include "ctr.hpp"
+#include "gen_tools.h"
 
 /*
  * getNumberBlocs : Get the number of pblocs (routers)

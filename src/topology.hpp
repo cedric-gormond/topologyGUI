@@ -25,13 +25,28 @@ void dimensions_of_bloc(constraint *ctr ,int size);
 int distance_between_blocs(constraint *ctr, int bloc1, int bloc2,int size);
 
 /*
- * set_distance_from_bloc1 : 
+ *
  */
-constraint* resize_2D_from_bloc1(constraint *ctr ,int distance, int size);
+int get_surface_hexa(constraint *ctr ,int radius, int size);
+
+/*
+ *
+ */
+int get_surface_2D(constraint *ctr ,int radius, int size);
+
+/*
+ * set_distance_from_bloc1 :
+ */
+constraint* set_2D_from_bloc1(constraint *ctr ,int distance, int size);
 
 /*
  * set_hexa:
  */
 constraint* set_hexa(constraint *ctr ,int radius, int size);
+
+/*
+ * set_3D:
+ */
+constraint* set_3D(constraint *ctr ,int distance, int size);
 
 #endif /* topology_hpp */
