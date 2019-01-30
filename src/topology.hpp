@@ -27,12 +27,12 @@ void resize_dimensions(constraint *ctr ,int size, int vec2i[2]);
 /*
  * distance_between_blocs :
  */
-int distance_between_blocs(constraint *ctr, int bloc1, int bloc2,int size);
+int distance_between_blocs(constraint *ctr, int bloc1, int bloc2);
 
 /*
  *
  */
-int get_surface_hexa(constraint *ctr ,int radius, int size);
+int get_surface_hexa(constraint *ctr ,int radius);
 
 /*
  *

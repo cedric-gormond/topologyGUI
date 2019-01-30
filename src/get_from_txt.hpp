@@ -34,10 +34,6 @@ void getBlocs_from_text(std::ifstream& file, constraint *ctr);
  */
 void getGen_from_text(std::ifstream& file, constraint *ctr);
 
-/*
- * getGen : returns the correct gen to write in the output file
- */
-std::string setGen(constraint *ctr, int index,int size);
 
 
 

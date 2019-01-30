@@ -8,9 +8,15 @@
 
 #include "topology.hpp"
 
+void resize_dimensions(constraint *ctr ,int size, int vec2i[2]){
+    for (int i=0; i<size; i++) {
+        ctr[i].width    = vec2i[0];
+        ctr[i].heigth   = vec2i[1];
+    }
+}
+
 void dimensions_of_bloc(constraint *ctr ,int size){
     for (int i=0; i<size; i++) {
-
         //dimensions
         ctr[i].width    = abs(stoi(ctr[i].X_up)-stoi(ctr[i].X_down));
         ctr[i].heigth   = abs(stoi(ctr[i].Y_up)-stoi(ctr[i].Y_down));
@@ -21,14 +27,7 @@ void dimensions_of_bloc(constraint *ctr ,int size){
     }
 }
 
-void resize_dimensions(constraint *ctr ,int size, int vec2i[2]){
-    for (int i=0; i<size; i++) {
-        ctr[i].width    = vec2i[0];
-        ctr[i].heigth   = vec2i[1];
-    }
-}
-
-int distance_between_blocs(constraint *ctr, int bloc1, int bloc2,int size)
+int distance_between_blocs(constraint *ctr, int bloc1, int bloc2)
 {
     int distance = 0;
     int XC_1,XC_0,YC_1,YC_0;
@@ -46,7 +45,7 @@ int distance_between_blocs(constraint *ctr, int bloc1, int bloc2,int size)
     return distance;
 }
 
-int get_surface_hexa(constraint *ctr ,int radius, int size){
+int get_surface_hexa(constraint *ctr ,int radius){
     //we want the surface area of the hexa form. However, we will just calculate the surface of a square
     int total_width     = round(2*(radius + ctr[0].width/2));
     int total_heigth    = round(2*(radius + ctr[0].heigth/2));
@@ -64,11 +63,10 @@ int get_surface_2D(constraint *ctr ,int distance, int size){
 
 constraint* set_2D_from_bloc1(constraint *ctr ,int distance, int size)
 {
-    constraint *ctr_resize = new constraint[size];
+    auto *ctr_resize = new constraint[size];
     //initConstraint(ctr_resize);
 
-    ctr_resize = ctr;// copy the data from ctr into ctr_resize
-
+    ctr_resize = ctr; //copy data
 
     std::vector<int> gen_max(3);
     gen_max = max_gen(ctr, size);
@@ -91,33 +89,22 @@ constraint* set_2D_from_bloc1(constraint *ctr ,int distance, int size)
     }
 
     // recalculate every X0Y0 and X1Y1
-    int X0_temp, Y0_temp;
-    int X1_temp, Y1_temp;
-
     for (int i=0; i<size; i++) {
-        // X0 Y0
-        X0_temp = ctr_resize[i].CenterX - (ctr_resize[i].width/2);
-        X1_temp = ctr_resize[i].CenterX + (ctr_resize[i].width/2);
-
-        ctr_resize[i].X_down = std::to_string(X0_temp);
-        ctr_resize[i].X_up   = std::to_string(X1_temp);
-
-        // X1 Y1
-        Y0_temp = ctr_resize[i].CenterY - (ctr_resize[i].heigth/2);
-        Y1_temp = ctr_resize[i].CenterY + (ctr_resize[i].heigth/2);
-
-        ctr_resize[i].Y_down = std::to_string(Y0_temp);
-        ctr_resize[i].Y_up   = std::to_string(Y1_temp);
+        ctr_resize[i].X_down = std::to_string(ctr_resize[i].CenterX - (ctr_resize[i].width/2));  // X0
+        ctr_resize[i].X_up   = std::to_string(ctr_resize[i].CenterX + (ctr_resize[i].width/2));  // X1
+        ctr_resize[i].Y_down = std::to_string(ctr_resize[i].CenterY - (ctr_resize[i].heigth/2)); // Y0
+        ctr_resize[i].Y_up   = std::to_string(ctr_resize[i].CenterY + (ctr_resize[i].heigth/2)); // Y1
     }
+    return ctr_resize;
 
     return ctr_resize;
 }
 
 constraint* set_hexa(constraint *ctr, int radius, int size)
 {
-    constraint *ctr_resize = new constraint[size];
+    auto *ctr_resize = new constraint[size];
 
-    std::copy(ctr, ctr + size, ctr_resize); // copy the data from ctr into ctr_resize
+    ctr_resize = ctr; // copy the data from ctr into ctr_resize
 
     // we move the first block in the middle
     ctr_resize[0].CenterX = 100;
@@ -138,72 +125,59 @@ constraint* set_hexa(constraint *ctr, int radius, int size)
     }
 
     // recalculate every X0Y0 and X1Y1
-    int X0_temp, Y0_temp;
-    int X1_temp, Y1_temp;
-
     for (int i=0; i<size; i++) {
-        // X0 Y0
-        X0_temp = ctr_resize[i].CenterX - (ctr_resize[i].width/2);
-        X1_temp = ctr_resize[i].CenterX + (ctr_resize[i].width/2);
-
-        ctr_resize[i].X_down = std::to_string(X0_temp);
-        ctr_resize[i].X_up   = std::to_string(X1_temp);
-
-        // X1 Y1
-        Y0_temp = ctr_resize[i].CenterY - (ctr_resize[i].heigth/2);
-        Y1_temp = ctr_resize[i].CenterY + (ctr_resize[i].heigth/2);
-
-        ctr_resize[i].Y_down = std::to_string(Y0_temp);
-        ctr_resize[i].Y_up   = std::to_string(Y1_temp);
+        ctr_resize[i].X_down = std::to_string(ctr_resize[i].CenterX - (ctr_resize[i].width/2));  // X0
+        ctr_resize[i].X_up   = std::to_string(ctr_resize[i].CenterX + (ctr_resize[i].width/2));  // X1
+        ctr_resize[i].Y_down = std::to_string(ctr_resize[i].CenterY - (ctr_resize[i].heigth/2)); // Y0
+        ctr_resize[i].Y_up   = std::to_string(ctr_resize[i].CenterY + (ctr_resize[i].heigth/2)); // Y1
     }
-
     return ctr_resize;
 }
 
 constraint* set_3D(constraint *ctr ,int distance, int size){
-    constraint *ctr_resize = new constraint[size];
+    auto *ctr_resize = new constraint[size];
 
-    std::copy(ctr, ctr + size, ctr_resize); // copy the data from ctr into ctr_resize
+    ctr_resize = ctr; // copy the data from ctr into ctr_resize
 
     std::vector<int> gen_max(3);
     gen_max = max_gen(ctr, size);
 
     // recalculate every center and assumes that pblock is bottom_left
-    int i, j, pbloc;
+    int i, j, k, pbloc;
+
+    ctr_resize[0].CenterX = ctr[0].CenterX;
+    ctr_resize[0].CenterY = ctr[0].CenterY;
 
     i = j = pbloc = 0;
-    while (i<=gen_max[1]) {
-        j=0;
-        while (j<=gen_max[0]) {
-            pbloc++;
-            ctr_resize[pbloc].CenterX = ctr_resize[pbloc-1].CenterX + distance;
-            ctr_resize[pbloc].CenterY = ctr_resize[pbloc-1].CenterY;
-            j++;
+    k=0;
+    while (k<=gen_max[2]) {
+        i = 0;
+        while (i<=gen_max[1]) {
+            j=0;
+            while (j<=gen_max[0]) {
+                pbloc++;
+                ctr_resize[pbloc].CenterX = ctr_resize[pbloc-1].CenterX + distance;
+                ctr_resize[pbloc].CenterY = ctr_resize[pbloc-1].CenterY;
+                j++;
+            }
+            ctr_resize[pbloc].CenterX = ctr_resize[0].CenterX + (distance/2)*k; //it works only with Z=2
+            ctr_resize[pbloc].CenterY = ctr_resize[pbloc].CenterY + distance;
+            i++;
         }
-        ctr_resize[pbloc].CenterX = ctr_resize[0].CenterX ;
-        ctr_resize[pbloc].CenterY = ctr_resize[pbloc].CenterY + distance;
-        i++;
+        ctr_resize[pbloc].CenterX = ctr_resize[0].CenterX + (distance/2);
+        ctr_resize[pbloc].CenterY = ctr_resize[0].CenterY + (distance/2);
+        ctr_resize[pbloc].GenZ = std::to_string(k + 1);
+        k++;
     }
 
     // recalculate every X0Y0 and X1Y1
-    int X0_temp, Y0_temp;
-    int X1_temp, Y1_temp;
-
     for (int i=0; i<size; i++) {
-        // X0 Y0
-        X0_temp = ctr_resize[i].CenterX - (ctr_resize[i].width/2);
-        X1_temp = ctr_resize[i].CenterX + (ctr_resize[i].width/2);
-
-        ctr_resize[i].X_down = std::to_string(X0_temp);
-        ctr_resize[i].X_up   = std::to_string(X1_temp);
-
-        // X1 Y1
-        Y0_temp = ctr_resize[i].CenterY - (ctr_resize[i].heigth/2);
-        Y1_temp = ctr_resize[i].CenterY + (ctr_resize[i].heigth/2);
-
-        ctr_resize[i].Y_down = std::to_string(Y0_temp);
-        ctr_resize[i].Y_up   = std::to_string(Y1_temp);
+        ctr_resize[i].X_down = std::to_string(ctr_resize[i].CenterX - (ctr_resize[i].width/2));  // X0
+        ctr_resize[i].X_up   = std::to_string(ctr_resize[i].CenterX + (ctr_resize[i].width/2));  // X1
+        ctr_resize[i].Y_down = std::to_string(ctr_resize[i].CenterY - (ctr_resize[i].heigth/2)); // Y0
+        ctr_resize[i].Y_up   = std::to_string(ctr_resize[i].CenterY + (ctr_resize[i].heigth/2)); //Y1
     }
 
     return ctr_resize;
 }
+

@@ -7,11 +7,18 @@
 
 #include <stdio.h>
 #include <vector>
+#include <string>
 #include "ctr.hpp"
+
 
 /*
  * max_gen using vector
  */
 std::vector<int> max_gen(constraint *ctr, int size);
+
+/*
+ * getGen : returns the correct gen to write in the output file
+ */
+std::string setGen(constraint *ctr, int index,int size);
 
 #endif //TOPOLOGYGUI_GEN_TOOLS_H

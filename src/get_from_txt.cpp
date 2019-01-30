@@ -109,54 +109,6 @@ void getGen_from_text(std::ifstream& file, constraint *ctr)
     }
 }
 
-std::string setGen(constraint *ctr, int index, int size)
-{
-    /*
-     * GenZ doesn't matter
-     */
-
-    string correct_gen;
-    string str_X, str_Y;
-
-    std::vector<int> gen_max(3);
-    gen_max = max_gen(ctr, size);
-
-    int max_X = gen_max[0];
-    int max_Y = gen_max[1];
-
-
-    // Determines the first expression which depends on Y
-    if(stoi(ctr[index].GenY) == 0){
-        str_Y = ".GEN_ROUTER_BOTTOM";
-    }
-
-    if (stoi(ctr[index].GenY) == max_Y) {
-        str_Y = ".GEN_ROUTER_TOP";
-    }
-
-    if ((stoi(ctr[index].GenY) != 0) && (stoi(ctr[index].GenY) != max_Y)) {
-        str_Y = ".GEN_ROUTER_MIDDLE";
-    }
-
-    // Determines the second expression which depends on X
-    if(stoi(ctr[index].GenX) == 0){
-        str_X = str_Y + "_LEFT";
-    }
-
-    if (stoi(ctr[index].GenX) == max_X) {
-        str_X = str_Y + "_RIGHT";
-    }
-
-    if ((stoi(ctr[index].GenX) != 0) && (stoi(ctr[index].GenX) != max_X)) {
-        str_X = str_Y + "_CENTRAL";
-    }
-
-    //final gen
-    correct_gen = str_Y + str_X;
-
-    return correct_gen;
-}
-
 void createOutputFile(std::ofstream& file_output, string path,constraint *ctr, int size)
 {
     cout << " * Wrinting in file " << endl << endl;
@@ -172,7 +124,7 @@ void createOutputFile(std::ofstream& file_output, string path,constraint *ctr, i
     for (int i=0; i < size; i++) {
         file_output << "create_pblock pblock_"<< ctr[i].name << endl;
 
-        set_gen = setGen(ctr,i,size);
+        set_gen = setGen(ctr,i,size); //set gen for each block
 
         file_output << "add_cells_to_pblock [get_pblocks pblock_"<< ctr[i].name <<"] [get_cells -quiet [list {GEN_Z["<< ctr[i].GenZ <<"].GEN_Y["<< ctr[i].GenY <<"].GEN_X["<< ctr[i].GenX <<"]"<< set_gen <<".Router}]]" << endl;
 

@@ -33,12 +33,11 @@ int main() {
 
     // ---- FILE INPUT ---
     //Please past the path's file ;"/Users/cedricgormond/Desktop/topologyGUI/fichier_contrainte_2D.txt"
-    string file_path = "fichier_contrainte_2D.txt"; //FULL PATH
+    string file_path = "fichier_contrainte_3D.txt"; //FULL PATH
 
     ifstream file(file_path.c_str(), ios::in);
     string input_filename = getFilename(file_path); // get the input file name WITHOUT extension
 
-    // Check
     if (file) {
         cout << " * File found :" << endl;
         SplitFilename(file_path);
@@ -54,7 +53,6 @@ int main() {
     }
 
     // ----- READ INPUT FILE AND EXTRACT BLOCS  ------
-
     //Get number of routers (blocs)
     cout << endl;
     cout << " * Searching for pblocs " << endl;
@@ -64,7 +62,7 @@ int main() {
     file.close();
 
     //Constraint values
-    constraint *CONTRAINT = new constraint[nb_pblocs];
+    auto *CONTRAINT = new constraint[nb_pblocs];
     initConstraint(CONTRAINT);
 
     // Get all the routers (pblocs)
@@ -84,7 +82,7 @@ int main() {
     displayBlocs_from_ctr(CONTRAINT, nb_pblocs);
 
     //Resize constraint
-    constraint *CONTRAINT_RESIZE = new constraint[nb_pblocs];
+    auto *CONTRAINT_RESIZE = new constraint[nb_pblocs];
     initConstraint(CONTRAINT_RESIZE);
     CONTRAINT_RESIZE = CONTRAINT; //copy
 
@@ -117,10 +115,10 @@ int main() {
 
     //Theme
     ImGui::StyleColorsLight();
+    ImGui::PushStyleVar(ImGuiStyleVar_FrameRounding, 3.0f);
 
     // ImGUI - variables
     static ExampleAppLog my_log;
-    static bool show_app_log    = true;
     static bool* p_open = new bool;
     *p_open = true;
 
@@ -148,8 +146,9 @@ int main() {
      *  User's variables
      */
     //
-    int distance    =   100;
-    int radius      =   50;
+    int distance2D    =   100;
+    int distance3D    =   100;
+    int radius        =   50;
 
     /*
     * ---------------------------------------------------------------
@@ -189,6 +188,7 @@ int main() {
         ImGui::Spacing();
         if (ImGui::CollapsingHeader("Help")) {
             ImGui::BulletText("TopologyGUI doesn't recognize .xdc files ");
+            ImGui::BulletText("TopologyGUI can only generate constraint files with their respective dimensions. \n");
         }
         ImGui::Separator();
 
@@ -240,7 +240,7 @@ int main() {
         /*
          *  Topology
          */
-        static int choice_topology = 0; //Choose your topology
+        static int choice_topology; //Choose your topology
         ImGui::Spacing();
         if (ImGui::CollapsingHeader("Topology"))
         {
@@ -253,12 +253,18 @@ int main() {
             switch(choice_topology) {
                 case 1 :
                     ImGui::Text("Distance (in slices) between each block : ");
-                    ImGui::InputInt("",&distance);
+                    ImGui::InputInt("",&distance2D);
                     break;
                 case 2 :
                     //Radius
                     ImGui::Text("Radius (in slices) between the center (block1) and each other block : ");
                     ImGui::InputInt("",&radius);
+                    break;
+                case 3 :
+                    //Radius
+                    ImGui::Text("Distance (in slices) between each block : ");
+                    ImGui::InputInt("",&distance3D);
+                    ImGui::Text("ATTENTION ! TopologyUI can only handle two Z generations (from 0 to 1)");
                     break;
             }
         }
@@ -276,7 +282,6 @@ int main() {
         if (ImGui::CollapsingHeader("Dimensions"))
         {
             ImGui::RadioButton("Use default size", &choice_resize, 1);ImGui::SameLine();
-
             ImGui::RadioButton("Resize every pblock", &choice_resize, 2);
 
             switch (choice_resize) {
@@ -286,7 +291,7 @@ int main() {
 
                 case 2:
                     //Width
-                    ImGui::Text("Width :                         "); //nasty spacing
+                    ImGui::Text("Width :                         "); //nasty spacing (^.^)
                     ImGui::SameLine();
                     ImGui::Text("Heigth : ");
                     ImGui::InputInt2("##", vec2i);
@@ -299,6 +304,11 @@ int main() {
         /*
          *  Generate constraint file
          */
+        ImGui::Text("Save constraint file as ");
+        const char* items[] = { ".txt", ".xdc"};
+        static int choice_type = 0;
+        ImGui::Combo("", &choice_type, items, IM_ARRAYSIZE(items));
+
         if (ImGui::Button("Generate constraint file"))     {
             std::string output_path_temp;
             // switch topology
@@ -311,11 +321,12 @@ int main() {
                     } else {
                         resize_dimensions(CONTRAINT_RESIZE, nb_pblocs, default2i);
                     }
-
-                    CONTRAINT_RESIZE = set_2D_from_bloc1(CONTRAINT_RESIZE,distance, nb_pblocs);
+                    //apply topology
+                    CONTRAINT_RESIZE = set_2D_from_bloc1(CONTRAINT_RESIZE,distance2D, nb_pblocs);
 
                     //Writing
-                    output_path_temp = output_path + "_generated.txt";
+                    if (choice_type == 0) output_path_temp = output_path + "_generated.txt";
+                    if (choice_type == 1) output_path_temp = output_path + "_generated.xdc";
                     file_output.open(output_path_temp);
                     create_ctr_file(file_output, file_path, CONTRAINT_RESIZE, nb_pblocs);
                     file_output.close();
@@ -333,11 +344,12 @@ int main() {
                     }else {
                         resize_dimensions(CONTRAINT_RESIZE, nb_pblocs, default2i);
                     }
-
+                    //apply topology
                     CONTRAINT_RESIZE = set_hexa(CONTRAINT_RESIZE,radius, nb_pblocs);
 
                     //Writing
-                    output_path_temp = output_path + "_hexa_generated.txt";
+                    if (choice_type == 0) output_path_temp = output_path + "_hexa_generated.txt";
+                    if (choice_type == 1) output_path_temp = output_path + "_hexa_generated.xdc";
                     file_output.open(output_path_temp);
                     create_ctr_file(file_output, file_path, CONTRAINT_RESIZE, nb_pblocs);
                     file_output.close();
@@ -347,12 +359,36 @@ int main() {
                     my_log.AddLog("%s [info] [hexa] Success \n",&current_time[0]);
                     my_log.AddLog("%s [info] [hexa] Output file : %s \n", &current_time[0],&output_path_temp[0]);
                     break;
+                case 3:
+                    //check resize dimensions
+                    if(choice_resize == 3){
+                        resize_dimensions(CONTRAINT_RESIZE, nb_pblocs, vec2i);
+                        my_log.AddLog("%s [info] [mesh3D] Resize every blocs to (%d,%d) \n", &current_time[0], vec2i[0], vec2i[1]);
+                    } else {
+                        resize_dimensions(CONTRAINT_RESIZE, nb_pblocs, default2i);
+                    }
+                    //apply topology
+                    CONTRAINT_RESIZE = set_3D(CONTRAINT_RESIZE,distance3D, nb_pblocs);
+
+                    //Writing
+                    if (choice_type == 0) output_path_temp = output_path + "_3D_generated.txt";
+                    if (choice_type == 1) output_path_temp = output_path + "_3D_generated.xdc";
+                    file_output.open(output_path_temp);
+                    create_ctr_file(file_output, file_path, CONTRAINT_RESIZE, nb_pblocs);
+                    file_output.close();
+
+                    //log
+                    my_log.AddLog("%s [info] [mesh3D] Generate constraint file \n", &current_time[0]);
+                    my_log.AddLog("%s [info] [mesh3D] Success \n",&current_time[0]);
+                    my_log.AddLog("%s [info] [mesh3D] Output file : %s \n", &current_time[0],&output_path_temp[0]);
+                    break;
 
                 default:
                     my_log.AddLog("%s [error] Please choose a topology\n", &current_time[0]);
                     break;
             }
         }
+
 
         /*
          *  Generate constraint file (simplified)
@@ -369,8 +405,8 @@ int main() {
                     }else {
                         resize_dimensions(CONTRAINT_RESIZE, nb_pblocs, default2i);
                     }
-
-                    CONTRAINT_RESIZE = set_2D_from_bloc1(CONTRAINT_RESIZE,distance, nb_pblocs);
+                    //apply topology
+                    CONTRAINT_RESIZE = set_2D_from_bloc1(CONTRAINT_RESIZE,distance2D, nb_pblocs);
 
                     //Writing
                     file_output.open(output_path_temp);
@@ -378,6 +414,7 @@ int main() {
                     file_output.close();
 
                     //log
+                    output_path_temp = output_path + "_simplified_generated.txt";
                     my_log.AddLog("%s [info] [mesh2D] Generate simplified constraint file \n", &current_time[0]);
                     my_log.AddLog("%s [info] [mesh2D] Success \n",&current_time[0]);
                     my_log.AddLog("%s [info] [mesh2D] Output file : %s \n", &current_time[0],&output_path_temp[0]);
@@ -391,10 +428,11 @@ int main() {
                     }else {
                         resize_dimensions(CONTRAINT_RESIZE, nb_pblocs, default2i);
                     }
-
+                    //apply topology
                     CONTRAINT_RESIZE = set_hexa(CONTRAINT_RESIZE,radius, nb_pblocs);
 
                     //Writing
+                    output_path_temp = output_path + "_simplified_generated.txt";
                     file_output.open(output_path_temp);
                     create_txt_file(file_output, file_path, CONTRAINT_RESIZE, nb_pblocs);
                     file_output.close();
@@ -403,6 +441,28 @@ int main() {
                     my_log.AddLog("%s [info] [HEXA] Generate simplified constraint file \n", &current_time[0]);
                     my_log.AddLog("%s [info] [HEXA] Success \n",&current_time[0]);
                     my_log.AddLog("%s [info] [HEXA] Output file : %s \n", &current_time[0],&output_path_temp[0]);
+                    break;
+                case 3:
+                    //check resize dimensions
+                    if(choice_resize == 3){
+                        resize_dimensions(CONTRAINT_RESIZE, nb_pblocs, vec2i);
+                        my_log.AddLog("%s [info] [mesh3D] Resize every blocs to (%d,%d) \n", &current_time[0], vec2i[0], vec2i[1]);
+                    } else {
+                        resize_dimensions(CONTRAINT_RESIZE, nb_pblocs, default2i);
+                    }
+                    //apply topology
+                    CONTRAINT_RESIZE = set_3D(CONTRAINT_RESIZE,distance3D, nb_pblocs);
+
+                    //Writing
+                    output_path_temp = output_path + "_simplified_generated.txt";
+                    file_output.open(output_path_temp);
+                    create_txt_file(file_output, file_path, CONTRAINT_RESIZE, nb_pblocs);
+                    file_output.close();
+
+                    //log
+                    my_log.AddLog("%s [info] [mesh3D] Generate simplified constraint file \n", &current_time[0]);
+                    my_log.AddLog("%s [info] [mesh3D] Success \n",&current_time[0]);
+                    my_log.AddLog("%s [info] [mesh3D] Output file : %s \n", &current_time[0],&output_path_temp[0]);
                     break;
 
                 default:
