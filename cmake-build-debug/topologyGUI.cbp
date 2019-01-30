@@ -179,6 +179,12 @@
 		<Unit filename="/Users/cedricgormond/Desktop/topologyGUI/src/get_time.h">
 			<Option target="topologyGUI"/>
 		</Unit>
+		<Unit filename="/Users/cedricgormond/Desktop/topologyGUI/src/graphics_utilities.cpp">
+			<Option target="topologyGUI"/>
+		</Unit>
+		<Unit filename="/Users/cedricgormond/Desktop/topologyGUI/src/graphics_utilities.h">
+			<Option target="topologyGUI"/>
+		</Unit>
 		<Unit filename="/Users/cedricgormond/Desktop/topologyGUI/src/line.cpp">
 			<Option target="topologyGUI"/>
 		</Unit>

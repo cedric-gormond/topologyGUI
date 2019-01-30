@@ -501,6 +501,33 @@ src/get_time.cpp.s:
 	$(MAKE) -f CMakeFiles/topologyGUI.dir/build.make CMakeFiles/topologyGUI.dir/src/get_time.cpp.s
 .PHONY : src/get_time.cpp.s
 
+src/graphics_utilities.o: src/graphics_utilities.cpp.o
+
+.PHONY : src/graphics_utilities.o
+
+# target to build an object file
+src/graphics_utilities.cpp.o:
+	$(MAKE) -f CMakeFiles/topologyGUI.dir/build.make CMakeFiles/topologyGUI.dir/src/graphics_utilities.cpp.o
+.PHONY : src/graphics_utilities.cpp.o
+
+src/graphics_utilities.i: src/graphics_utilities.cpp.i
+
+.PHONY : src/graphics_utilities.i
+
+# target to preprocess a source file
+src/graphics_utilities.cpp.i:
+	$(MAKE) -f CMakeFiles/topologyGUI.dir/build.make CMakeFiles/topologyGUI.dir/src/graphics_utilities.cpp.i
+.PHONY : src/graphics_utilities.cpp.i
+
+src/graphics_utilities.s: src/graphics_utilities.cpp.s
+
+.PHONY : src/graphics_utilities.s
+
+# target to generate assembly for a file
+src/graphics_utilities.cpp.s:
+	$(MAKE) -f CMakeFiles/topologyGUI.dir/build.make CMakeFiles/topologyGUI.dir/src/graphics_utilities.cpp.s
+.PHONY : src/graphics_utilities.cpp.s
+
 src/line.o: src/line.cpp.o
 
 .PHONY : src/line.o
@@ -660,6 +687,9 @@ help:
 	@echo "... src/get_time.o"
 	@echo "... src/get_time.i"
 	@echo "... src/get_time.s"
+	@echo "... src/graphics_utilities.o"
+	@echo "... src/graphics_utilities.i"
+	@echo "... src/graphics_utilities.s"
 	@echo "... src/line.o"
 	@echo "... src/line.i"
 	@echo "... src/line.s"

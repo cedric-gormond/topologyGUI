@@ -23,6 +23,7 @@
 
 #include "get_time.h"
 #include "log.h"
+#include "graphics_utilities.h"
 
 using namespace std;
 
@@ -145,16 +146,17 @@ int main() {
     /*
      *  User's variables
      */
-    //
-    int distance2D    =   100;
-    int distance3D    =   100;
-    int radius        =   50;
+    static int distance2D    =  100;
+    static int distance3D    =  100;
+    static int radius        =  50;
+    static bool* toggle      =  new bool;
+    *p_open                  =  true;
 
     /*
-    * ---------------------------------------------------------------
-    *                      MAIN LOOP
-    * ---------------------------------------------------------------
-    */
+     * ---------------------------------------------------------------
+     *                      MAIN LOOP
+     * ---------------------------------------------------------------
+     */
     // Infinite loop
     while (window.isOpen()) {
         current_time = currentDateTime(); //get time
@@ -234,6 +236,17 @@ int main() {
         }
         ImGui::SameLine();
         ShowHelpMarker("Generate a simplified constraint file which is NOT compatible with Xilinx Vivado\n");
+        ImGui::Separator();
+        ImGui::Spacing();
+
+        /*
+         *  Create constraint file from scratch
+         */
+        if (ImGui::CollapsingHeader("Create constraint file from scratch"))
+        {
+            ImGui::BulletText("WIP toggle OU mettre une partie grisée ");
+            ToggleButton("fgfgf", toggle);
+        }
         ImGui::Separator();
         ImGui::Spacing();
 

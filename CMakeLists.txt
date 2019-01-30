@@ -42,7 +42,7 @@ set(SOURCE_FILES
         imgui-sfml/imconfig-SFML.h
         imgui-sfml/imgui-SFML.cpp
         imgui-sfml/imgui-SFML.h
-        src/log.h src/get_time.cpp src/get_time.h)
+        src/log.h src/get_time.cpp src/get_time.h src/graphics_utilities.cpp src/graphics_utilities.h)
 
 #set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -static-libstdc++") #a voir
 

@@ -114,6 +114,10 @@ time.h
 string
 -
 
+/Users/cedricgormond/Desktop/topologyGUI/src/graphics_utilities.h
+imgui.h
+/Users/cedricgormond/Desktop/topologyGUI/src/imgui.h
+
 /Users/cedricgormond/Desktop/topologyGUI/src/line.h
 SFML/Graphics.hpp
 -
@@ -181,6 +185,8 @@ get_time.h
 /Users/cedricgormond/Desktop/topologyGUI/src/get_time.h
 log.h
 /Users/cedricgormond/Desktop/topologyGUI/src/log.h
+graphics_utilities.h
+/Users/cedricgormond/Desktop/topologyGUI/src/graphics_utilities.h
 
 /Users/cedricgormond/Desktop/topologyGUI/src/topology.hpp
 stdio.h
