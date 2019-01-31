@@ -31,5 +31,9 @@ Ce programme a été créé pour le Laboratoire Hubert Curien (CNRS).
 
 **ATTENTION !** Il n'est encore pas possible de générer une topologie 3D maillée à partir d'une topologie 2D maillée ou hexagonale, et inversement.
 
-1. **Créer un fichier de contrainte à partir de zéro** (WIP)
+2. **Créer un fichier de contrainte à partir de zéro** (WIP)
 
+   Sans importer de fichier, l'utilisateur spéficie :
+- les dimensions de son fichier de contrainte **dimX** et **dimY**
+- les caractéristiques de son premier routeur, c'est à dire ses coordonnées **X0Y0** et **X1Y1**
+- la topologie souhaîtée 
