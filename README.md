@@ -27,13 +27,17 @@ Ce programme a été créé pour le Laboratoire Hubert Curien (CNRS).
    <u>2D hexa:</u> l'utilisateur doit spécifier la **distance (rayon) entre le centre du bloc1 et les centres des n-1 blocs sur le cercle**. Comme pour la topologie 2D maillée, la hauteur et la largeur de chaque bloc est basée sur celle du premier (pbloc1). Il est donc possible de conserver ces donnéees ou de les redimensionner.![2d hexa](https://user-images.githubusercontent.com/17772801/52047706-e10bd480-2549-11e9-8150-920f9b6844f3.png)
 
 <u>3D maillée:</u>  l'utilisateur doit spécifier la **distance entre le centre de chaque bloc.** Cependant, l'utilisateur est limité à seulement une profondeur (pour une meilleure visibilité).  Comme pour la topologie 2D maillée, la hauteur et la largeur de chaque bloc est basée sur celle du premier (pbloc1). Il est donc possible de conserver ces donnéees ou de les redimensionner.
-![image 3D](https://user-images.githubusercontent.com/17772801/52050044-a311af00-254f-11e9-9878-d5e72cbcd714.png)
+
+Les blocs en profondeur commencent avec une coordonées **X0 + D/2** et **Y0 + D/2** (voir schéma) 
+
+![3d maille-2](https://user-images.githubusercontent.com/17772801/52051068-ba9e6700-2552-11e9-80ce-84024e3a2d9c.png)
 
 **ATTENTION !** Il n'est encore pas possible de générer une topologie 3D maillée à partir d'une topologie 2D maillée ou hexagonale, et inversement.
 
 2. **Créer un fichier de contrainte à partir de zéro** (WIP)
 
    Sans importer de fichier, l'utilisateur spéficie :
+
 - les dimensions de son fichier de contrainte **dimX** et **dimY**
 - les caractéristiques de son premier routeur, c'est à dire ses coordonnées **X0Y0** et **X1Y1**
 - la topologie souhaîtée 
