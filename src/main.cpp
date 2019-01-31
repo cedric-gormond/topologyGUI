@@ -34,7 +34,7 @@ int main() {
 
     // ---- FILE INPUT ---
     //Please past the path's file ;"/Users/cedricgormond/Desktop/topologyGUI/fichier_contrainte_2D.txt"
-    string file_path = "fichier_contrainte_3D.txt"; //FULL PATH
+    string file_path = "fichier_contrainte_2D.txt"; //FULL PATH
 
     ifstream file(file_path.c_str(), ios::in);
     string input_filename = getFilename(file_path); // get the input file name WITHOUT extension
@@ -149,7 +149,6 @@ int main() {
     static int distance2D    =  100;
     static int distance3D    =  100;
     static int radius        =  50;
-    static bool* toggle      =  new bool;
     *p_open                  =  true;
 
     /*
@@ -242,13 +241,30 @@ int main() {
         /*
          *  Create constraint file from scratch
          */
+        static bool disabled = true;
+        static int gens[2] = { 3, 3 }; // X0 Y0 X1 Y1
+        static int coord[4] = { 10, 20 , 20, 30}; // X0 Y0 X1 Y1
         if (ImGui::CollapsingHeader("Create constraint file from scratch"))
         {
-            ImGui::BulletText("WIP toggle OU mettre une partie grisée ");
-            ToggleButton("fgfgf", toggle);
+            ImGui::BeginGroup();
+            ImGui::Checkbox("Disable", &disabled);
+            if (disabled)   ImGui::PushStyleVar(ImGuiStyleVar_Alpha, ImGui::GetStyle().Alpha * 0.5f);
+
+            ImGui::Text("DimX :                          "); ImGui::SameLine();
+            ImGui::Text("DimY :                          ");
+            ImGui::InputInt2("##", gens);
+            //ImGui::Text("%s Blocs", nb_blocs[0]);
+
+            ImGui::Text("X0 :           "); ImGui::SameLine();
+            ImGui::Text("Y0 :            "); ImGui::SameLine();
+            ImGui::Text("X1 :           "); ImGui::SameLine();
+            ImGui::Text("Y1 : ");
+            ImGui::InputInt4("##", coord);
+
+            if (disabled)   ImGui::PopStyleVar();
+            ImGui::EndGroup();
         }
         ImGui::Separator();
-        ImGui::Spacing();
 
         /*
          *  Topology
@@ -321,6 +337,7 @@ int main() {
         const char* items[] = { ".txt", ".xdc"};
         static int choice_type = 0;
         ImGui::Combo("", &choice_type, items, IM_ARRAYSIZE(items));
+        auto *CONTRAINT_CREATED = new constraint[gens[0]*gens[1]];
 
         if (ImGui::Button("Generate constraint file"))     {
             std::string output_path_temp;
@@ -334,14 +351,26 @@ int main() {
                     } else {
                         resize_dimensions(CONTRAINT_RESIZE, nb_pblocs, default2i);
                     }
+
                     //apply topology
-                    CONTRAINT_RESIZE = set_2D_from_bloc1(CONTRAINT_RESIZE,distance2D, nb_pblocs);
+
+                    if (disabled){
+                        CONTRAINT_RESIZE = set_2D_from_bloc1(CONTRAINT_RESIZE,distance2D, nb_pblocs);
+                    }
+                    else{
+                        my_log.AddLog("%s [info] [mesh2D] Input file ignored \n", &current_time[0]);
+                        CONTRAINT_CREATED = CreateConstraint(gens,coord);
+                        CONTRAINT_CREATED = set_2D_from_bloc1(CONTRAINT_CREATED,distance2D, nb_pblocs);
+                    }
 
                     //Writing
                     if (choice_type == 0) output_path_temp = output_path + "_generated.txt";
                     if (choice_type == 1) output_path_temp = output_path + "_generated.xdc";
                     file_output.open(output_path_temp);
-                    create_ctr_file(file_output, file_path, CONTRAINT_RESIZE, nb_pblocs);
+                    if (disabled)
+                        create_ctr_file(file_output, file_path, CONTRAINT_RESIZE, nb_pblocs);
+                    else
+                        create_ctr_file(file_output, file_path, CONTRAINT_CREATED, nb_pblocs);
                     file_output.close();
 
                     //log
@@ -357,6 +386,7 @@ int main() {
                     }else {
                         resize_dimensions(CONTRAINT_RESIZE, nb_pblocs, default2i);
                     }
+
                     //apply topology
                     CONTRAINT_RESIZE = set_hexa(CONTRAINT_RESIZE,radius, nb_pblocs);
 
@@ -380,6 +410,7 @@ int main() {
                     } else {
                         resize_dimensions(CONTRAINT_RESIZE, nb_pblocs, default2i);
                     }
+
                     //apply topology
                     CONTRAINT_RESIZE = set_3D(CONTRAINT_RESIZE,distance3D, nb_pblocs);
 
@@ -418,6 +449,7 @@ int main() {
                     }else {
                         resize_dimensions(CONTRAINT_RESIZE, nb_pblocs, default2i);
                     }
+
                     //apply topology
                     CONTRAINT_RESIZE = set_2D_from_bloc1(CONTRAINT_RESIZE,distance2D, nb_pblocs);
 

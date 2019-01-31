@@ -37,4 +37,9 @@ typedef struct {
  */
 void initConstraint(constraint *ctr);
 
+/*
+ * CreateConstraint : Initialisation of constraint pointer
+ */
+constraint* CreateConstraint(int gens[2], int coord[4]); // X0 Y0 X1 Y1
+
 #endif /* ctr_hpp */
