@@ -37,7 +37,12 @@ int get_surface_hexa(constraint *ctr ,int radius);
 /*
  *
  */
-int get_surface_2D(constraint *ctr ,int radius, int size);
+int get_surface_2D(constraint *ctr ,int diagonale, int size);
+
+/*
+ *
+ */
+int get_surface_3D(constraint *ctr ,int d, int size);
 
 /*
  * set_distance_from_bloc1 :

@@ -31,13 +31,25 @@ constraint* CreateConstraint(int gens[2], int coord[4]){
     int size = gens[0] * gens[1];
     constraint* ctr_temp = new constraint[size];
 
-    ctr_temp[0].X_down  = std::to_string(coord[0]);
-    ctr_temp[0].Y_down  = std::to_string(coord[1]);
-    ctr_temp[0].X_up    = std::to_string(coord[2]);
-    ctr_temp[0].Y_up    = std::to_string(coord[3]);
-    ctr_temp[0].GenX    = std::to_string(gens[0]);
-    ctr_temp[0].GenY    = std::to_string(gens[1]);
+    ctr_temp[0].X_down = coord[0];
+    ctr_temp[0].X_up = coord[1];
+    ctr_temp[0].Y_down = coord[2];
+    ctr_temp[0].Y_up = coord[3];
 
+    for (int i = 0; i < size; ++i) {
+        ctr_temp[i].name    = std::to_string(i+1);
+        ctr_temp[i].CenterX = (coord[1] + coord[2])/2;
+        ctr_temp[i].CenterY = (coord[3] + coord[4])/2;
+    }
+
+    int bloc = 0;
+    for (int j = 0; j < gens[0]; ++j) {
+        for (int k = 0; k < gens[1]; ++k) {
+            ctr_temp[bloc].GenX    = std::to_string(k);
+            ctr_temp[bloc].GenY    = std::to_string(j);
+            bloc++;
+        }
+    }
 
     return ctr_temp;
 }

@@ -45,12 +45,7 @@ int distance_between_blocs(constraint *ctr, int bloc1, int bloc2)
     return distance;
 }
 
-int get_surface_hexa(constraint *ctr ,int radius){
-    //we want the surface area of the hexa form. However, we will just calculate the surface of a square
-    int total_width     = round(2*(radius + ctr[0].width/2));
-    int total_heigth    = round(2*(radius + ctr[0].heigth/2));
-    return (total_width * total_heigth);
-}
+int get_surface_hexa(constraint *ctr ,int r, int size){ return pow(r,2)*cos(30);}
 
 int get_surface_2D(constraint *ctr ,int distance, int size){
     std::vector<int> gen_max(3);
@@ -60,6 +55,8 @@ int get_surface_2D(constraint *ctr ,int distance, int size){
     int total_heigth    = round(gen_max[1]*distance + ctr[0].heigth/2);
     return (total_width * total_heigth);
 }
+
+int get_surface_3D(constraint *ctr ,int d){ return pow(d,2)/2;}
 
 constraint* set_2D_from_bloc1(constraint *ctr ,int distance, int size)
 {
@@ -96,32 +93,42 @@ constraint* set_2D_from_bloc1(constraint *ctr ,int distance, int size)
         ctr_resize[i].Y_up   = std::to_string(ctr_resize[i].CenterY + (ctr_resize[i].heigth/2)); // Y1
     }
     return ctr_resize;
-
-    return ctr_resize;
 }
 
-constraint* set_hexa(constraint *ctr, int radius, int size)
+constraint* set_hexa(constraint *ctr, int r, int size)
 {
-    auto *ctr_resize = new constraint[size];
+    constraint *ctr_resize = new constraint[size];
 
-    ctr_resize = ctr; // copy the data from ctr into ctr_resize
+    ctr_resize = ctr; //copy
 
-    // we move the first block in the middle
-    ctr_resize[0].CenterX = 100;
-    ctr_resize[0].CenterY = 100;
+    std::vector<int> gen_max(3);
+    gen_max = max_gen(ctr_resize, size);
 
-    //number of extremities around the center (assumes that pbloc is the center)
-    int nb_blocs = size - 1;
+    // please refer to sketch
+    int i, j, pbloc;
+    int d = r*cos(30 * 3.14/180);
+    int o = r*sin(30 * 3.14/180);
 
-    //angle
-    int angle = round((360/nb_blocs));
-
-    //calculate positions
-    int pbloc = 1;
-    for (int i=0; i<nb_blocs; i++) {
-        ctr_resize[pbloc].CenterX =  (int)(radius*cos(angle*i*(3.14159/180)) + ctr_resize[0].CenterX); // the origine is (100,100)
-        ctr_resize[pbloc].CenterY =  (int)(radius*sin(angle*i*(3.14159/180)) + ctr_resize[0].CenterY);
-        pbloc++;
+    // recalculate every center and assumes that pblock is bottom_left
+    i = 0;
+    j = pbloc = 0;
+    while (i<=gen_max[0]) {
+        j=0;
+        while (j<=gen_max[1]) {
+            pbloc++;
+            ctr_resize[pbloc].CenterX = ctr_resize[pbloc-1].CenterX;
+            ctr_resize[pbloc].CenterY = ctr_resize[pbloc-1].CenterY + d; //radius*cos(30 * 3.14/180) = distance
+            j++;
+        }
+        i++;
+        if (i%2 != 0) {
+            ctr_resize[pbloc].CenterX = ctr_resize[pbloc].CenterX + d;
+            ctr_resize[pbloc].CenterY = ctr_resize[0].CenterY + o;
+        } else {
+            ctr_resize[pbloc].CenterX = ctr_resize[pbloc].CenterX + d;
+            ctr_resize[pbloc].CenterY = ctr_resize[0].CenterY;
+        }
+        //i++;
     }
 
     // recalculate every X0Y0 and X1Y1

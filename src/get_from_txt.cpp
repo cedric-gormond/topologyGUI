@@ -108,28 +108,3 @@ void getGen_from_text(std::ifstream& file, constraint *ctr)
         }
     }
 }
-
-void createOutputFile(std::ofstream& file_output, string path,constraint *ctr, int size)
-{
-    cout << " * Wrinting in file " << endl << endl;
-
-    //first line which create clock and its features
-    file_output << "create_clock -period 5.000 -name clk -waveform {0.000 2.500} [get_ports Clock]" << endl;
-    file_output << endl << endl;
-
-    // string which contains the right expression of .GEN
-    string set_gen;
-
-    //Creation of a bloc
-    for (int i=0; i < size; i++) {
-        file_output << "create_pblock pblock_"<< ctr[i].name << endl;
-
-        set_gen = setGen(ctr,i,size); //set gen for each block
-
-        file_output << "add_cells_to_pblock [get_pblocks pblock_"<< ctr[i].name <<"] [get_cells -quiet [list {GEN_Z["<< ctr[i].GenZ <<"].GEN_Y["<< ctr[i].GenY <<"].GEN_X["<< ctr[i].GenX <<"]"<< set_gen <<".Router}]]" << endl;
-
-        file_output << "resize_pblock [get_pblocks pblock_"<< ctr[i].name <<"] -add {SLICE_X"<< ctr[i].X_down <<"Y"<< ctr[i].Y_down <<":SLICE_X"<< ctr[i].X_up <<"Y"<< ctr[i].Y_up <<"}" << endl;
-
-        file_output << endl;
-    }
-}

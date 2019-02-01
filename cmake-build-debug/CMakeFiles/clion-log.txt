@@ -1,4 +1,5 @@
 /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/cedricgormond/Desktop/topologyGUI
+-- Could NOT find Boost
 -- Found SFML .. in /usr/local/include
 ---> ImGui directory not found. Set IMGUI_ROOT to imgui's top-level path (containing "imgui.cpp" and "imgui.h" files).
 

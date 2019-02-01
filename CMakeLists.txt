@@ -42,11 +42,26 @@ set(SOURCE_FILES
         imgui-sfml/imconfig-SFML.h
         imgui-sfml/imgui-SFML.cpp
         imgui-sfml/imgui-SFML.h
-        src/log.h src/get_time.cpp src/get_time.h src/graphics_utilities.cpp src/graphics_utilities.h)
+        src/log.h src/get_time.cpp
+        src/get_time.h
+        src/graphics_utilities.cpp
+        src/graphics_utilities.h)
 
 #set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -static-libstdc++") #a voir
 
 add_executable(topologyGUI ${SOURCE_FILES})
+
+# Boost
+set(boost_min_ver 1.50.0)
+set(boost_libs system filesystem)
+find_package(Boost ${boost_min_ver})
+
+if(Boost_FOUND)
+    find_package(Boost ${boost_min_ver} COMPONENTS ${boost_libs})
+endif()
+
+target_link_libraries(${PROJECT_NAME} ${Boost_LIBRARIES})
+##
 
 include_directories(imgui)
 include_directories(imgui-sfml)

@@ -22,6 +22,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.12/Modules/Compiler/CMakeCommonCompilerMacros.cmake"
   "/Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.12/Modules/Compiler/Clang.cmake"
   "/Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.12/Modules/Compiler/GNU.cmake"
+  "/Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.12/Modules/FindBoost.cmake"
   "/Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.12/Modules/FindGLUT.cmake"
   "/Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.12/Modules/FindOpenGL.cmake"
   "/Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.12/Modules/FindPackageHandleStandardArgs.cmake"

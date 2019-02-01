@@ -133,11 +133,16 @@ int main() {
     sf::Clock deltaClock;
 
     /*
-     *  SFML Object
+     * ---------------------------------------------------------------
+     *                             SFML Objects
+     * ---------------------------------------------------------------
      */
+    // TESTS
+    CONTRAINT_RESIZE = set_hexa(CONTRAINT, 100, nb_pblocs);
+
     // create container with nb_pblocs blocks in it, starting at pos 100/100
     // this container will be drawn using ContainerOfBlocks' void drawContainer(sf::RenderWindow &window)
-    // ContainerOfBlocks Blocks(nb_pblocs, sf::Vector2f(100, 100),CONTRAINT_RESIZE);
+    ContainerOfBlocks Blocks(nb_pblocs, sf::Vector2f(100, 100),CONTRAINT_RESIZE);
 
     // create  line container, starting at pos 100/100
     // this container will be drawn using ContainerOfLines' void drawContainer(sf::RenderWindow &window)
@@ -148,7 +153,7 @@ int main() {
      */
     static int distance2D    =  100;
     static int distance3D    =  100;
-    static int radius        =  50;
+    static int diagonal      =  100;
     *p_open                  =  true;
 
     /*
@@ -190,6 +195,7 @@ int main() {
         if (ImGui::CollapsingHeader("Help")) {
             ImGui::BulletText("TopologyGUI doesn't recognize .xdc files ");
             ImGui::BulletText("TopologyGUI can only generate constraint files with their respective dimensions. \n");
+            ImGui::BulletText("TopologyGUI can only create 2D constraint files. \n");
         }
         ImGui::Separator();
 
@@ -200,7 +206,6 @@ int main() {
         if (ImGui::CollapsingHeader("Open file"))
         {
             ImGui::BulletText("WIP (à faire un collapsed ou en menu)");
-
             /*
             if (file) {
                 my_log.AddLog("%s [info] File found : \n", &current_time[0]);
@@ -242,27 +247,31 @@ int main() {
          *  Create constraint file from scratch
          */
         static bool disabled = true;
+        int test;
         static int gens[2] = { 3, 3 }; // X0 Y0 X1 Y1
-        static int coord[4] = { 10, 20 , 20, 30}; // X0 Y0 X1 Y1
+        static int coord[4] = { 10, 10 , 20, 20}; // X0 Y0 X1 Y1
         if (ImGui::CollapsingHeader("Create constraint file from scratch"))
         {
-            ImGui::BeginGroup();
             ImGui::Checkbox("Disable", &disabled);
-            if (disabled)   ImGui::PushStyleVar(ImGuiStyleVar_Alpha, ImGui::GetStyle().Alpha * 0.5f);
+            if (disabled)   ImGui::PushStyleVar(ImGuiStyleVar_Alpha, ImGui::GetStyle().Alpha * 0.43f);
 
-            ImGui::Text("DimX :                          "); ImGui::SameLine();
-            ImGui::Text("DimY :                          ");
-            ImGui::InputInt2("##", gens);
-            //ImGui::Text("%s Blocs", nb_blocs[0]);
+                ImGui::Text("DimX :                          "); ImGui::SameLine();
+                ImGui::Text("DimY :                          ");
+                ImGui::PushID(1);
+                ImGui::InputInt2("##", gens);
+                ImGui::PopID();
 
-            ImGui::Text("X0 :           "); ImGui::SameLine();
-            ImGui::Text("Y0 :            "); ImGui::SameLine();
-            ImGui::Text("X1 :           "); ImGui::SameLine();
-            ImGui::Text("Y1 : ");
-            ImGui::InputInt4("##", coord);
+                //ImGui::Text("%s Blocs", nb_blocs[0]);
+
+                ImGui::Text("X0 :           "); ImGui::SameLine();
+                ImGui::Text("Y0 :            "); ImGui::SameLine();
+                ImGui::Text("X1 :           "); ImGui::SameLine();
+                ImGui::Text("Y1 : ");
+                ImGui::InputInt4("##", coord);
+
 
             if (disabled)   ImGui::PopStyleVar();
-            ImGui::EndGroup();
+
         }
         ImGui::Separator();
 
@@ -285,12 +294,10 @@ int main() {
                     ImGui::InputInt("",&distance2D);
                     break;
                 case 2 :
-                    //Radius
-                    ImGui::Text("Radius (in slices) between the center (block1) and each other block : ");
-                    ImGui::InputInt("",&radius);
+                    ImGui::Text("Diagonal 'r' (in slices) : ");
+                    ImGui::InputInt("",&diagonal);
                     break;
                 case 3 :
-                    //Radius
                     ImGui::Text("Distance (in slices) between each block : ");
                     ImGui::InputInt("",&distance3D);
                     ImGui::Text("ATTENTION ! TopologyUI can only handle two Z generations (from 0 to 1)");
@@ -353,24 +360,21 @@ int main() {
                     }
 
                     //apply topology
-
                     if (disabled){
                         CONTRAINT_RESIZE = set_2D_from_bloc1(CONTRAINT_RESIZE,distance2D, nb_pblocs);
                     }
                     else{
                         my_log.AddLog("%s [info] [mesh2D] Input file ignored \n", &current_time[0]);
                         CONTRAINT_CREATED = CreateConstraint(gens,coord);
-                        CONTRAINT_CREATED = set_2D_from_bloc1(CONTRAINT_CREATED,distance2D, nb_pblocs);
+                        CONTRAINT_CREATED = set_2D_from_bloc1(CONTRAINT_CREATED,distance2D, gens[0]*gens[1]);
                     }
 
                     //Writing
                     if (choice_type == 0) output_path_temp = output_path + "_generated.txt";
                     if (choice_type == 1) output_path_temp = output_path + "_generated.xdc";
                     file_output.open(output_path_temp);
-                    if (disabled)
-                        create_ctr_file(file_output, file_path, CONTRAINT_RESIZE, nb_pblocs);
-                    else
-                        create_ctr_file(file_output, file_path, CONTRAINT_CREATED, nb_pblocs);
+                    if (disabled)   create_ctr_file(file_output, file_path, CONTRAINT_RESIZE, nb_pblocs);
+                    else    create_ctr_file(file_output, file_path, CONTRAINT_CREATED, gens[0]*gens[1]);
                     file_output.close();
 
                     //log
@@ -388,13 +392,21 @@ int main() {
                     }
 
                     //apply topology
-                    CONTRAINT_RESIZE = set_hexa(CONTRAINT_RESIZE,radius, nb_pblocs);
+                    if (disabled){
+                        CONTRAINT_RESIZE = set_2D_from_bloc1(CONTRAINT_RESIZE,distance2D, nb_pblocs);
+                    }
+                    else{
+                        my_log.AddLog("%s [info] [hexa] Input file ignored \n", &current_time[0]);
+                        CONTRAINT_CREATED = CreateConstraint(gens,coord);
+                        CONTRAINT_CREATED = set_hexa(CONTRAINT_CREATED,diagonal, gens[0]*gens[1]);
+                    }
 
                     //Writing
                     if (choice_type == 0) output_path_temp = output_path + "_hexa_generated.txt";
                     if (choice_type == 1) output_path_temp = output_path + "_hexa_generated.xdc";
                     file_output.open(output_path_temp);
-                    create_ctr_file(file_output, file_path, CONTRAINT_RESIZE, nb_pblocs);
+                    if (disabled)   create_ctr_file(file_output, file_path, CONTRAINT_RESIZE, nb_pblocs);
+                    else    create_ctr_file(file_output, file_path, CONTRAINT_CREATED, gens[0]*gens[1]);
                     file_output.close();
 
                     //log
@@ -412,13 +424,21 @@ int main() {
                     }
 
                     //apply topology
-                    CONTRAINT_RESIZE = set_3D(CONTRAINT_RESIZE,distance3D, nb_pblocs);
+                    if (disabled){
+                        CONTRAINT_RESIZE = set_2D_from_bloc1(CONTRAINT_RESIZE,distance2D, nb_pblocs);
+                    }
+                    else{
+                        my_log.AddLog("%s [info] [mesh3D] Input file ignored \n", &current_time[0]);
+                        CONTRAINT_CREATED = CreateConstraint(gens,coord);
+                        CONTRAINT_CREATED = set_3D(CONTRAINT_CREATED,distance3D, gens[0]*gens[1]);
+                    }
 
                     //Writing
                     if (choice_type == 0) output_path_temp = output_path + "_3D_generated.txt";
                     if (choice_type == 1) output_path_temp = output_path + "_3D_generated.xdc";
                     file_output.open(output_path_temp);
-                    create_ctr_file(file_output, file_path, CONTRAINT_RESIZE, nb_pblocs);
+                    if (disabled)   create_ctr_file(file_output, file_path, CONTRAINT_RESIZE, nb_pblocs);
+                    else    create_ctr_file(file_output, file_path, CONTRAINT_CREATED, gens[0]*gens[1]);
                     file_output.close();
 
                     //log
@@ -426,7 +446,6 @@ int main() {
                     my_log.AddLog("%s [info] [mesh3D] Success \n",&current_time[0]);
                     my_log.AddLog("%s [info] [mesh3D] Output file : %s \n", &current_time[0],&output_path_temp[0]);
                     break;
-
                 default:
                     my_log.AddLog("%s [error] Please choose a topology\n", &current_time[0]);
                     break;
@@ -474,7 +493,7 @@ int main() {
                         resize_dimensions(CONTRAINT_RESIZE, nb_pblocs, default2i);
                     }
                     //apply topology
-                    CONTRAINT_RESIZE = set_hexa(CONTRAINT_RESIZE,radius, nb_pblocs);
+                    CONTRAINT_RESIZE = set_hexa(CONTRAINT_RESIZE,diagonal, nb_pblocs);
 
                     //Writing
                     output_path_temp = output_path + "_simplified_generated.txt";
