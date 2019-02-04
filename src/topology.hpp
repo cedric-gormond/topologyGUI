@@ -32,7 +32,7 @@ int distance_between_blocs(constraint *ctr, int bloc1, int bloc2);
 /*
  *
  */
-int get_surface_hexa(constraint *ctr ,int radius);
+int get_surface_hexa(constraint *ctr ,int diagonal, int size);
 
 /*
  *

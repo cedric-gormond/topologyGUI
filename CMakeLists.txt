@@ -63,14 +63,19 @@ endif()
 target_link_libraries(${PROJECT_NAME} ${Boost_LIBRARIES})
 ##
 
+# ImGui
 include_directories(imgui)
+
+# ImGui/SFML
 include_directories(imgui-sfml)
 
+# OpenGL
 find_package(OpenGL REQUIRED)
 find_package(GLUT REQUIRED)
 include_directories(${OPENGL_INCLUDE_DIRS} ${GLUT_INCLUDE_DIRS})
 target_link_libraries(${PROJECT_NAME} ${OPENGL_LIBRARIES} ${GLUT_LIBRARY})
 
+# SFML
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake_modules")
 find_package(SFML REQUIRED system window graphics network audio)
 if (SFML_FOUND)
@@ -80,10 +85,9 @@ endif()
 
 
 
-#imgui
+# Imgui
 # ImGui does not provide native support for CMakeLists, workaround for now to have
-# users specify IMGUI_ROOT. See:
-#    https://github.com/ocornut/imgui/pull/255
+# users specify IMGUI_ROOT. See: https://github.com/ocornut/imgui/pull/255
 if(NOT IMGUI_ROOT)
     set(IMGUI_ROOT "" CACHE PATH "imgui top-level directory")
     message("---> ImGui directory not found. Set IMGUI_ROOT to imgui's top-level path (containing \"imgui.cpp\" and \"imgui.h\" files).\n")

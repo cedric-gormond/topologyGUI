@@ -31,8 +31,11 @@ using namespace std;
 string current_time;
 
 int main() {
-
-    // ---- FILE INPUT ---
+    /*
+     * ---------------------------------------------------------------
+     *                INPUT FILE
+     * ---------------------------------------------------------------
+     */
     //Please past the path's file ;"/Users/cedricgormond/Desktop/topologyGUI/fichier_contrainte_2D.txt"
     string file_path = "fichier_contrainte_2D.txt"; //FULL PATH
 
@@ -53,7 +56,11 @@ int main() {
         exit (EXIT_FAILURE);
     }
 
-    // ----- READ INPUT FILE AND EXTRACT BLOCS  ------
+    /*
+    * ---------------------------------------------------------------
+    *                READ INPUT FILE AND EXTRACT BLOCS
+    * ---------------------------------------------------------------
+    */
     //Get number of routers (blocs)
     cout << endl;
     cout << " * Searching for pblocs " << endl;
@@ -97,16 +104,13 @@ int main() {
      * ---------------------------------------------------------------
      */
 
-    /*
-     *  Init SFML
-     */
+    //  Init SFML
+
     //Window settings
     sf::RenderWindow window(sf::VideoMode(700, 700), "topologyGUI", sf::Style::Close);
     window.setFramerateLimit(30);
 
-    /*
-     *  Init ImGUI
-     */
+    //Init ImGUI
     ImGui::SFML::Init(window);
 
     // Setup Dear ImGui context
@@ -125,6 +129,8 @@ int main() {
 
     //Font
     //io.Fonts->AddFontDefault();
+    //ImFont* font = io.Fonts->AddFontFromFileTTF("misc/fonts/Roboto-Medium.ttf", 16.0, nullptr);
+
     //ImFont* font = io.Fonts->AddFontFromFileTTF("misc/fonts/Roboto-Medium.ttf", 16.0, nullptr);
     //IM_ASSERT(font != NULL);
     //ImFont* font = io.Fonts->AddFontFromFileTTF("misc/fonts/Roboto-Medium.ttf", 16.0f);
@@ -155,6 +161,9 @@ int main() {
     static int distance3D    =  100;
     static int diagonal      =  100;
     *p_open                  =  true;
+    static int surface_2D;
+    static int surface_hexa;
+    static int surface_3D;
 
     /*
      * ---------------------------------------------------------------
@@ -191,7 +200,6 @@ int main() {
         /*
          *  Help section
          */
-        ImGui::Spacing();
         if (ImGui::CollapsingHeader("Help")) {
             ImGui::BulletText("TopologyGUI doesn't recognize .xdc files ");
             ImGui::BulletText("TopologyGUI can only generate constraint files with their respective dimensions. \n");
@@ -247,10 +255,9 @@ int main() {
          *  Create constraint file from scratch
          */
         static bool disabled = true;
-        int test;
         static int gens[2] = { 3, 3 }; // X0 Y0 X1 Y1
         static int coord[4] = { 10, 10 , 20, 20}; // X0 Y0 X1 Y1
-        if (ImGui::CollapsingHeader("Create constraint file from scratch"))
+        if (ImGui::CollapsingHeader("Create 2D constraint file from scratch"))
         {
             ImGui::Checkbox("Disable", &disabled);
             if (disabled)   ImGui::PushStyleVar(ImGuiStyleVar_Alpha, ImGui::GetStyle().Alpha * 0.43f);
@@ -259,16 +266,15 @@ int main() {
                 ImGui::Text("DimY :                          ");
                 ImGui::PushID(1);
                 ImGui::InputInt2("##", gens);
-                ImGui::PopID();
-
-                //ImGui::Text("%s Blocs", nb_blocs[0]);
+                ImGui::PopID(); ImGui::SameLine();
+                ImGui::Text("%d blocs", gens[0]*gens[1]);
 
                 ImGui::Text("X0 :           "); ImGui::SameLine();
                 ImGui::Text("Y0 :            "); ImGui::SameLine();
                 ImGui::Text("X1 :           "); ImGui::SameLine();
                 ImGui::Text("Y1 : ");
-                ImGui::InputInt4("##", coord);
-
+                ImGui::InputInt4("##", coord); ImGui::SameLine();
+                ImGui::Text("(W : %d,H : %d) ", abs(coord[0] - coord[2]), abs(coord[1] - coord[3]));
 
             if (disabled)   ImGui::PopStyleVar();
 
@@ -278,6 +284,7 @@ int main() {
         /*
          *  Topology
          */
+        static int d;
         static int choice_topology; //Choose your topology
         ImGui::Spacing();
         if (ImGui::CollapsingHeader("Topology"))
@@ -290,15 +297,17 @@ int main() {
 
             switch(choice_topology) {
                 case 1 :
-                    ImGui::Text("Distance (in slices) between each block : ");
+                    ImGui::Text("Distance in slices between each block : ");
                     ImGui::InputInt("",&distance2D);
                     break;
                 case 2 :
-                    ImGui::Text("Diagonal 'r' (in slices) : ");
-                    ImGui::InputInt("",&diagonal);
+                    ImGui::Text("Diagonal 'r' in slices : ");
+                    ImGui::InputInt("",&diagonal); ImGui::SameLine();
+                    d = diagonal*cos(30 * 3.14/180);
+                    ImGui::Text("d : %d", d);
                     break;
                 case 3 :
-                    ImGui::Text("Distance (in slices) between each block : ");
+                    ImGui::Text("Distance in slices between each block : ");
                     ImGui::InputInt("",&distance3D);
                     ImGui::Text("ATTENTION ! TopologyUI can only handle two Z generations (from 0 to 1)");
                     break;
@@ -362,11 +371,13 @@ int main() {
                     //apply topology
                     if (disabled){
                         CONTRAINT_RESIZE = set_2D_from_bloc1(CONTRAINT_RESIZE,distance2D, nb_pblocs);
+                        surface_2D = get_surface_2D(CONTRAINT_RESIZE, distance2D, nb_pblocs);
                     }
                     else{
                         my_log.AddLog("%s [info] [mesh2D] Input file ignored \n", &current_time[0]);
                         CONTRAINT_CREATED = CreateConstraint(gens,coord);
                         CONTRAINT_CREATED = set_2D_from_bloc1(CONTRAINT_CREATED,distance2D, gens[0]*gens[1]);
+                        surface_2D = get_surface_2D(CONTRAINT_CREATED, distance2D, gens[0]*gens[1]);
                     }
 
                     //Writing
@@ -394,11 +405,13 @@ int main() {
                     //apply topology
                     if (disabled){
                         CONTRAINT_RESIZE = set_2D_from_bloc1(CONTRAINT_RESIZE,distance2D, nb_pblocs);
+                        surface_hexa = get_surface_hexa(CONTRAINT_RESIZE, diagonal, nb_pblocs);
                     }
                     else{
                         my_log.AddLog("%s [info] [hexa] Input file ignored \n", &current_time[0]);
                         CONTRAINT_CREATED = CreateConstraint(gens,coord);
                         CONTRAINT_CREATED = set_hexa(CONTRAINT_CREATED,diagonal, gens[0]*gens[1]);
+                        surface_hexa = get_surface_hexa(CONTRAINT_CREATED, diagonal, gens[0]*gens[1]);
                     }
 
                     //Writing
@@ -426,11 +439,13 @@ int main() {
                     //apply topology
                     if (disabled){
                         CONTRAINT_RESIZE = set_2D_from_bloc1(CONTRAINT_RESIZE,distance2D, nb_pblocs);
+                        surface_3D = get_surface_3D(CONTRAINT_RESIZE, distance3D, nb_pblocs);
                     }
                     else{
                         my_log.AddLog("%s [info] [mesh3D] Input file ignored \n", &current_time[0]);
                         CONTRAINT_CREATED = CreateConstraint(gens,coord);
                         CONTRAINT_CREATED = set_3D(CONTRAINT_CREATED,distance3D, gens[0]*gens[1]);
+                        surface_3D = get_surface_3D(CONTRAINT_RESIZE, distance3D, gens[0]*gens[1]);
                     }
 
                     //Writing
@@ -536,7 +551,20 @@ int main() {
         }
         ImGui::SameLine();
         ShowHelpMarker("Generate a simplified constraint file which is NOT compatible with Xilinx Vivado\n");
-        ImGui::Spacing();
+        ImGui::Separator();
+
+        /*
+         *  SURFACE
+         */
+
+        if (ImGui::CollapsingHeader("Surface"))
+        {
+            ImGui::Text("Surface 2D (slices) : %d", surface_2D);
+
+            ImGui::Text("Surface Hexa (slices) : %d", surface_hexa);
+
+            ImGui::Text("Surface 3D (slices) : %d", surface_3D);
+        }
         ImGui::Separator();
 
         /*
@@ -554,9 +582,8 @@ int main() {
 
         ImGui::SFML::Render(window);
 
-        //window.draw(Blocks);
+        //window.draw(Blocks); OR Blocks.drawContainer(window);
         //window.draw(lines);
-        //Blocks.drawContainer(window);
         window.display();
     }
 

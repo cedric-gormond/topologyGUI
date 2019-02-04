@@ -19,22 +19,22 @@
 #include "gen_tools.h"
 
 /*
- * getNumberBlocs : Get the number of pblocs (routers)
+ * getNumberBlocs_from_ctr : Get the number of pblocs (routers)
  */
 int getNumberBlocs_from_ctr(std::ifstream& file);
 
 /*
- * getBlocs : Get all the values by using regular expressions
+ * getBlocs_from_ctr : Get all the values by using regular expressions
  */
 void getBlocs_from_ctr(std::ifstream& file, constraint *ctr);
 
 /*
- * getGen : Get all the values by using regular expressions
+ * getGen_from_ctr : Get all the values by using regular expressions
  */
 void getGen_from_ctr(std::ifstream& file, constraint *ctr);
 
 /*
- * displayBlocs : display blocs in console
+ * displayBlocs_from_ctr : display blocs in console
  */
 void displayBlocs_from_ctr(constraint *ctr, int size);
 

@@ -8,6 +8,7 @@
 
 #include "topology.hpp"
 
+
 void resize_dimensions(constraint *ctr ,int size, int vec2i[2]){
     for (int i=0; i<size; i++) {
         ctr[i].width    = vec2i[0];
@@ -45,7 +46,15 @@ int distance_between_blocs(constraint *ctr, int bloc1, int bloc2)
     return distance;
 }
 
-int get_surface_hexa(constraint *ctr ,int r, int size){ return pow(r,2)*cos(30);}
+int get_surface_hexa(constraint *ctr ,int r, int size){
+    //return pow(r,2)*cos(30);
+    std::vector<int> gen_max(3);
+    gen_max = max_gen(ctr, size);
+
+    int total_width     = round(gen_max[0]*r*cos(30 * 3.14/180) + ctr[0].width/2);
+    int total_heigth    = round(gen_max[1]*r + ctr[0].heigth/2);
+    return (total_width * total_heigth);
+    }
 
 int get_surface_2D(constraint *ctr ,int distance, int size){
     std::vector<int> gen_max(3);
@@ -56,7 +65,7 @@ int get_surface_2D(constraint *ctr ,int distance, int size){
     return (total_width * total_heigth);
 }
 
-int get_surface_3D(constraint *ctr ,int d){ return pow(d,2)/2;}
+int get_surface_3D(constraint *ctr ,int d, int size){ return pow(d,2)/2;}
 
 constraint* set_2D_from_bloc1(constraint *ctr ,int distance, int size)
 {

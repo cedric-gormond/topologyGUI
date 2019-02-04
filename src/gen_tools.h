@@ -12,7 +12,7 @@
 
 
 /*
- * max_gen using vector
+ * max_gen : returns a vector which contains maximal values
  */
 std::vector<int> max_gen(constraint *ctr, int size);
 

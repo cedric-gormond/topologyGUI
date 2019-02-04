@@ -38,7 +38,7 @@ typedef struct {
 void initConstraint(constraint *ctr);
 
 /*
- * CreateConstraint : Initialisation of constraint pointer
+ * CreateConstraint : Creation of minimal values
  */
 constraint* CreateConstraint(int gens[2], int coord[4]); // X0 Y0 X1 Y1
 
