@@ -87,7 +87,7 @@ int main() {
     dimensions_of_bloc(CONTRAINT, nb_pblocs);
 
     // Display blocs in console
-    displayBlocs_from_ctr(CONTRAINT, nb_pblocs);
+    //displayBlocs_from_ctr(CONTRAINT, nb_pblocs);
 
     //Resize constraint
     auto *CONTRAINT_RESIZE = new constraint[nb_pblocs];
@@ -107,9 +107,17 @@ int main() {
     //  Init SFML
 
     //Window settings
-    sf::RenderWindow window(sf::VideoMode(700, 700), "topologyGUI", sf::Style::Close);
+    sf::RenderWindow window(sf::VideoMode(700, 800), "topologyGUI", sf::Style::Close);
     window.setFramerateLimit(30);
 
+    // Clock
+    sf::Clock deltaClock;
+
+    /*
+     * ---------------------------------------------------------------
+     *                             SFML/IMGUI
+     * ---------------------------------------------------------------
+     */
     //Init ImGUI
     ImGui::SFML::Init(window);
 
@@ -129,27 +137,19 @@ int main() {
     *p_open = true;
 
     //Font
-    //io.Fonts->AddFontDefault();
-    //ImFont* font = io.Fonts->AddFontFromFileTTF("misc/fonts/Roboto-Medium.ttf", 16.0, nullptr);
-
-    //ImFont* font = io.Fonts->AddFontFromFileTTF("misc/fonts/Roboto-Medium.ttf", 16.0, nullptr);
-    //IM_ASSERT(font != NULL);
-    //ImFont* font = io.Fonts->AddFontFromFileTTF("misc/fonts/Roboto-Medium.ttf", 16.0f);
-
-    //ImGUI Clock
-    sf::Clock deltaClock;
+    //io.Fonts->Clear(); // clear fonts if you loaded some before (even if only default one was loaded)
+    ImFont* font = io.Fonts->AddFontFromFileTTF("misc/fonts/Roboto-Regular.ttf", 16.0, nullptr);
+    //ImFont* font = io.Fonts->AddFontFromFileTTF("misc/fonts/OpenSans-Regular.ttf", 17.0, nullptr);
+    ImGui::SFML::UpdateFontTexture(); // important call: updates font texture
 
     /*
      * ---------------------------------------------------------------
      *                             SFML Objects
      * ---------------------------------------------------------------
      */
-    // TESTS
-    CONTRAINT_RESIZE = set_hexa(CONTRAINT, 100, nb_pblocs);
-
     // create container with nb_pblocs blocks in it, starting at pos 100/100
     // this container will be drawn using ContainerOfBlocks' void drawContainer(sf::RenderWindow &window)
-    ContainerOfBlocks Blocks(nb_pblocs, sf::Vector2f(100, 100),CONTRAINT_RESIZE);
+    //ContainerOfBlocks Blocks(nb_pblocs, sf::Vector2f(100, 100),CONTRAINT_RESIZE);
 
     // create  line container, starting at pos 100/100
     // this container will be drawn using ContainerOfLines' void drawContainer(sf::RenderWindow &window)
@@ -192,7 +192,7 @@ int main() {
          *                      ImGUI - User Interface
          * ---------------------------------------------------------------
          */
-
+        ImGui::PushFont(font);
         /*
          *  Begin main window
          */
@@ -208,7 +208,6 @@ int main() {
             ImGui::BulletText("TopologyGUI can only create 2D constraint files. \n");
         }
         ImGui::Separator();
-
 
         /*
          *  Open file
@@ -251,7 +250,6 @@ int main() {
         ImGui::SameLine();
         ShowHelpMarker("Generate a simplified constraint file which is NOT compatible with Xilinx Vivado\n");
         ImGui::Separator();
-        ImGui::Spacing();
 
         /*
          *  Create constraint file from scratch
@@ -265,9 +263,9 @@ int main() {
             if (disabled)   ImGui::PushStyleVar(ImGuiStyleVar_Alpha, ImGui::GetStyle().Alpha * 0.43f);
                 if (is3D){
                     gens[2] = 1;
-                    ImGui::Text("DimX :               "); ImGui::SameLine();
-                    ImGui::Text("DimY :               "); ImGui::SameLine();
-                    ImGui::Text("DimZ :               "); ImGui::SameLine();
+                    ImGui::Text("DimX :                               "); ImGui::SameLine();
+                    ImGui::Text("DimY :                               "); ImGui::SameLine();
+                    ImGui::Text("DimZ :                              "); ImGui::SameLine();
                     ShowHelpMarker("DimZ should be between 0 and 1. \n");
 
                     ImGui::PushID(1);
@@ -276,17 +274,22 @@ int main() {
                     ImGui::Text("%d blocs", gens[0]*gens[1]*(gens[2]+1));
                 } else {
                     gens[2] = -1;
-                    ImGui::Text("DimX :                          "); ImGui::SameLine();
-                    ImGui::Text("DimY :                          ");
+                    ImGui::Text("DimX :              "
+                                "                    "
+                                "                    "); ImGui::SameLine();
+                    ImGui::Text("DimY : ");
                     ImGui::PushID(1);
                     ImGui::InputInt2("##", gens);
                     ImGui::PopID(); ImGui::SameLine();
                     ImGui::Text("%d blocs", gens[0]*gens[1]);
                 }
 
-                ImGui::Text("X0 :           "); ImGui::SameLine();
-                ImGui::Text("Y0 :            "); ImGui::SameLine();
-                ImGui::Text("X1 :           "); ImGui::SameLine();
+                ImGui::Text("X0 :           "
+                            "               "); ImGui::SameLine();
+                ImGui::Text("Y0 :          "
+                            "               "); ImGui::SameLine();
+                ImGui::Text("X1 :          "
+                            "              "); ImGui::SameLine();
                 ImGui::Text("Y1 : ");
                 ImGui::InputInt4("##", coord); ImGui::SameLine();
                 ImGui::Text("(W : %d,H : %d) ", abs(coord[0] - coord[2]), abs(coord[1] - coord[3]));
@@ -301,7 +304,6 @@ int main() {
          */
         static int d;
         static int choice_topology; //Choose your topology
-        ImGui::Spacing();
         if (ImGui::CollapsingHeader("Topology"))
         {
             ImGui::Text("Choose your topology :");
@@ -338,7 +340,6 @@ int main() {
             }
         }
         ImGui::Separator();
-        ImGui::Spacing();
 
         /*
          *  Dimensions
@@ -370,7 +371,6 @@ int main() {
             }
         }
         ImGui::Separator();
-        ImGui::Spacing();
 
         /*
          *  Generate constraint file
@@ -586,11 +586,9 @@ int main() {
 
         if (ImGui::CollapsingHeader("Surface"))
         {
-            ImGui::Text("Surface 2D (slices) : %d", surface_2D);
-
+            ImGui::Text("Surface 2D (slices)   : %d", surface_2D);
             ImGui::Text("Surface Hexa (slices) : %d", surface_hexa);
-
-            ImGui::Text("Surface 3D (slices) : %d", surface_3D);
+            ImGui::Text("Surface 3D (slices)   : %d", surface_3D);
         }
         ImGui::Separator();
 
@@ -606,7 +604,7 @@ int main() {
          *  RENDER
          */
         window.clear();
-
+        ImGui::PopFont();
         ImGui::SFML::Render(window);
 
         //window.draw(Blocks); OR Blocks.drawContainer(window);
