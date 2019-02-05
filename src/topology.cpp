@@ -51,8 +51,8 @@ int get_surface_hexa(constraint *ctr ,int r, int size){
     std::vector<int> gen_max(3);
     gen_max = max_gen(ctr, size);
 
-    int total_width     = round(gen_max[0]*r*cos(30 * 3.14/180) + ctr[0].width/2);
-    int total_heigth    = round(gen_max[1]*r + ctr[0].heigth/2);
+    int total_width     = round(gen_max[0]*r*cos(30 * 3.14/180) + ctr[0].width);
+    int total_heigth    = round(gen_max[1]*r + ctr[0].heigth);
     return (total_width * total_heigth);
     }
 
@@ -60,14 +60,21 @@ int get_surface_2D(constraint *ctr ,int distance, int size){
     std::vector<int> gen_max(3);
     gen_max = max_gen(ctr, size);
 
-    int total_width     = round(gen_max[0]*distance + ctr[0].width/2);
-    int total_heigth    = round(gen_max[1]*distance + ctr[0].heigth/2);
+    int total_width     = round(gen_max[0]*distance + ctr[0].width);
+    int total_heigth    = round(gen_max[1]*distance + ctr[0].heigth);
     return (total_width * total_heigth);
 }
 
-int get_surface_3D(constraint *ctr ,int d, int size){ return pow(d,2)/2;}
+int get_surface_3D(constraint *ctr ,int d, int size){
+    std::vector<int> gen_max(3);
+    gen_max = max_gen(ctr, size);
 
-constraint* set_2D_from_bloc1(constraint *ctr ,int distance, int size)
+    int total_width     = d*(gen_max[0] + 0.5) + ctr[0].width + stoi(ctr[0].X_down);
+    int total_heigth    = d*(gen_max[0] + 0.5) + ctr[0].heigth + stoi(ctr[0].Y_down);
+    return (total_width * total_heigth);
+}
+
+constraint* set_2D(constraint *ctr ,int distance, int size)
 {
     auto *ctr_resize = new constraint[size];
     //initConstraint(ctr_resize);

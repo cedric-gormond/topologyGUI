@@ -30,24 +30,24 @@ void resize_dimensions(constraint *ctr ,int size, int vec2i[2]);
 int distance_between_blocs(constraint *ctr, int bloc1, int bloc2);
 
 /*
- *
+ * get_surface_hexa : returns surface of a 2D hexagonal topology
  */
 int get_surface_hexa(constraint *ctr ,int diagonal, int size);
 
 /*
- *
+ * get_surface_2D : returns surface of a 2D topology
  */
 int get_surface_2D(constraint *ctr ,int diagonale, int size);
 
 /*
- *
+ * get_surface_3D : returns surface of a 3D topology
  */
 int get_surface_3D(constraint *ctr ,int d, int size);
 
 /*
  * set_distance_from_bloc1 :
  */
-constraint* set_2D_from_bloc1(constraint *ctr ,int distance, int size);
+constraint* set_2D(constraint *ctr ,int distance, int size);
 
 /*
  * set_hexa:

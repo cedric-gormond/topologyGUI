@@ -38,8 +38,13 @@ typedef struct {
 void initConstraint(constraint *ctr);
 
 /*
+* CreateConstraint : Creation of minimal values
+*/
+constraint* CreateConstraint(int gens[3], int coord[4]); // X0 Y0 X1 Y1
+
+/*
  * CreateConstraint : Creation of minimal values
  */
-constraint* CreateConstraint(int gens[2], int coord[4]); // X0 Y0 X1 Y1
+constraint* CreateConstraint3D(int gens[3], int coord[4]); // X0 Y0 X1 Y1
 
 #endif /* ctr_hpp */

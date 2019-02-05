@@ -124,6 +124,7 @@ int main() {
 
     // ImGUI - variables
     static ExampleAppLog my_log;
+    my_log.AddLog("%s [info] Welcome \n", &current_time[0]);
     static bool* p_open = new bool;
     *p_open = true;
 
@@ -161,9 +162,11 @@ int main() {
     static int distance3D    =  100;
     static int diagonal      =  100;
     *p_open                  =  true;
+    static bool is3D         =  false;
     static int surface_2D;
     static int surface_hexa;
     static int surface_3D;
+
 
     /*
      * ---------------------------------------------------------------
@@ -184,7 +187,6 @@ int main() {
             }
         }
         ImGui::SFML::Update(window, deltaClock.restart());
-
         /*
          * ---------------------------------------------------------------
          *                      ImGUI - User Interface
@@ -255,19 +257,32 @@ int main() {
          *  Create constraint file from scratch
          */
         static bool disabled = true;
-        static int gens[2] = { 3, 3 }; // X0 Y0 X1 Y1
+        static int gens[3] = { 3, 3, -1 }; // X0 Y0 X1 Y1
         static int coord[4] = { 10, 10 , 20, 20}; // X0 Y0 X1 Y1
-        if (ImGui::CollapsingHeader("Create 2D constraint file from scratch"))
+        if (ImGui::CollapsingHeader("Create constraint file from scratch"))
         {
             ImGui::Checkbox("Disable", &disabled);
             if (disabled)   ImGui::PushStyleVar(ImGuiStyleVar_Alpha, ImGui::GetStyle().Alpha * 0.43f);
+                if (is3D){
+                    gens[2] = 1;
+                    ImGui::Text("DimX :               "); ImGui::SameLine();
+                    ImGui::Text("DimY :               "); ImGui::SameLine();
+                    ImGui::Text("DimZ :               "); ImGui::SameLine();
+                    ShowHelpMarker("DimZ should be between 0 and 1. \n");
 
-                ImGui::Text("DimX :                          "); ImGui::SameLine();
-                ImGui::Text("DimY :                          ");
-                ImGui::PushID(1);
-                ImGui::InputInt2("##", gens);
-                ImGui::PopID(); ImGui::SameLine();
-                ImGui::Text("%d blocs", gens[0]*gens[1]);
+                    ImGui::PushID(1);
+                    ImGui::InputInt3("##", gens);
+                    ImGui::PopID(); ImGui::SameLine();
+                    ImGui::Text("%d blocs", gens[0]*gens[1]*(gens[2]+1));
+                } else {
+                    gens[2] = -1;
+                    ImGui::Text("DimX :                          "); ImGui::SameLine();
+                    ImGui::Text("DimY :                          ");
+                    ImGui::PushID(1);
+                    ImGui::InputInt2("##", gens);
+                    ImGui::PopID(); ImGui::SameLine();
+                    ImGui::Text("%d blocs", gens[0]*gens[1]);
+                }
 
                 ImGui::Text("X0 :           "); ImGui::SameLine();
                 ImGui::Text("Y0 :            "); ImGui::SameLine();
@@ -297,19 +312,28 @@ int main() {
 
             switch(choice_topology) {
                 case 1 :
+                    ImGui::PushID(1);
                     ImGui::Text("Distance in slices between each block : ");
                     ImGui::InputInt("",&distance2D);
+                    ImGui::PopID();
+                    is3D = false;
                     break;
                 case 2 :
+                    ImGui::PushID(1);
                     ImGui::Text("Diagonal 'r' in slices : ");
                     ImGui::InputInt("",&diagonal); ImGui::SameLine();
                     d = diagonal*cos(30 * 3.14/180);
                     ImGui::Text("d : %d", d);
+                    ImGui::PopID();
+                    is3D = false;
                     break;
                 case 3 :
+                    ImGui::PushID(1);
                     ImGui::Text("Distance in slices between each block : ");
                     ImGui::InputInt("",&distance3D);
                     ImGui::Text("ATTENTION ! TopologyUI can only handle two Z generations (from 0 to 1)");
+                    ImGui::PopID();
+                    is3D = true;
                     break;
             }
         }
@@ -336,10 +360,12 @@ int main() {
 
                 case 2:
                     //Width
+                    ImGui::PushID(2);
                     ImGui::Text("Width :                         "); //nasty spacing (^.^)
                     ImGui::SameLine();
                     ImGui::Text("Heigth : ");
                     ImGui::InputInt2("##", vec2i);
+                    ImGui::PopID();
                     break;
             }
         }
@@ -370,13 +396,13 @@ int main() {
 
                     //apply topology
                     if (disabled){
-                        CONTRAINT_RESIZE = set_2D_from_bloc1(CONTRAINT_RESIZE,distance2D, nb_pblocs);
+                        CONTRAINT_RESIZE = set_2D(CONTRAINT_RESIZE,distance2D, nb_pblocs);
                         surface_2D = get_surface_2D(CONTRAINT_RESIZE, distance2D, nb_pblocs);
                     }
                     else{
                         my_log.AddLog("%s [info] [mesh2D] Input file ignored \n", &current_time[0]);
                         CONTRAINT_CREATED = CreateConstraint(gens,coord);
-                        CONTRAINT_CREATED = set_2D_from_bloc1(CONTRAINT_CREATED,distance2D, gens[0]*gens[1]);
+                        CONTRAINT_CREATED = set_2D(CONTRAINT_CREATED,distance2D, gens[0]*gens[1]);
                         surface_2D = get_surface_2D(CONTRAINT_CREATED, distance2D, gens[0]*gens[1]);
                     }
 
@@ -404,7 +430,7 @@ int main() {
 
                     //apply topology
                     if (disabled){
-                        CONTRAINT_RESIZE = set_2D_from_bloc1(CONTRAINT_RESIZE,distance2D, nb_pblocs);
+                        CONTRAINT_RESIZE = set_hexa(CONTRAINT_RESIZE,diagonal, nb_pblocs);
                         surface_hexa = get_surface_hexa(CONTRAINT_RESIZE, diagonal, nb_pblocs);
                     }
                     else{
@@ -415,6 +441,7 @@ int main() {
                     }
 
                     //Writing
+                    if (choice_type == 0) output_path_temp = output_path + "_hexa_generated.txt";
                     if (choice_type == 0) output_path_temp = output_path + "_hexa_generated.txt";
                     if (choice_type == 1) output_path_temp = output_path + "_hexa_generated.xdc";
                     file_output.open(output_path_temp);
@@ -438,14 +465,14 @@ int main() {
 
                     //apply topology
                     if (disabled){
-                        CONTRAINT_RESIZE = set_2D_from_bloc1(CONTRAINT_RESIZE,distance2D, nb_pblocs);
+                        CONTRAINT_RESIZE = set_3D(CONTRAINT_RESIZE,distance3D, nb_pblocs);
                         surface_3D = get_surface_3D(CONTRAINT_RESIZE, distance3D, nb_pblocs);
                     }
                     else{
                         my_log.AddLog("%s [info] [mesh3D] Input file ignored \n", &current_time[0]);
-                        CONTRAINT_CREATED = CreateConstraint(gens,coord);
-                        CONTRAINT_CREATED = set_3D(CONTRAINT_CREATED,distance3D, gens[0]*gens[1]);
-                        surface_3D = get_surface_3D(CONTRAINT_RESIZE, distance3D, gens[0]*gens[1]);
+                        CONTRAINT_CREATED = CreateConstraint3D(gens,coord);
+                        CONTRAINT_CREATED = set_3D(CONTRAINT_CREATED,distance3D, gens[0]*gens[1]*(gens[2]+1));
+                        surface_3D = get_surface_3D(CONTRAINT_CREATED, distance3D, gens[0]*gens[1]*(gens[2]+1));
                     }
 
                     //Writing
@@ -453,7 +480,7 @@ int main() {
                     if (choice_type == 1) output_path_temp = output_path + "_3D_generated.xdc";
                     file_output.open(output_path_temp);
                     if (disabled)   create_ctr_file(file_output, file_path, CONTRAINT_RESIZE, nb_pblocs);
-                    else    create_ctr_file(file_output, file_path, CONTRAINT_CREATED, gens[0]*gens[1]);
+                    else    create_ctr_file(file_output, file_path, CONTRAINT_CREATED, gens[0]*gens[1]*(gens[2]+1));
                     file_output.close();
 
                     //log
@@ -485,7 +512,7 @@ int main() {
                     }
 
                     //apply topology
-                    CONTRAINT_RESIZE = set_2D_from_bloc1(CONTRAINT_RESIZE,distance2D, nb_pblocs);
+                    CONTRAINT_RESIZE = set_2D(CONTRAINT_RESIZE,distance2D, nb_pblocs);
 
                     //Writing
                     file_output.open(output_path_temp);
