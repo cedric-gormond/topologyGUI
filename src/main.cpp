@@ -8,7 +8,7 @@
 #include "imgui.h"
 #include "imgui-SFML.h"
 
-//Graphic Engine Library
+//Framework
 #include <SFML/Graphics.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/System/Clock.hpp>
@@ -129,7 +129,7 @@ int main() {
     ImGui::CreateContext();
     ImGuiIO& io = ImGui::GetIO(); (void)io;
 
-    //Theme
+    //Theme and frame rounding
     ImGui::StyleColorsLight();
     ImGui::PushStyleVar(ImGuiStyleVar_FrameRounding, 3.0f);
 
@@ -140,7 +140,6 @@ int main() {
     *p_open = true;
 
     //Font
-    //io.Fonts->Clear(); // clear fonts if you loaded some before (even if only default one was loaded)
     ImFont* font = io.Fonts->AddFontFromFileTTF("misc/fonts/Roboto-Regular.ttf", 16.0, nullptr);
     //ImFont* font = io.Fonts->AddFontFromFileTTF("misc/fonts/OpenSans-Regular.ttf", 17.0, nullptr);
     ImGui::SFML::UpdateFontTexture(); // important call: updates font texture
@@ -164,7 +163,6 @@ int main() {
     static int distance2D    =  100;
     static int distance3D    =  100;
     static int diagonal      =  100;
-    *p_open                  =  true;
     static bool is3D         =  false;
     int surface_2D =0;
     int surface_hexa =0;
@@ -590,9 +588,9 @@ int main() {
         static int user_surface = 0;
         if (ImGui::CollapsingHeader("Surface"))
         {
-            ImGui::Text("Surface 2D (slices)   : %d", surface_2D);
-            ImGui::Text("Surface Hexa (slices) : %d", surface_hexa);
-            ImGui::Text("Surface 3D (slices)   : %d", surface_3D);
+            ImGui::Text("Surface 2D (slices)   : %d ", surface_2D);
+            ImGui::Text("Surface Hexa (slices) : %d ", surface_hexa);
+            ImGui::Text("Surface 3D (slices)   : %d ", surface_3D);
 
             ImGui::Separator();
 
@@ -603,10 +601,13 @@ int main() {
                 D_2D = getDfromS2D(gens, coord, user_surface);
                 R_2D = getDfromSHexa(gens, coord, user_surface);
                 D_3D = getDfromS3D(gens, coord, user_surface);
+                my_log.AddLog("%s [info] [surface] Calculate distances from surface S \n", &current_time[0]);
             }
-            ImGui::Text("Distance 'd' from surface S   : %d", D_2D);
-            ImGui::Text("Distance 'r' from surface S   : %d", R_2D);
-            ImGui::Text("Distance 'd' from surface S   : %d", D_3D);
+            ImGui::SameLine();
+            ShowHelpMarker("Calculate distance 'd' or 'r' from the input surface by using parameters of the third section\n");
+            ImGui::Text("Distance 'd' from surface S (2D Mesh) : %d", D_2D);
+            ImGui::Text("Distance 'r' from surface S (2D Hexa) : %d", R_2D);
+            ImGui::Text("Distance 'd' from surface S (3D Mesh)  : %d", D_3D);
             ImGui::PopID();
         }
         ImGui::Separator();

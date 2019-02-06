@@ -71,7 +71,7 @@ int getDfromSHexa(int gens[3], int coord[4], int S){
     D = pow((n-1)*h*cos(30 * 3.14/180)+(m-1)*w,2) - 4*(n-1)*(m-1)*(w*h-S)*cos(30 * 3.14 / 180);
 
     //r1
-    if (D > 0)  r= (-((n-1)*h*cos(30 * 3.14/180)+(m-1)*w) + sqrt(D))/(2*(n-1)*(m-1)*cos(30 * 3.14/180));
+    if (D > 0)  r= (int)(-((n-1)*h*cos(30 * 3.14/180)+(m-1)*w) + sqrt(D))/(2*(n-1)*(m-1)*cos(30 * 3.14/180));
 
     return r;
 }
@@ -84,8 +84,8 @@ int getDfromS3D(int gens[3], int coord[4], int S){
     int h = coord[3]-coord[1];
     int D = 0;
 
-    // We want to resolve ((n-1)d+w)*((m-1)d+h) = S
-    // which is equivalent to (n-1)(m-1)d^2 + d((n-1)h + (m-1)w) + wh-S = 0
+    // We want to resolve ((n-0.5)d+w)*((m-0.5)d+h) = S
+    // which is equivalent to (n-0.5)(m-0.5)d^2 + d((n-0.5)h + (m-0.5)w) + wh-S = 0
 
     //Delta : D = b^2 - 4ac
     D = pow((n-0.5)*h+(m-0.5)*w,2) - 4*(n-0.5)*(m-0.5)*(w*h-S);
