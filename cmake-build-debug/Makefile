@@ -609,6 +609,33 @@ src/main.cpp.s:
 	$(MAKE) -f CMakeFiles/topologyGUI.dir/build.make CMakeFiles/topologyGUI.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/surface.o: src/surface.cpp.o
+
+.PHONY : src/surface.o
+
+# target to build an object file
+src/surface.cpp.o:
+	$(MAKE) -f CMakeFiles/topologyGUI.dir/build.make CMakeFiles/topologyGUI.dir/src/surface.cpp.o
+.PHONY : src/surface.cpp.o
+
+src/surface.i: src/surface.cpp.i
+
+.PHONY : src/surface.i
+
+# target to preprocess a source file
+src/surface.cpp.i:
+	$(MAKE) -f CMakeFiles/topologyGUI.dir/build.make CMakeFiles/topologyGUI.dir/src/surface.cpp.i
+.PHONY : src/surface.cpp.i
+
+src/surface.s: src/surface.cpp.s
+
+.PHONY : src/surface.s
+
+# target to generate assembly for a file
+src/surface.cpp.s:
+	$(MAKE) -f CMakeFiles/topologyGUI.dir/build.make CMakeFiles/topologyGUI.dir/src/surface.cpp.s
+.PHONY : src/surface.cpp.s
+
 src/topology.o: src/topology.cpp.o
 
 .PHONY : src/topology.o
@@ -699,6 +726,9 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/surface.o"
+	@echo "... src/surface.i"
+	@echo "... src/surface.s"
 	@echo "... src/topology.o"
 	@echo "... src/topology.i"
 	@echo "... src/topology.s"

@@ -1,17 +1,21 @@
+//C++ libraries
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <ctime>
+
+//GUI Library
 #include "imgui.h"
 #include "imgui-SFML.h"
 
+//Graphic Engine Library
 #include <SFML/Graphics.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/System/Clock.hpp>
 #include <SFML/Window/Event.hpp>
 #include <SFML/Graphics/CircleShape.hpp>
 
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <ctime>
-
+//Source files
 #include "block.h"
 #include "blockContainer.h"
 #include "lineContainer.h"
@@ -20,6 +24,7 @@
 #include "file_tools.hpp"
 #include "topology.hpp"
 #include "create_output_file.hpp"
+#include "surface.h"
 
 #include "get_time.h"
 #include "log.h"
@@ -95,7 +100,7 @@ int main() {
     CONTRAINT_RESIZE = CONTRAINT; //copy
 
     // ------ OUTPUT FILE ------
-    string output_path = input_filename;
+    const string &output_path = input_filename;
     ofstream file_output;
 
     /*
@@ -103,7 +108,7 @@ int main() {
      *                             SFML
      * ---------------------------------------------------------------
      */
-    //  Init SFML
+    //Init SFML
     //Window settings
     sf::RenderWindow window(sf::VideoMode(700, 800), "topologyGUI", sf::Style::Close);
     window.setFramerateLimit(30);
@@ -131,7 +136,7 @@ int main() {
     // ImGUI - variables
     static ExampleAppLog my_log;
     my_log.AddLog("%s [info] Welcome \n", &current_time[0]);
-    static bool* p_open = new bool;
+    static auto * p_open = new bool;
     *p_open = true;
 
     //Font
@@ -161,9 +166,9 @@ int main() {
     static int diagonal      =  100;
     *p_open                  =  true;
     static bool is3D         =  false;
-    static int surface_2D;
-    static int surface_hexa;
-    static int surface_3D;
+    int surface_2D =0;
+    int surface_hexa =0;
+    int surface_3D = 0;
 
 
     /*
@@ -194,7 +199,7 @@ int main() {
         /*
          *  Begin main window
          */
-        ImGui::Begin("Settings",p_open,ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse);
+        ImGui::Begin("Settings",p_open,ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoTitleBar);
         ImGui::Text("Current file : %s", &file_path[0]);
 
         /*
@@ -305,7 +310,6 @@ int main() {
         if (ImGui::CollapsingHeader("Topology"))
         {
             ImGui::Text("Choose your topology :");
-
             ImGui::RadioButton("2D Mesh", &choice_topology, 1); ImGui::SameLine();
             ImGui::RadioButton("2D Hexa", &choice_topology, 2); ImGui::SameLine();
             ImGui::RadioButton("3D Mesh", &choice_topology, 3);
@@ -322,7 +326,7 @@ int main() {
                     ImGui::PushID(1);
                     ImGui::Text("Diagonal 'r' in slices : ");
                     ImGui::InputInt("",&diagonal); ImGui::SameLine();
-                    d = diagonal*cos(30 * 3.14/180);
+                    d = static_cast<int>(diagonal * cos(30 * 3.14 / 180));
                     ImGui::Text("d : %d", d);
                     ImGui::PopID();
                     is3D = false;
@@ -492,7 +496,6 @@ int main() {
             }
         }
 
-
         /*
          *  Generate constraint file (simplified)
          */
@@ -581,12 +584,30 @@ int main() {
         /*
          *  SURFACE
          */
-
+        static int D_2D = 0;
+        static int R_2D = 0;
+        static int D_3D = 0;
+        static int user_surface = 0;
         if (ImGui::CollapsingHeader("Surface"))
         {
             ImGui::Text("Surface 2D (slices)   : %d", surface_2D);
             ImGui::Text("Surface Hexa (slices) : %d", surface_hexa);
             ImGui::Text("Surface 3D (slices)   : %d", surface_3D);
+
+            ImGui::Separator();
+
+            ImGui::PushID(4);
+            ImGui::Text("Input surface S :"); ImGui::SameLine();
+            ImGui::InputInt("", &user_surface);
+            if(ImGui::Button("Get Distance")){
+                D_2D = getDfromS2D(gens, coord, user_surface);
+                R_2D = getDfromSHexa(gens, coord, user_surface);
+                D_3D = getDfromS3D(gens, coord, user_surface);
+            }
+            ImGui::Text("Distance 'd' from surface S   : %d", D_2D);
+            ImGui::Text("Distance 'r' from surface S   : %d", R_2D);
+            ImGui::Text("Distance 'd' from surface S   : %d", D_3D);
+            ImGui::PopID();
         }
         ImGui::Separator();
 

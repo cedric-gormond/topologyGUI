@@ -45,7 +45,7 @@ set(SOURCE_FILES
         src/log.h src/get_time.cpp
         src/get_time.h
         src/graphics_utilities.cpp
-        src/graphics_utilities.h)
+        src/graphics_utilities.h src/surface.cpp src/surface.h)
 
 #set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -static-libstdc++") #a voir
 

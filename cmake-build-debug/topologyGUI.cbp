@@ -203,6 +203,12 @@
 		<Unit filename="/Users/cedricgormond/Desktop/topologyGUI/src/main.cpp">
 			<Option target="topologyGUI"/>
 		</Unit>
+		<Unit filename="/Users/cedricgormond/Desktop/topologyGUI/src/surface.cpp">
+			<Option target="topologyGUI"/>
+		</Unit>
+		<Unit filename="/Users/cedricgormond/Desktop/topologyGUI/src/surface.h">
+			<Option target="topologyGUI"/>
+		</Unit>
 		<Unit filename="/Users/cedricgormond/Desktop/topologyGUI/src/topology.cpp">
 			<Option target="topologyGUI"/>
 		</Unit>

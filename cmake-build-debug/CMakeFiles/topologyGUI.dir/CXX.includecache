@@ -6,13 +6,31 @@
 
 #IncludeRegexTransform: 
 
-/Users/cedricgormond/Desktop/topologyGUI/src/ctr.cpp
-ctr.hpp
-/Users/cedricgormond/Desktop/topologyGUI/src/ctr.hpp
-
 /Users/cedricgormond/Desktop/topologyGUI/src/ctr.hpp
 iostream
 -
 string
+-
+
+/Users/cedricgormond/Desktop/topologyGUI/src/gen_tools.h
+stdio.h
+-
+vector
+-
+string
+-
+ctr.hpp
+/Users/cedricgormond/Desktop/topologyGUI/src/ctr.hpp
+
+/Users/cedricgormond/Desktop/topologyGUI/src/surface.cpp
+surface.h
+/Users/cedricgormond/Desktop/topologyGUI/src/surface.h
+
+/Users/cedricgormond/Desktop/topologyGUI/src/surface.h
+ctr.hpp
+/Users/cedricgormond/Desktop/topologyGUI/src/ctr.hpp
+gen_tools.h
+/Users/cedricgormond/Desktop/topologyGUI/src/gen_tools.h
+cmath
 -
 

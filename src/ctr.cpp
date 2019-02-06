@@ -29,21 +29,23 @@ void initConstraint(constraint *ctr){
 
 constraint* CreateConstraint(int gens[3], int coord[4]){
     int size = gens[0] * gens[1];
-    constraint* ctr_temp = new constraint[size];
+    auto * ctr_temp = new constraint[size];
 
+    //COORD : X0 Y0 X1 Y1
     ctr_temp[0].X_down = coord[0];
-    ctr_temp[0].X_up = coord[1];
-    ctr_temp[0].Y_down = coord[2];
+    ctr_temp[0].Y_down = coord[1];
+    ctr_temp[0].X_up = coord[2];
     ctr_temp[0].Y_up = coord[3];
 
     for (int i = 0; i < size; ++i) {
         ctr_temp[i].name    = std::to_string(i+1);
-        ctr_temp[i].CenterX = (coord[1] + coord[2])/2;
-        ctr_temp[i].CenterY = (coord[3] + coord[4])/2;
+        ctr_temp[i].CenterX = (coord[0] + coord[2])/2;
+        ctr_temp[i].CenterY = (coord[1] + coord[3])/2;
+        ctr_temp[i].width   = (coord[2] - coord[0]);
+        ctr_temp[i].heigth  = (coord[3] - coord[1]);
     }
 
     int bloc = 0;
-
     for (int j = 0; j < gens[0]; ++j) {
         for (int k = 0; k < gens[1]; ++k) {
             ctr_temp[bloc].GenX    = std::to_string(k);
@@ -59,14 +61,16 @@ constraint* CreateConstraint3D(int gens[3], int coord[4]){
     constraint* ctr_temp = new constraint[size];
 
     ctr_temp[0].X_down = coord[0];
-    ctr_temp[0].X_up = coord[1];
-    ctr_temp[0].Y_down = coord[2];
+    ctr_temp[0].Y_down = coord[1];
+    ctr_temp[0].X_up = coord[2];
     ctr_temp[0].Y_up = coord[3];
 
     for (int i = 0; i < size; ++i) {
         ctr_temp[i].name    = std::to_string(i+1);
-        ctr_temp[i].CenterX = (coord[1] + coord[2])/2;
-        ctr_temp[i].CenterY = (coord[3] + coord[4])/2;
+        ctr_temp[i].CenterX = (coord[0] + coord[2])/2;
+        ctr_temp[i].CenterY = (coord[1] + coord[3])/2;
+        ctr_temp[i].width   = (coord[2] - coord[0]);
+        ctr_temp[i].heigth  = (coord[3] - coord[1]);
     }
 
     int bloc = 0;
