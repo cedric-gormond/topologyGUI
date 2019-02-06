@@ -71,7 +71,7 @@ constraint* CreateConstraint3D(int gens[3], int coord[4]){
 
     int bloc = 0;
 
-    for (int i = 0; i < gens[2]; ++i) {
+    for (int i = 0; i < gens[2] + 1; ++i) {
         for (int j = 0; j < gens[0]; ++j) {
             for (int k = 0; k < gens[1]; ++k) {
                 ctr_temp[bloc].GenZ    = std::to_string(i);

@@ -103,9 +103,7 @@ int main() {
      *                             SFML
      * ---------------------------------------------------------------
      */
-
     //  Init SFML
-
     //Window settings
     sf::RenderWindow window(sf::VideoMode(700, 800), "topologyGUI", sf::Style::Close);
     window.setFramerateLimit(30);

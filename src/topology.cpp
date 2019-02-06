@@ -69,8 +69,8 @@ int get_surface_3D(constraint *ctr ,int d, int size){
     std::vector<int> gen_max(3);
     gen_max = max_gen(ctr, size);
 
-    int total_width     = d*(gen_max[0] + 0.5) + ctr[0].width + stoi(ctr[0].X_down);
-    int total_heigth    = d*(gen_max[0] + 0.5) + ctr[0].heigth + stoi(ctr[0].Y_down);
+    int total_width     = d*(gen_max[0] + 0.5) + ctr[0].width;
+    int total_heigth    = d*(gen_max[0] + 0.5) + ctr[0].heigth;
     return (total_width * total_heigth);
 }
 
