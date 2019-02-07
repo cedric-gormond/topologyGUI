@@ -266,11 +266,12 @@ int main() {
                     gens[2] = 1;
                     ImGui::Text("DimX :                               "); ImGui::SameLine();
                     ImGui::Text("DimY :                               "); ImGui::SameLine();
-                    ImGui::Text("DimZ :                              "); ImGui::SameLine();
+                    ImGui::Text("DimZ : (always 1)");
+                    ImGui::SameLine();
                     ShowHelpMarker("DimZ should be between 0 and 1. \n");
-
                     ImGui::PushID(1);
                     ImGui::InputInt3("##", gens);
+                    gens[2] = 1; // we force the value
                     ImGui::PopID(); ImGui::SameLine();
                     ImGui::Text("%d blocs", gens[0]*gens[1]*(gens[2]+1));
                 } else {
@@ -293,7 +294,7 @@ int main() {
                             "              "); ImGui::SameLine();
                 ImGui::Text("Y1 : ");
                 ImGui::InputInt4("##", coord); ImGui::SameLine();
-                ImGui::Text("(W : %d,H : %d) ", abs(coord[0] - coord[2]), abs(coord[1] - coord[3]));
+                ImGui::Text("(W : %d, H : %d) ", abs(coord[0] - coord[2]), abs(coord[1] - coord[3]));
 
             if (disabled)   ImGui::PopStyleVar();
 
@@ -337,6 +338,8 @@ int main() {
                     ImGui::PopID();
                     is3D = true;
                     break;
+                default:
+                    break;
             }
         }
         ImGui::Separator();
@@ -367,6 +370,9 @@ int main() {
                     ImGui::Text("Heigth : ");
                     ImGui::InputInt2("##", vec2i);
                     ImGui::PopID();
+                    break;
+
+                default:
                     break;
             }
         }
