@@ -275,16 +275,6 @@ CMakeFiles/topologyGUI.dir/src/get_from_txt.cpp.o
 CMakeFiles/topologyGUI.dir/src/get_time.cpp.o
  /Users/cedricgormond/Desktop/topologyGUI/src/get_time.cpp
  /Users/cedricgormond/Desktop/topologyGUI/src/get_time.h
-CMakeFiles/topologyGUI.dir/src/graphics_utilities.cpp.o
- ../imgui/imconfig.h
- ../imgui/imgui.h
- /Users/cedricgormond/Desktop/topologyGUI/src/graphics_utilities.cpp
- /Users/cedricgormond/Desktop/topologyGUI/src/graphics_utilities.h
- /usr/local/include/SFML/Config.hpp
- /usr/local/include/SFML/Graphics/Color.hpp
- /usr/local/include/SFML/Graphics/Export.hpp
- /usr/local/include/SFML/System/Vector2.hpp
- /usr/local/include/SFML/System/Vector2.inl
 CMakeFiles/topologyGUI.dir/src/line.cpp.o
  /Users/cedricgormond/Desktop/topologyGUI/src/line.cpp
  /Users/cedricgormond/Desktop/topologyGUI/src/line.h
@@ -448,7 +438,6 @@ CMakeFiles/topologyGUI.dir/src/main.cpp.o
  /Users/cedricgormond/Desktop/topologyGUI/src/gen_tools.h
  /Users/cedricgormond/Desktop/topologyGUI/src/get_from_ctr.hpp
  /Users/cedricgormond/Desktop/topologyGUI/src/get_time.h
- /Users/cedricgormond/Desktop/topologyGUI/src/graphics_utilities.h
  /Users/cedricgormond/Desktop/topologyGUI/src/line.h
  /Users/cedricgormond/Desktop/topologyGUI/src/lineContainer.h
  /Users/cedricgormond/Desktop/topologyGUI/src/log.h

@@ -46,7 +46,7 @@ int distance_between_blocs(constraint *ctr, int bloc1, int bloc2)
     return distance;
 }
 
-constraint* set_2D(constraint *ctr ,int distance, int size)
+constraint* set2D(constraint *ctr, int distance, int size)
 {
     auto *ctr_resize = new constraint[size];
     //initConstraint(ctr_resize);
@@ -54,7 +54,7 @@ constraint* set_2D(constraint *ctr ,int distance, int size)
     ctr_resize = ctr; //copy data
 
     std::vector<int> gen_max(3);
-    gen_max = max_gen(ctr, size);
+    gen_max = maxGen(ctr, size);
 
     // recalculate every center and assumes that pblock is bottom_left
     int i, j, pbloc;
@@ -83,14 +83,14 @@ constraint* set_2D(constraint *ctr ,int distance, int size)
     return ctr_resize;
 }
 
-constraint* set_hexa(constraint *ctr, int r, int size)
+constraint* setHexa(constraint *ctr, int r, int size)
 {
     constraint *ctr_resize = new constraint[size];
 
     ctr_resize = ctr; //copy
 
     std::vector<int> gen_max(3);
-    gen_max = max_gen(ctr_resize, size);
+    gen_max = maxGen(ctr_resize, size);
 
     // please refer to sketch
     int i, j, pbloc;
@@ -129,13 +129,13 @@ constraint* set_hexa(constraint *ctr, int r, int size)
     return ctr_resize;
 }
 
-constraint* set_3D(constraint *ctr ,int distance, int size){
+constraint* set3D(constraint *ctr, int distance, int size){
     auto *ctr_resize = new constraint[size];
 
     ctr_resize = ctr; // copy the data from ctr into ctr_resize
 
     std::vector<int> gen_max(3);
-    gen_max = max_gen(ctr, size);
+    gen_max = maxGen(ctr, size);
 
     // recalculate every center and assumes that pblock is bottom_left
     int i, j, k, pbloc;

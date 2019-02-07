@@ -28,7 +28,7 @@
 
 #include "get_time.h"
 #include "log.h"
-#include "graphics_utilities.h"
+
 
 using namespace std;
 
@@ -69,7 +69,7 @@ int main() {
     //Get number of routers (blocs)
     cout << endl;
     cout << " * Searching for pblocs " << endl;
-    int nb_pblocs = getNumberBlocs_from_ctr(file);
+    int nb_pblocs = getNumberBlocsFromCtr(file);
     cout << " * " <<nb_pblocs << " pblocs found \n";
     cout << endl;
     file.close();
@@ -80,19 +80,19 @@ int main() {
 
     // Get all the routers (pblocs)
     file.open(file_path);
-    getBlocs_from_ctr(file, CONTRAINT);
+    getBlocsFromCtr(file, CONTRAINT);
     file.close();
 
     // Get all the generation of each (pblocs)
     file.open(file_path);
-    getGen_from_ctr(file, CONTRAINT);
+    getGenFromCtr(file, CONTRAINT);
     file.close();
 
     // Set the center of all blocs
     dimensions_of_bloc(CONTRAINT, nb_pblocs);
 
     // Display blocs in console
-    //displayBlocs_from_ctr(CONTRAINT, nb_pblocs);
+    //displayBlocsFromCtr(CONTRAINT, nb_pblocs);
 
     //Resize constraint
     auto *CONTRAINT_RESIZE = new constraint[nb_pblocs];
@@ -151,7 +151,7 @@ int main() {
      */
     // create container with nb_pblocs blocks in it, starting at pos 100/100
     // this container will be drawn using ContainerOfBlocks' void drawContainer(sf::RenderWindow &window)
-    //ContainerOfBlocks Blocks(nb_pblocs, sf::Vector2f(100, 100),CONTRAINT_RESIZE);
+    // ContainerOfBlocks Blocks(nb_pblocs, sf::Vector2f(100, 100),CONTRAINT_RESIZE);
 
     // create  line container, starting at pos 100/100
     // this container will be drawn using ContainerOfLines' void drawContainer(sf::RenderWindow &window)
@@ -402,14 +402,14 @@ int main() {
 
                     //apply topology
                     if (disabled){
-                        CONTRAINT_RESIZE = set_2D(CONTRAINT_RESIZE,distance2D, nb_pblocs);
-                        surface_2D = get_surface_2D(CONTRAINT_RESIZE, distance2D, nb_pblocs);
+                        CONTRAINT_RESIZE = set2D(CONTRAINT_RESIZE, distance2D, nb_pblocs);
+                        surface_2D = getSurface2D(CONTRAINT_RESIZE, distance2D, nb_pblocs);
                     }
                     else{
                         my_log.AddLog("%s [info] [mesh2D] Input file ignored \n", &current_time[0]);
-                        CONTRAINT_CREATED = CreateConstraint(gens,coord);
-                        CONTRAINT_CREATED = set_2D(CONTRAINT_CREATED,distance2D, gens[0]*gens[1]);
-                        surface_2D = get_surface_2D(CONTRAINT_CREATED, distance2D, gens[0]*gens[1]);
+                        CONTRAINT_CREATED = createConstraint(gens, coord);
+                        CONTRAINT_CREATED = set2D(CONTRAINT_CREATED, distance2D, gens[0] * gens[1]);
+                        surface_2D = getSurface2D(CONTRAINT_CREATED, distance2D, gens[0] * gens[1]);
                     }
 
                     //Writing
@@ -436,14 +436,14 @@ int main() {
 
                     //apply topology
                     if (disabled){
-                        CONTRAINT_RESIZE = set_hexa(CONTRAINT_RESIZE,diagonal, nb_pblocs);
-                        surface_hexa = get_surface_hexa(CONTRAINT_RESIZE, diagonal, nb_pblocs);
+                        CONTRAINT_RESIZE = setHexa(CONTRAINT_RESIZE, diagonal, nb_pblocs);
+                        surface_hexa = getSurfaceHexa(CONTRAINT_RESIZE, diagonal, nb_pblocs);
                     }
                     else{
                         my_log.AddLog("%s [info] [hexa] Input file ignored \n", &current_time[0]);
-                        CONTRAINT_CREATED = CreateConstraint(gens,coord);
-                        CONTRAINT_CREATED = set_hexa(CONTRAINT_CREATED,diagonal, gens[0]*gens[1]);
-                        surface_hexa = get_surface_hexa(CONTRAINT_CREATED, diagonal, gens[0]*gens[1]);
+                        CONTRAINT_CREATED = createConstraint(gens, coord);
+                        CONTRAINT_CREATED = setHexa(CONTRAINT_CREATED, diagonal, gens[0] * gens[1]);
+                        surface_hexa = getSurfaceHexa(CONTRAINT_CREATED, diagonal, gens[0] * gens[1]);
                     }
 
                     //Writing
@@ -471,14 +471,14 @@ int main() {
 
                     //apply topology
                     if (disabled){
-                        CONTRAINT_RESIZE = set_3D(CONTRAINT_RESIZE,distance3D, nb_pblocs);
-                        surface_3D = get_surface_3D(CONTRAINT_RESIZE, distance3D, nb_pblocs);
+                        CONTRAINT_RESIZE = set3D(CONTRAINT_RESIZE, distance3D, nb_pblocs);
+                        surface_3D = getSurface3D(CONTRAINT_RESIZE, distance3D, nb_pblocs);
                     }
                     else{
                         my_log.AddLog("%s [info] [mesh3D] Input file ignored \n", &current_time[0]);
-                        CONTRAINT_CREATED = CreateConstraint3D(gens,coord);
-                        CONTRAINT_CREATED = set_3D(CONTRAINT_CREATED,distance3D, gens[0]*gens[1]*(gens[2]+1));
-                        surface_3D = get_surface_3D(CONTRAINT_CREATED, distance3D, gens[0]*gens[1]*(gens[2]+1));
+                        CONTRAINT_CREATED = createConstraint3D(gens, coord);
+                        CONTRAINT_CREATED = set3D(CONTRAINT_CREATED, distance3D, gens[0] * gens[1] * (gens[2] + 1));
+                        surface_3D = getSurface3D(CONTRAINT_CREATED, distance3D, gens[0] * gens[1] * (gens[2] + 1));
                     }
 
                     //Writing
@@ -517,7 +517,7 @@ int main() {
                     }
 
                     //apply topology
-                    CONTRAINT_RESIZE = set_2D(CONTRAINT_RESIZE,distance2D, nb_pblocs);
+                    CONTRAINT_RESIZE = set2D(CONTRAINT_RESIZE, distance2D, nb_pblocs);
 
                     //Writing
                     file_output.open(output_path_temp);
@@ -540,7 +540,7 @@ int main() {
                         resize_dimensions(CONTRAINT_RESIZE, nb_pblocs, default2i);
                     }
                     //apply topology
-                    CONTRAINT_RESIZE = set_hexa(CONTRAINT_RESIZE,diagonal, nb_pblocs);
+                    CONTRAINT_RESIZE = setHexa(CONTRAINT_RESIZE, diagonal, nb_pblocs);
 
                     //Writing
                     output_path_temp = output_path + "_simplified_generated.txt";
@@ -549,9 +549,9 @@ int main() {
                     file_output.close();
 
                     //log
-                    my_log.AddLog("%s [info] [HEXA] Generate simplified constraint file \n", &current_time[0]);
-                    my_log.AddLog("%s [info] [HEXA] Success \n",&current_time[0]);
-                    my_log.AddLog("%s [info] [HEXA] Output file : %s \n", &current_time[0],&output_path_temp[0]);
+                    my_log.AddLog("%s [info] [hexa] Generate simplified constraint file \n", &current_time[0]);
+                    my_log.AddLog("%s [info] [hexa] Success \n",&current_time[0]);
+                    my_log.AddLog("%s [info] [hexa] Output file : %s \n", &current_time[0],&output_path_temp[0]);
                     break;
                 case 3:
                     //check resize dimensions
@@ -562,7 +562,7 @@ int main() {
                         resize_dimensions(CONTRAINT_RESIZE, nb_pblocs, default2i);
                     }
                     //apply topology
-                    CONTRAINT_RESIZE = set_3D(CONTRAINT_RESIZE,distance3D, nb_pblocs);
+                    CONTRAINT_RESIZE = set3D(CONTRAINT_RESIZE, distance3D, nb_pblocs);
 
                     //Writing
                     output_path_temp = output_path + "_simplified_generated.txt";
@@ -592,8 +592,10 @@ int main() {
         static int R_2D = 0;
         static int D_3D = 0;
         static int user_surface = 0;
+        static int user_distance;
         if (ImGui::CollapsingHeader("Surface"))
         {
+            ImGui::Separator();
             ImGui::Text("Surface 2D (slices)   : %d ", surface_2D);
             ImGui::Text("Surface Hexa (slices) : %d ", surface_hexa);
             ImGui::Text("Surface 3D (slices)   : %d ", surface_3D);
@@ -603,18 +605,41 @@ int main() {
             ImGui::PushID(4);
             ImGui::Text("Input surface S :"); ImGui::SameLine();
             ImGui::InputInt("", &user_surface);
+            ImGui::SameLine();
+            ShowHelpMarker("Calculate distance 'd' or 'r' from the input surface by using parameters of the third section\n");
+            ImGui::RadioButton("Distance 'd' from surface S (2D Mesh)", &user_distance, 1); ImGui::SameLine();
+            ImGui::Text(" : %d", D_2D);
+            ImGui::RadioButton("Distance 'r' from surface S (2D Hexa)", &user_distance, 2); ImGui::SameLine();
+            ImGui::Text(" : %d", R_2D);
+            ImGui::RadioButton("Distance 'd' from surface S (3D Mesh)", &user_distance, 3); ImGui::SameLine();
+            ImGui::Text(" : %d", D_3D);
+            ImGui::PopID();
+
             if(ImGui::Button("Get Distance")){
                 D_2D = getDfromS2D(gens, coord, user_surface);
                 R_2D = getDfromSHexa(gens, coord, user_surface);
                 D_3D = getDfromS3D(gens, coord, user_surface);
                 my_log.AddLog("%s [info] [surface] Calculate distances from surface S \n", &current_time[0]);
             }
+
             ImGui::SameLine();
-            ShowHelpMarker("Calculate distance 'd' or 'r' from the input surface by using parameters of the third section\n");
-            ImGui::Text("Distance 'd' from surface S (2D Mesh) : %d", D_2D);
-            ImGui::Text("Distance 'r' from surface S (2D Hexa) : %d", R_2D);
-            ImGui::Text("Distance 'd' from surface S (3D Mesh)  : %d", D_3D);
-            ImGui::PopID();
+
+            if(ImGui::Button("Apply selected distance")){
+                switch (user_distance){
+                    case 1:
+                        distance2D = D_2D;
+                        my_log.AddLog("%s [info] [mesh2D] Apply selected distance : %d \n", &current_time[0], D_2D);
+                        break;
+                    case 2:
+                        diagonal = R_2D;
+                        my_log.AddLog("%s [info] [hexa] Apply selected distance : %d \n", &current_time[0], R_2D);
+                        break;
+                    case 3:
+                        distance3D = D_3D;
+                        my_log.AddLog("%s [info] [mesh3D] Apply selected distance : %d \n", &current_time[0], D_3D);
+                        break;
+                }
+            }
         }
         ImGui::Separator();
 
@@ -633,12 +658,13 @@ int main() {
         ImGui::PopFont();
         ImGui::SFML::Render(window);
 
-        //window.draw(Blocks); OR Blocks.drawContainer(window);
+        //window.draw(Blocks); //OR Blocks.drawContainer(window);
         //window.draw(lines);
         window.display();
     }
 
     ImGui::SFML::Shutdown();
+    cout << "* Exit"<<endl;
 
     //delete []CONTRAINT;
     //delete []CONTRAINT_RESIZE;

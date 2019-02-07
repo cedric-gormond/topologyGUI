@@ -30,18 +30,18 @@ void resize_dimensions(constraint *ctr ,int size, int vec2i[2]);
 int distance_between_blocs(constraint *ctr, int bloc1, int bloc2);
 
 /*
- * set_distance_from_bloc1 :
+ * set2D :
  */
-constraint* set_2D(constraint *ctr ,int distance, int size);
+constraint* set2D(constraint *ctr, int distance, int size);
 
 /*
- * set_hexa:
+ * setHexa:
  */
-constraint* set_hexa(constraint *ctr ,int radius, int size);
+constraint* setHexa(constraint *ctr, int radius, int size);
 
 /*
- * set_3D:
+ * set3D:
  */
-constraint* set_3D(constraint *ctr ,int distance, int size);
+constraint* set3D(constraint *ctr, int distance, int size);
 
 #endif /* topology_hpp */

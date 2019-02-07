@@ -17,7 +17,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/topologyGUI.dir/imgui/imgui_widgets.cpp.o"
   "CMakeFiles/topologyGUI.dir/imgui-sfml/imgui-SFML.cpp.o"
   "CMakeFiles/topologyGUI.dir/src/get_time.cpp.o"
-  "CMakeFiles/topologyGUI.dir/src/graphics_utilities.cpp.o"
   "CMakeFiles/topologyGUI.dir/src/surface.cpp.o"
   "../topologyGUI.pdb"
   "../topologyGUI"

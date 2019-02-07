@@ -8,33 +8,34 @@
 #include "ctr.hpp"
 #include "gen_tools.h"
 #include <cmath>
-/*
- * get_surface_hexa : returns surface of a 2D hexagonal topology
- */
-int get_surface_hexa(constraint *ctr ,int diagonal, int size);
 
 /*
- * get_surface_2D : returns surface of a 2D topology
+ * getSurfaceHexa : returns surface of a 2D hexagonal topology
  */
-int get_surface_2D(constraint *ctr ,int diagonale, int size);
+int getSurfaceHexa(constraint *ctr, int diagonal, int size);
 
 /*
- * get_surface_3D : returns surface of a 3D topology
+ * getSurface2D : returns surface of a 2D topology
  */
-int get_surface_3D(constraint *ctr ,int d, int size);
+int getSurface2D(constraint *ctr, int diagonale, int size);
 
 /*
- * getDfromS2D :
+ * getSurface3D : returns surface of a 3D topology
+ */
+int getSurface3D(constraint *ctr, int d, int size);
+
+/*
+ * getDfromS2D : get distance2D from the surface of a mesh2D
  */
 int getDfromS2D(int gens[3], int coord[4], int surface_2D);
 
 /*
- * getDfromSHexa :
+ * getDfromSHexa : get diagonal from the surface of a hexa
  */
 int getDfromSHexa(int gens[3], int coord[4], int surface_hexa);
 
 /*
- * getDfromS3D :
+ * getDfromS3D : get distance3D from the surface of a mesh3D
  */
 int getDfromS3D(int gens[3], int coord[4], int surface_3D);
 

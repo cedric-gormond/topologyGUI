@@ -12,9 +12,9 @@
 
 
 /*
- * max_gen : returns a vector which contains maximal values
+ * maxGen : returns a vector which contains maximal values
  */
-std::vector<int> max_gen(constraint *ctr, int size);
+std::vector<int> maxGen(constraint *ctr, int size);
 
 /*
  * getGen : returns the correct gen to write in the output file

@@ -4,7 +4,7 @@
 
 #include "gen_tools.h"
 
-std::vector<int> max_gen(constraint *ctr, int size){
+std::vector<int> maxGen(constraint *ctr, int size){
 
     std::vector<int> vect;
 
@@ -45,7 +45,7 @@ std::string setGen(constraint *ctr, int index, int size)
     std::string str_X, str_Y;
 
     std::vector<int> gen_max(3);
-    gen_max = max_gen(ctr, size);
+    gen_max = maxGen(ctr, size);
 
     int max_X = gen_max[0];
     int max_Y = gen_max[1];

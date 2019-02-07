@@ -27,7 +27,7 @@ void initConstraint(constraint *ctr){
     ctr->heigth     = 0;
 }
 
-constraint* CreateConstraint(int gens[3], int coord[4]){
+constraint* createConstraint(int *gens, int *coord){
     int size = gens[0] * gens[1];
     auto * ctr_temp = new constraint[size];
 
@@ -56,7 +56,7 @@ constraint* CreateConstraint(int gens[3], int coord[4]){
     return ctr_temp;
 }
 
-constraint* CreateConstraint3D(int gens[3], int coord[4]){
+constraint* createConstraint3D(int *gens, int *coord){
     int size = gens[0] * gens[1] * (gens[2]+1);
     constraint* ctr_temp = new constraint[size];
 

@@ -12,7 +12,7 @@ ContainerOfLines::ContainerOfLines() {
 ContainerOfLines::ContainerOfLines(int size, const sf::Vector2f pos, constraint *ctr, int distance) {
 
     std::vector<int> gen_max(3);
-    gen_max = max_gen(ctr, size);
+    gen_max = maxGen(ctr, size);
 
     for (int k = 0; k < (size - gen_max[0] - 1); ++k) {
         blockContainer.push_back(Line(ctr[k].CenterX - 1, ctr[k].CenterY - 1, ctr[k].width, ctr[k].heigth, distance, 2)); //-1 p

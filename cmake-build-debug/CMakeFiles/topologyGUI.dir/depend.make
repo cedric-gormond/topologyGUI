@@ -275,16 +275,6 @@ CMakeFiles/topologyGUI.dir/src/get_from_txt.cpp.o: ../src/get_from_txt.hpp
 CMakeFiles/topologyGUI.dir/src/get_time.cpp.o: ../src/get_time.cpp
 CMakeFiles/topologyGUI.dir/src/get_time.cpp.o: ../src/get_time.h
 
-CMakeFiles/topologyGUI.dir/src/graphics_utilities.cpp.o: ../imgui/imconfig.h
-CMakeFiles/topologyGUI.dir/src/graphics_utilities.cpp.o: ../imgui/imgui.h
-CMakeFiles/topologyGUI.dir/src/graphics_utilities.cpp.o: ../src/graphics_utilities.cpp
-CMakeFiles/topologyGUI.dir/src/graphics_utilities.cpp.o: ../src/graphics_utilities.h
-CMakeFiles/topologyGUI.dir/src/graphics_utilities.cpp.o: /usr/local/include/SFML/Config.hpp
-CMakeFiles/topologyGUI.dir/src/graphics_utilities.cpp.o: /usr/local/include/SFML/Graphics/Color.hpp
-CMakeFiles/topologyGUI.dir/src/graphics_utilities.cpp.o: /usr/local/include/SFML/Graphics/Export.hpp
-CMakeFiles/topologyGUI.dir/src/graphics_utilities.cpp.o: /usr/local/include/SFML/System/Vector2.hpp
-CMakeFiles/topologyGUI.dir/src/graphics_utilities.cpp.o: /usr/local/include/SFML/System/Vector2.inl
-
 CMakeFiles/topologyGUI.dir/src/line.cpp.o: ../src/line.cpp
 CMakeFiles/topologyGUI.dir/src/line.cpp.o: ../src/line.h
 CMakeFiles/topologyGUI.dir/src/line.cpp.o: /usr/local/include/SFML/Config.hpp
@@ -447,7 +437,6 @@ CMakeFiles/topologyGUI.dir/src/main.cpp.o: ../src/file_tools.hpp
 CMakeFiles/topologyGUI.dir/src/main.cpp.o: ../src/gen_tools.h
 CMakeFiles/topologyGUI.dir/src/main.cpp.o: ../src/get_from_ctr.hpp
 CMakeFiles/topologyGUI.dir/src/main.cpp.o: ../src/get_time.h
-CMakeFiles/topologyGUI.dir/src/main.cpp.o: ../src/graphics_utilities.h
 CMakeFiles/topologyGUI.dir/src/main.cpp.o: ../src/line.h
 CMakeFiles/topologyGUI.dir/src/main.cpp.o: ../src/lineContainer.h
 CMakeFiles/topologyGUI.dir/src/main.cpp.o: ../src/log.h

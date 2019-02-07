@@ -16,7 +16,7 @@
 
 using namespace std;
 
-int getNumberBlocs_from_ctr(ifstream& file){
+int getNumberBlocsFromCtr(ifstream &file){
     string line;
     int nb_blocs = 0;
     
@@ -29,7 +29,7 @@ int getNumberBlocs_from_ctr(ifstream& file){
     return nb_blocs;
 }
 
-void getBlocs_from_ctr(std::ifstream& file, constraint *ctr)
+void getBlocsFromCtr(std::ifstream &file, constraint *ctr)
 {
     std::string line; //a line of the constraints file
     int i = 0;
@@ -69,7 +69,7 @@ void getBlocs_from_ctr(std::ifstream& file, constraint *ctr)
     }
 }
 
-void getGen_from_ctr(std::ifstream& file, constraint *ctr)
+void getGenFromCtr(std::ifstream &file, constraint *ctr)
 {
     std::string line; //a line of the constraints file
     int i = 0;
@@ -128,7 +128,7 @@ void getGen_from_ctr(std::ifstream& file, constraint *ctr)
     
 }
 
-void displayBlocs_from_ctr( constraint *ctr, int size)
+void displayBlocsFromCtr(constraint *ctr, int size)
 {
     for (int i=0; i < size; i++) {
         // PBLOC
