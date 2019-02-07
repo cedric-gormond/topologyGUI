@@ -5,7 +5,7 @@
 #ifndef TOPOLOGYGUI_GEN_TOOLS_H
 #define TOPOLOGYGUI_GEN_TOOLS_H
 
-#include <stdio.h>
+#include <cstdio>
 #include <vector>
 #include <string>
 #include "ctr.hpp"

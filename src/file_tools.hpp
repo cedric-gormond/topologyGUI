@@ -1,7 +1,7 @@
 #ifndef file_tools_hpp
 #define file_tools_hpp
 
-#include <stdio.h>
+#include <cstdio>
 #include <iostream>
 #include <fstream>
 

@@ -32,10 +32,10 @@ constraint* createConstraint(int *gens, int *coord){
     auto * ctr_temp = new constraint[size];
 
     //COORD : X0 Y0 X1 Y1
-    ctr_temp[0].X_down = coord[0];
-    ctr_temp[0].Y_down = coord[1];
-    ctr_temp[0].X_up = coord[2];
-    ctr_temp[0].Y_up = coord[3];
+    ctr_temp[0].X_down = std::to_string(coord[0]);
+    ctr_temp[0].Y_down = std::to_string(coord[1]);
+    ctr_temp[0].X_up   = std::to_string(coord[2]);
+    ctr_temp[0].Y_up   = std::to_string(coord[3]);
 
     for (int i = 0; i < size; ++i) {
         ctr_temp[i].name    = std::to_string(i+1);
@@ -60,10 +60,11 @@ constraint* createConstraint3D(int *gens, int *coord){
     int size = gens[0] * gens[1] * (gens[2]+1);
     constraint* ctr_temp = new constraint[size];
 
-    ctr_temp[0].X_down = coord[0];
-    ctr_temp[0].Y_down = coord[1];
-    ctr_temp[0].X_up = coord[2];
-    ctr_temp[0].Y_up = coord[3];
+    //COORD : X0 Y0 X1 Y1
+    ctr_temp[0].X_down = std::to_string(coord[0]);
+    ctr_temp[0].Y_down = std::to_string(coord[1]);
+    ctr_temp[0].X_up   = std::to_string(coord[2]);
+    ctr_temp[0].Y_up   = std::to_string(coord[3]);
 
     for (int i = 0; i < size; ++i) {
         ctr_temp[i].name    = std::to_string(i+1);
