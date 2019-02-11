@@ -208,30 +208,8 @@ int main() {
         if (ImGui::CollapsingHeader("Help")) {
             ImGui::BulletText("TopologyGUI doesn't recognize .xdc files ");
             ImGui::BulletText("TopologyGUI can only generate constraint files with their respective dimensions. \n");
-            ImGui::BulletText("TopologyGUI can only create 2D constraint files. \n");
         }
         ImGui::Separator();
-
-        /*
-         *  Open file
-         */
-        if (ImGui::CollapsingHeader("Open file"))
-        {
-            ImGui::BulletText("WIP (à faire un collapsed ou en menu)");
-            /*
-            if (file) {
-                my_log.AddLog("%s [info] File found : \n", &current_time[0]);
-                my_log.AddLog("%s",&file_path[0]);
-            }
-            else {
-                my_log.AddLog("%s [error] Cannot find  :",&current_time[0]);
-                my_log.AddLog("%s",&file_path[0]);
-
-                my_log.AddLog("%s [suggest] The constraint file must be named : fichier_contrainte_2D.txt \n",&current_time[0]);
-                my_log.AddLog("%s [info] Exit : \n", &current_time[0]);
-            }
-             */
-        }
 
         /*
          *  Generate simplified constraint file without any modification

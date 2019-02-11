@@ -16,28 +16,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b121655d-4426-4f66-af0d-fd001afd7405" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Guide Utilisateur.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/topologyGUI.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/topologyGUI.dir/CXX.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/topologyGUI.dir/src/ctr.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/topologyGUI.dir/src/ctr.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/topologyGUI.dir/src/file_tools.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/topologyGUI.dir/src/file_tools.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/topologyGUI.dir/src/gen_tools.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/topologyGUI.dir/src/gen_tools.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/topologyGUI.dir/src/get_from_txt.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/topologyGUI.dir/src/get_from_txt.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/topologyGUI.dir/src/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/topologyGUI.dir/src/main.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/topologyGUI.dir/src/topology.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/topologyGUI.dir/src/topology.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fichier_contrainte_2D.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fichier_contrainte_2D_generated.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fichier_contrainte_2D_simplified.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fichier_contrainte_3D.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fichier_contrainte_hexa.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fichier_contrainte_hexa_generated.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ctr.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/ctr.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/get_from_ctr.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/get_from_ctr.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/get_from_txt.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/get_from_txt.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/surface.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/surface.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/topology.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/topology.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/topology.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/topology.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/topologyGUI" beforeDir="false" afterPath="$PROJECT_DIR$/topologyGUI" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
@@ -88,7 +67,7 @@
           <entry key="CMakeLists.txt" value="328" />
           <entry key="LLDBCommands" value="10" />
           <entry key="ObjectiveC" value="13725" />
-          <entry key="PLAIN_TEXT" value="896" />
+          <entry key="PLAIN_TEXT" value="933" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -105,8 +84,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="177">
-              <caret line="66" column="69" selection-start-line="66" selection-start-column="69" selection-end-line="66" selection-end-column="69" />
+            <state relative-caret-position="267">
+              <caret line="213" column="8" selection-start-line="213" selection-start-column="8" selection-end-line="213" selection-end-column="8" />
               <folding>
                 <element signature="e#355#373#0" expanded="true" />
               </folding>
@@ -248,11 +227,6 @@
               <item name="topologyGUI" type="b2602c69:ProjectViewProjectNode" />
               <item name="topologyGUI" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="topologyGUI" type="b2602c69:ProjectViewProjectNode" />
-              <item name="topologyGUI" type="462c0819:PsiDirectoryNode" />
-              <item name="io" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -355,7 +329,7 @@
       <workItem from="1549636063267" duration="94000" />
       <workItem from="1549637838080" duration="644000" />
       <workItem from="1549719644010" duration="228000" />
-      <workItem from="1549872571358" duration="1778000" />
+      <workItem from="1549872571358" duration="5425000" />
     </task>
     <task id="LOCAL-00001" summary="Adding on a src folder">
       <created>1548455503174</created>
@@ -518,11 +492,25 @@
       <option name="project" value="LOCAL" />
       <updated>1549554020969</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Add io directory&#10;Fix directory path">
+      <created>1549876737944</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1549876737944</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Add io directory">
+      <created>1549876817556</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1549876817556</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="188509000" />
+    <option name="totallyTimeSpent" value="192156000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -537,12 +525,12 @@
     <frame x="1280" y="23" width="1680" height="978" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4944356" visible="true" weight="0.18315019" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4944356" visible="true" weight="0.18315019" />
       <window_info id="Structure" order="1" sideWeight="0.5055644" side_tool="true" weight="0.17470984" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32844242" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.34988713" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.34988713" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3272727" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -624,7 +612,9 @@
     <MESSAGE value="Fix : constant dimZ" />
     <MESSAGE value="Apply distance added&#10;Change some comments adn variable names" />
     <MESSAGE value="Fix vulnerability" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix vulnerability" />
+    <MESSAGE value="Add io directory&#10;Fix directory path" />
+    <MESSAGE value="Add io directory" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add io directory" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -936,8 +926,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="66" column="69" selection-start-line="66" selection-start-column="69" selection-end-line="66" selection-end-column="69" />
+        <state relative-caret-position="267">
+          <caret line="213" column="8" selection-start-line="213" selection-start-column="8" selection-end-line="213" selection-end-column="8" />
           <folding>
             <element signature="e#355#373#0" expanded="true" />
           </folding>
