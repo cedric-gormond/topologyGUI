@@ -10,7 +10,7 @@ int getSurfaceHexa(constraint *ctr, int r, int size){
     std::vector<int> gen_max(3);
     gen_max = maxGen(ctr, size);
 
-    int total_width     = static_cast<int>(gen_max[0] * r * cos(30 * 3.14 / 180) + ctr[0].width);
+    auto total_width     = static_cast<int>(gen_max[0] * r * cos(30 * 3.14 / 180) + ctr[0].width);
     int total_heigth    = (gen_max[1]*r + ctr[0].heigth);
     return (total_width * total_heigth);
 }

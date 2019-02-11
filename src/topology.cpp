@@ -85,7 +85,7 @@ constraint* set2D(constraint *ctr, int distance, int size)
 
 constraint* setHexa(constraint *ctr, int r, int size)
 {
-    constraint *ctr_resize = new constraint[size];
+    auto *ctr_resize = new constraint[size];
 
     ctr_resize = ctr; //copy
 
@@ -99,7 +99,7 @@ constraint* setHexa(constraint *ctr, int r, int size)
 
     // recalculate every center and assumes that pblock is bottom_left
     i = 0;
-    j = pbloc = 0;
+    pbloc = 0;
     while (i<=gen_max[0]) {
         j=0;
         while (j<=gen_max[1]) {
@@ -143,7 +143,7 @@ constraint* set3D(constraint *ctr, int distance, int size){
     ctr_resize[0].CenterX = ctr[0].CenterX;
     ctr_resize[0].CenterY = ctr[0].CenterY;
 
-    i = j = pbloc = 0;
+    pbloc = 0;
     k=0;
     while (k<=gen_max[2]) {
         i = 0;

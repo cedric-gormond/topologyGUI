@@ -58,7 +58,7 @@ constraint* createConstraint(int *gens, int *coord){
 
 constraint* createConstraint3D(int *gens, int *coord){
     int size = gens[0] * gens[1] * (gens[2]+1);
-    constraint* ctr_temp = new constraint[size];
+    auto * ctr_temp = new constraint[size];
 
     //COORD : X0 Y0 X1 Y1
     ctr_temp[0].X_down = std::to_string(coord[0]);

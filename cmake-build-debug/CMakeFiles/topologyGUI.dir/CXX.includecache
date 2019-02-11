@@ -54,12 +54,6 @@ block.h
 ctr.hpp
 /Users/cedricgormond/Desktop/topologyGUI/src/ctr.hpp
 
-/Users/cedricgormond/Desktop/topologyGUI/src/create_output_file.cpp
-create_output_file.hpp
-/Users/cedricgormond/Desktop/topologyGUI/src/create_output_file.hpp
-get_from_txt.hpp
-/Users/cedricgormond/Desktop/topologyGUI/src/get_from_txt.hpp
-
 /Users/cedricgormond/Desktop/topologyGUI/src/create_output_file.hpp
 stdio.h
 -
@@ -81,19 +75,15 @@ string
 -
 
 /Users/cedricgormond/Desktop/topologyGUI/src/file_tools.hpp
-stdio.h
+cstdio
 -
 iostream
 -
 fstream
 -
 
-/Users/cedricgormond/Desktop/topologyGUI/src/gen_tools.cpp
-gen_tools.h
 /Users/cedricgormond/Desktop/topologyGUI/src/gen_tools.h
-
-/Users/cedricgormond/Desktop/topologyGUI/src/gen_tools.h
-stdio.h
+cstdio
 -
 vector
 -
@@ -101,20 +91,6 @@ string
 -
 ctr.hpp
 /Users/cedricgormond/Desktop/topologyGUI/src/ctr.hpp
-
-/Users/cedricgormond/Desktop/topologyGUI/src/get_from_ctr.cpp
-get_from_ctr.hpp
-/Users/cedricgormond/Desktop/topologyGUI/src/get_from_ctr.hpp
-stdio.h
--
-iostream
--
-fstream
--
-string
--
-regex
--
 
 /Users/cedricgormond/Desktop/topologyGUI/src/get_from_ctr.hpp
 cstdio
@@ -132,28 +108,6 @@ ctr.hpp
 gen_tools.h
 /Users/cedricgormond/Desktop/topologyGUI/src/gen_tools.h
 
-/Users/cedricgormond/Desktop/topologyGUI/src/get_from_txt.cpp
-get_from_txt.hpp
-/Users/cedricgormond/Desktop/topologyGUI/src/get_from_txt.hpp
-
-/Users/cedricgormond/Desktop/topologyGUI/src/get_from_txt.hpp
-stdio.h
--
-iostream
--
-fstream
--
-string
--
-regex
--
-vector
--
-ctr.hpp
-/Users/cedricgormond/Desktop/topologyGUI/src/ctr.hpp
-gen_tools.h
-/Users/cedricgormond/Desktop/topologyGUI/src/gen_tools.h
-
 /Users/cedricgormond/Desktop/topologyGUI/src/get_time.h
 time.h
 -
@@ -163,14 +117,6 @@ string
 /Users/cedricgormond/Desktop/topologyGUI/src/line.h
 SFML/Graphics.hpp
 -
-
-/Users/cedricgormond/Desktop/topologyGUI/src/lineContainer.cpp
-lineContainer.h
-/Users/cedricgormond/Desktop/topologyGUI/src/lineContainer.h
-ctr.hpp
-/Users/cedricgormond/Desktop/topologyGUI/src/ctr.hpp
-gen_tools.h
-/Users/cedricgormond/Desktop/topologyGUI/src/gen_tools.h
 
 /Users/cedricgormond/Desktop/topologyGUI/src/lineContainer.h
 line.h
@@ -238,10 +184,6 @@ get_time.h
 log.h
 /Users/cedricgormond/Desktop/topologyGUI/src/log.h
 
-/Users/cedricgormond/Desktop/topologyGUI/src/surface.cpp
-surface.h
-/Users/cedricgormond/Desktop/topologyGUI/src/surface.h
-
 /Users/cedricgormond/Desktop/topologyGUI/src/surface.h
 ctr.hpp
 /Users/cedricgormond/Desktop/topologyGUI/src/ctr.hpp
@@ -250,14 +192,10 @@ gen_tools.h
 cmath
 -
 
-/Users/cedricgormond/Desktop/topologyGUI/src/topology.cpp
-topology.hpp
 /Users/cedricgormond/Desktop/topologyGUI/src/topology.hpp
-
-/Users/cedricgormond/Desktop/topologyGUI/src/topology.hpp
-stdio.h
+cstdio
 -
-math.h
+cmath
 -
 ctr.hpp
 /Users/cedricgormond/Desktop/topologyGUI/src/ctr.hpp

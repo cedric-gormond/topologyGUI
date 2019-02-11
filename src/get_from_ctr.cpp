@@ -8,7 +8,7 @@
 
 #include "get_from_ctr.hpp"
 
-#include <stdio.h>
+#include <cstdio>
 #include <iostream>
 #include <fstream>
 #include <string>

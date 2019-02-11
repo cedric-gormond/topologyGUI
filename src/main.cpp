@@ -42,7 +42,7 @@ int main() {
      * ---------------------------------------------------------------
      */
     //Please past the path's file ;"/Users/cedricgormond/Desktop/topologyGUI/fichier_contrainte_2D.txt"
-    string file_path = "fichier_contrainte_2D.txt"; //FULL PATH
+    string file_path = "io/cstr_file.txt"; //FULL PATH
 
     ifstream file(file_path.c_str(), ios::in);
     string input_filename = getFilename(file_path); // get the input file name WITHOUT extension
@@ -55,8 +55,10 @@ int main() {
         cout << " * Cannot find  :" <<endl;
         SplitFilename(file_path);
 
-        cout << endl << " * The constraint file must be named : fichier_contrainte_2D.txt \n \n";
-        cout << " * Exit" <<endl<<endl;
+        cout << endl << " * The constraint file must be located in the io directory \n";
+        cout << endl << " * The constraint file must be named : cstr_file.txt \n";
+        cout << endl << " * Exit" <<endl;
+        system("pause");
 
         exit (EXIT_FAILURE);
     }
@@ -164,10 +166,10 @@ int main() {
     static int distance3D    =  100;
     static int diagonal      =  100;
     static bool is3D         =  false;
+
     int surface_2D =0;
     int surface_hexa =0;
     int surface_3D = 0;
-
 
     /*
      * ---------------------------------------------------------------
@@ -447,7 +449,6 @@ int main() {
                     }
 
                     //Writing
-                    if (choice_type == 0) output_path_temp = output_path + "_hexa_generated.txt";
                     if (choice_type == 0) output_path_temp = output_path + "_hexa_generated.txt";
                     if (choice_type == 1) output_path_temp = output_path + "_hexa_generated.xdc";
                     file_output.open(output_path_temp);

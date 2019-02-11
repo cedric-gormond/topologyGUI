@@ -9,8 +9,8 @@
 #ifndef topology_hpp
 #define topology_hpp
 
-#include <stdio.h>
-#include <math.h>
+#include <cstdio>
+#include <cmath>
 #include "ctr.hpp"
 #include "gen_tools.h"
 
